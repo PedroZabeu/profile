@@ -29,6 +29,10 @@
   /* Bordas */
   --radius: 0.625rem;
   
+  /* Header Heights */
+  --cv-header-height: 4rem;
+  --cv-header-height-scrolled: 3.5rem;
+  
   /* Cores utilizadas */
   --background: oklch(0.145 0 0);       /* Preto suave - inspirado em TRON */
   --foreground: oklch(0.985 0 0);       /* Branco puro */
@@ -39,6 +43,26 @@
   /* Cores do logo - inspiradas em TRON */
   --cv-text-primary: #ffffff;          /* Branco luminoso para "PEDRO" */
   --cv-accent: #7DFDFE;                /* Teal elétrico para ".ZABEU" */
+}
+
+/* Animações personalizadas */
+@layer utilities {
+  @keyframes shine {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-shine {
+    animation: shine 25s linear infinite;
+  }
+  
+  .duration-800 {
+    transition-duration: 800ms;
+  }
 }
 
 /* Estilos base */

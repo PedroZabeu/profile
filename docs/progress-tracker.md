@@ -2,10 +2,10 @@
 
 ## 📈 Progresso Geral
 
-**Total: 2 / 34 tarefas completas**
+**Total: 3 / 34 tarefas completas**
 
 ```
-[█                                       ] 6%
+[██                                      ] 9%
 ```
 
 ---
@@ -13,11 +13,11 @@
 ## 🎯 EPICs e Tarefas
 
 ### ⏳ EPIC 1: Landing Page
-**Progresso: 2 / 8** | `██░░░░░░░ 25%`
+**Progresso: 3 / 8** | `███░░░░░░ 38%`
 
 - [X] 1.1 - Iniciar projeto Next.js com TypeScript + Shadcn UI
 - [X] 1.2 - Criar Logo
-- [ ] 1.3 - Criar Header
+- [X] 1.3 - Criar Header
 - [ ] 1.4 - Criar Footer
 - [ ] 1.5 - Criar Section Hero
 - [ ] 1.6 - Criar Section About
