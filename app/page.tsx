@@ -1,9 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Logo from "@/components/logo"
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-md border-green-500">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-8">
+      <Logo size="lg" />
+      <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-green-500">✅ Projeto iniciado com sucesso</CardTitle>
           <CardDescription>

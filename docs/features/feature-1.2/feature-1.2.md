@@ -1,43 +1,134 @@
 # Feature 1.2 - Criar o Logo
 
-## Especificações
+## 🎯 Objetivo
+Criar um componente de logo textual responsivo que servirá como elemento principal de identificação visual no portfolio.
 
-1. Descrição
-O logo é textual e composto por dois elementos:
+## 📋 Visão Geral
 
-Desktop: Mostra nome completo PEDRO.ZABEU
-Mobile: Versão comprimida P.ZABEU (apenas a inicial)
-Responsivo: Usa hidden md:inline / md:hidden para trocar
+### Descrição do Componente
+Logo puramente textual sem ícones ou elementos gráficos, composto por duas partes coloridas:
 
-Todos os detalhes da tipografia devem estar em globals.css
+- **Parte 1**: "PEDRO" - Cor primária
+- **Parte 2**: ".ZABEU" - Cor de destaque (accent)
 
-2. Tipografia
-Fonte: Geist Sans (padrão do projeto)
-Variável CSS: --font-geist-sans
-Tamanho: text-lg md:text-xl
-Peso: font-semibold (600)
-Espaçamento: tracking-tighter (mais compacto)
+### Comportamento Responsivo
+- **Desktop**: Exibe nome completo "PEDRO.ZABEU"
+- **Mobile**: Versão adaptada para telas pequenas
 
-3. Cores
-Localização no globals.css:
+## 🎨 Especificações Visuais
 
-/* Cor "PEDRO" - Branco */
---cv-text-primary: #ffffff;
+### Tipografia
+- **Fonte**: Geist Sans (padrão do projeto)
+- **Variável CSS**: `--font-geist-sans`
+- **Tamanho**: `text-lg` (mobile) → `text-xl` (desktop)
+- **Peso**: `font-semibold` (600)
+- **Espaçamento**: `tracking-tighter` (mais compacto)
 
-/* Cor ".ZABEU" - TRON Teal Accent */
---cv-accent: #7DFDFE;
+### Paleta de Cores
+- **Texto Primário ("PEDRO")**: Branco puro
+- **Texto Destaque (".ZABEU")**: Teal TRON (#7DFDFE)
 
-Na prática:
+*Inspiração visual baseada no filme TRON - combinação de branco luminoso com teal elétrico característico do universo digital do filme.*
 
-<span className="text-cv-text-primary">PEDRO</span> → Branco (#ffffff)
-<span className="text-cv-accent">.ZABEU</span> → Teal (#7DFDFE)
+## 🖼️ Wireframes
 
-## Arquivos Criados
+### Layout Desktop
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│                    PEDRO.ZABEU                             │
+│                    [██████████]                             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
 
-- /components/logo.tsx - criado
-- /globals.css - modificado
-- /app/page.tsx - modificado
+### Layout Mobile
+```
+┌─────────────────────────────────┐
+│                                 │
+│         PEDRO.ZABEU            │
+│         [██████████]            │
+│                                 │
+└─────────────────────────────────┘
+```
 
-## Modificações UI
+### Estrutura do Componente
+```
+Logo
+├── Container (div)
+│   ├── Span "PEDRO" (cor primária)
+│   └── Span ".ZABEU" (cor accent)
+```
 
-- O logo foi adicionado ao card inicial presente em app/page.tsx
+## 🏗️ Arquitetura
+
+### Tokens CSS (globals.css)
+```css
+/* Cores do logo - inspiradas em TRON */
+--cv-text-primary: #ffffff;     /* Branco luminoso para "PEDRO" */
+--cv-accent: #7DFDFE;           /* Teal elétrico para ".ZABEU" */
+```
+
+### Estrutura de Arquivos
+- **Componente**: `/components/logo.tsx`
+- **Estilos**: `/app/globals.css` (tokens)
+- **Uso**: Integrado nos componentes da aplicação
+
+## 📱 Implementação Responsiva
+
+### Breakpoints
+- **Mobile**: < 768px (md)
+- **Desktop**: ≥ 768px (md)
+
+### Estratégia
+- Utilizar classes do Tailwind para responsividade
+- Manter a mesma estrutura HTML em ambos os tamanhos
+- Ajustar apenas o tamanho da fonte
+
+## ✅ Critérios de Aceite
+
+### Funcionais
+- [ ] Logo exibido corretamente em desktop
+- [ ] Logo adaptado para mobile
+- [ ] Cores aplicadas conforme especificação
+- [ ] Tipografia configurada com Geist Sans
+
+### Visuais
+- [ ] Contraste adequado com fundo escuro
+- [ ] Espaçamento entre letras compacto
+- [ ] Peso da fonte semibold (600)
+- [ ] Alinhamento centralizado
+
+### Técnicos
+- [ ] Componente reutilizável
+- [ ] Tokens CSS definidos em globals.css
+- [ ] Sem estilos hardcoded no componente
+- [ ] Responsividade funcionando
+
+## 🔄 Fluxo de Trabalho
+
+1. **Configurar tokens CSS** no globals.css
+2. **Criar componente** logo.tsx
+3. **Implementar responsividade** com classes Tailwind
+4. **Testar** em diferentes tamanhos de tela
+5. **Integrar** na página inicial
+
+## 🎯 Contexto de Uso
+
+O logo será utilizado em:
+- Cabeçalho (header) da aplicação
+- Seção hero da landing page
+- Footer (opcional)
+- Card de boas-vindas (validação)
+
+## 📊 Considerações
+
+### Performance
+- Componente leve, sem imagens
+- Fonte já carregada pelo projeto
+- Mínimo de CSS adicional
+
+### Acessibilidade
+- Texto legível com bom contraste
+- Sem dependência de cor apenas
+- Estrutura semântica adequada
