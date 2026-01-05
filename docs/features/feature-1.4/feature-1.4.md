@@ -1,4 +1,4 @@
-# Feature 1.5 - Hero Section
+# Feature 1.4 - Hero Section
 
 ## 🎯 Objetivo
 Criar uma seção hero impressionante com animação WebGL avançada, tipografia dinâmica e botões interativos, servindo como elemento principal de apresentação do portfolio.
