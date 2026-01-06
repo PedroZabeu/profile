@@ -34,107 +34,86 @@ ProjectEntryHook (nova seção)
 ProjectSection (com Betting Management)
 ```
 
-#### **Componente do Hook**
-```typescript
-// components/blocks/projects/ProjectEntryHook.tsx
-export const ProjectEntryHook = () => {
-  const { language } = useSettingsStore()
-  const [isVisible, setIsVisible] = useState(false)
-  
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-  
-  const messages = {
-    pt: {
-      title: "Projetos em Destaque",
-      subtitle: "Soluções inovadoras desenvolvidas com excelência técnica",
-      indicator: "Explore meus trabalhos abaixo"
-    },
-    en: {
-      title: "Featured Projects", 
-      subtitle: "Innovative solutions built with technical excellence",
-      indicator: "Explore my work below"
-    }
-  }
-  
-  const msg = messages[language]
-  
-  return (
-    <section className={`py-32 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      <div className="container mx-auto px-4 text-center">
-        <div className="space-y-6">
-          {/* Título Principal */}
-          <h2 className="text-5xl lg:text-6xl font-bold text-cv-text-primary">
-            {msg.title}
-          </h2>
-          
-          {/* Subtítulo */}
-          <p className="text-xl lg:text-2xl text-foreground max-w-3xl mx-auto">
-            {msg.subtitle}
-          </p>
-          
-          {/* Indicador Visual */}
-          <div className="flex items-center justify-center gap-3 mt-12">
-            <div className="w-12 h-0.5 bg-cv-accent/60"></div>
-            <span className="text-cv-accent font-medium animate-pulse">
-              {msg.indicator}
-            </span>
-            <div className="w-12 h-0.5 bg-cv-accent/60"></div>
-          </div>
-          
-          {/* Indicador de Scroll */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-cv-accent/40 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-cv-accent rounded-full mt-2 animate-pulse"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+#### **Conteúdo do Hook**
+
+**Títulos em Dois Idiomas:**
+- **Português:** "Projetos em Destaque" + "Soluções inovadoras desenvolvidas com excelência técnica"
+- **Inglês:** "Featured Projects" + "Innovative solutions built with technical excellence"
+
+**Indicador Visual Central:**
+- Texto pulsante: "Explore meus trabalhos abaixo" / "Explore my work below"
+- Duas linhas horizontais nos lados do texto indicadoras
+- Indicador de scroll animado no final da seção
+
+**Comportamento:**
+- Entrada com fade-in suave ao aparecer no viewport
+- Texto centralizado com tipografia grande e impactante
+- Auto-scroll suave após 3 segundos para o primeiro projeto
+- Scroll manual permitido a qualquer momento
+
+#### **Wireframe ASCII**
+
+**Desktop View:**
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                            PROJETOS EM DESTAQUE                            │
+│                       (text-6xl font-bold text-cv-text-primary)             │
+│                                                                             │
+│              Soluções inovadoras desenvolvidas com excelência técnica        │
+│                    (text-2xl text-foreground max-w-3xl mx-auto)             │
+│                                                                             │
+│                                                                             │
+│  ──────────────────────── ◉ Explore meus trabalhos abaixo ─────────────────  │
+│         (linha)            (pulse animate)            (linha)                │
+│                                                                             │
+│                                                                             │
+│                                                                             │
+│                                   ↓                                        │
+│                             (scroll indicator)                              │
+│                            (bounce animate)                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### **Integração no ProjectSection**
-```typescript
-// components/sections/ProjectSection.tsx
-export function ProjectSection({ className, motionProps }: ProjectSectionProps) {
-  return (
-    <>
-      {/* Hook de entrada antes dos projetos */}
-      <ProjectEntryHook />
-      
-      {/* Seção dos projetos */}
-      <section 
-        id="projects"
-        className={`py-24 lg:py-32 ${className}`}
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-24 lg:space-y-32">
-            <BettingMGMT />
-            {/* Future projects */}
-          </div>
-        </div>
-      </section>
-    </>
-  )
-}
+**Mobile View:**
+```
+┌─────────────────────────────────┐
+│                                 │
+│        PROJETOS EM              │
+│        DESTAQUE                 │
+│      (text-5xl bold)           │
+│                                 │
+│   Soluções inovadoras          │
+│   desenvolvidas com             │
+│   excelência técnica           │
+│    (text-xl max-w)              │
+│                                 │
+│                                 │
+│   ────── ◉ Explore ──────      │
+│         meus trabalhos          │
+│         abaixo                  │
+│                                 │
+│                                 │
+│               ↓                 │
+│           (scroll)              │
+│                                 │
+└─────────────────────────────────┘
 ```
 
 #### **Animações e Efeitos**
-- **Fade-in Up**: Entrada suave de baixo para cima
-- **Pulse Effects**: Indicador visual pulsando
-- **Scroll Indicator**: Animação bounce contínua
-- **Auto-progression**: Após 3s, scroll automático suave para primeiro projeto
+- **Fade-in Up**: Entrada suave de baixo para cima com opacity 0→1
+- **Pulse Effects**: Indicador "Explore" pulsando continuamente
+- **Scroll Indicator**: Animação bounce vertical contínua  
+- **Auto-progression**: Scroll automático suave após 3 segundos
 - **Manual Control**: Usuário pode scroll manualmente a qualquer momento
 
 #### **Design Visual**
-- **Background**: Mesmo `--background` do restante do site
-- **Cores**: Sistema OKLCH com `text-cv-text-primary` e `text-cv-accent`
-- **Tipografia**: Hierarquia clara com títulos grandes
-- **Espaçamento**: `py-32` para impacto visual
-- **Centralização**: Conteúdo centralizado com `text-center`
+- **Background**: Mesmo `--background` escuro do restante do site
+- **Cores**: Sistema OKLCH com `text-cv-text-primary` (branco) e `text-cv-accent` (teal)
+- **Tipografia**: Hierarquia clara com títulos extra grandes
+- **Espaçamento**: `py-32` vertical para impacto visual máximo
+- **Centralização**: Todo conteúdo centralizado horizontalmente
 
 ## 🌐 Internacionalização
 
