@@ -7,11 +7,11 @@ import { ShimmerButtonProps } from '@/types';
 export const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
     (
         {
-            shimmerColor = '#ffffff',
+            shimmerColor = 'var(--cv-text-primary)',
             shimmerSize = '0.05em',
             shimmerDuration = '3s',
-            borderRadius = '100px',
-            background = 'rgba(0, 0, 0, 1)',
+            borderRadius = 'var(--radius-lg)',
+            background = 'var(--cv-btn-primary-bg)',
             className,
             children,
             ...props
@@ -31,8 +31,8 @@ export const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonPr
                     } as CSSProperties
                 }
                 className={cn(
-                    'group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden [border-radius:var(--radius)] border border-white/10 px-6 py-3 whitespace-nowrap text-white [background:var(--bg)]',
-                    'transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px',
+                    'group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden rounded-full border border-white/10 whitespace-nowrap text-white [background:var(--bg)]',
+                    'px-[var(--cv-spacing-lg)] py-[var(--cv-spacing-sm)] transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px',
                     className
                 )}
                 ref={ref}
@@ -57,17 +57,17 @@ export const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonPr
                 <div
                     className={cn(
                         'absolute inset-0 size-full',
-                        'rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#ffffff1f]',
+                        'rounded-full px-[var(--cv-spacing-sm)] py-[var(--cv-spacing-xs)] text-[var(--cv-font-size-sm)] font-medium cv-shimmer-highlight',
                         'transform-gpu transition-all duration-300 ease-in-out',
-                        'group-hover:shadow-[inset_0_-6px_10px_#ffffff3f]',
-                        'group-active:shadow-[inset_0_-10px_10px_#ffffff3f]'
+                        'group-hover:cv-shimmer-hover',
+                        'group-active:cv-shimmer-active'
                     )}
                 />
 
                 {/* backdrop */}
                 <div
                     className={cn(
-                        'absolute [inset:var(--cut)] -z-20 [border-radius:var(--radius)] [background:var(--bg)]'
+                        'absolute [inset:var(--cut)] -z-20 rounded-full [background:var(--bg)]'
                     )}
                 />
             </button>

@@ -37,13 +37,10 @@ export function HeaderSection() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-[height,background-color,box-shadow,padding] duration-500',
-          isScrolled ? 'bg-cv-bg-card/80 backdrop-blur-md shadow-sm' : 'bg-transparent py-2'
+          isScrolled ? 'bg-cv-bg-card/80 backdrop-blur-md shadow-sm cv-header-scrolled' : 'bg-transparent py-[var(--cv-spacing-sm)] cv-header-base'
         )}
-        style={{
-          height: isScrolled ? 'var(--cv-header-height-scrolled)' : 'var(--cv-header-height)',
-        }}
       >
-        <div className="container mx-auto flex h-full items-center justify-between px-6 md:px-12 max-w-7xl">
+        <div className="container mx-auto flex h-full items-center justify-between px-[var(--cv-spacing-lg)] md:px-[var(--cv-spacing-xl)] max-w-7xl">
           {/* Logo */}
           <Link
             href="/"
@@ -53,7 +50,7 @@ export function HeaderSection() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-[var(--cv-spacing-lg)]">
             {navItems.map((item) => (
               item.href.startsWith('#') ? (
                 <button
@@ -63,7 +60,7 @@ export function HeaderSection() {
                     const element = document.getElementById(targetId);
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-sm font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
+                  className="text-[var(--cv-font-size-sm)] font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
                 >
                   {item.title}
                 </button>
@@ -71,7 +68,7 @@ export function HeaderSection() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
+                  className="text-[var(--cv-font-size-sm)] font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
                 >
                   {item.title}
                 </Link>
@@ -86,11 +83,11 @@ export function HeaderSection() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-full text-cv-text-primary hover:text-cv-accent transition-colors"
+            className="md:hidden p-[var(--cv-spacing-sm)] rounded-full text-cv-text-primary hover:text-cv-accent transition-colors"
             aria-label="Toggle menu"
           >
             <div className={cn('transition-transform duration-200', isMobileMenuOpen && 'rotate-45')}>
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? <X className="w-[var(--cv-icon-sm)] h-[var(--cv-icon-sm)]" /> : <Menu className="w-[var(--cv-icon-sm)] h-[var(--cv-icon-sm)]" />}
             </div>
           </button>
         </div>
@@ -106,8 +103,7 @@ export function HeaderSection() {
 
           {/* Moving Shine Effect */}
           <div 
-            className="absolute inset-0 h-full flex animate-shine"
-            style={{ width: '200%' }}
+            className="absolute inset-0 h-full flex animate-shine w-[200%]"
           >
             <div className="w-1/2 h-full bg-[linear-gradient(90deg,transparent_45%,var(--cv-accent)_50%,transparent_55%)] opacity-50" />
             <div className="w-1/2 h-full bg-[linear-gradient(90deg,transparent_45%,var(--cv-accent)_50%,transparent_55%)] opacity-50" />
@@ -123,20 +119,19 @@ export function HeaderSection() {
         >
           <div
             className={cn(
-              'absolute top-0 left-0 right-0 bg-cv-bg-card/95 backdrop-blur-lg border-b border-cv-border-muted transition-transform duration-300',
+              'absolute top-0 left-0 right-0 bg-cv-bg-card/95 backdrop-blur-lg border-b border-cv-border-muted transition-transform duration-300 cv-header-base',
               isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
             )}
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            style={{ height: 'var(--cv-header-height)' }}
           >
-            <div className="container mx-auto flex h-full items-center justify-between px-6">
+            <div className="container mx-auto flex h-full items-center justify-between px-[var(--cv-spacing-lg)]">
               <Logo size="md" variant="compact" />
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-full text-cv-text-primary hover:text-cv-accent transition-colors"
+                className="p-[var(--cv-spacing-sm)] rounded-full text-cv-text-primary hover:text-cv-accent transition-colors"
                 aria-label="Close menu"
               >
-                <X className="w-5 h-5" />
+                <X className="w-[var(--cv-icon-sm)] h-[var(--cv-icon-sm)]" />
               </button>
             </div>
           </div>
@@ -148,7 +143,7 @@ export function HeaderSection() {
             )}
             style={{ marginTop: 'var(--cv-header-height)' }}
           >
-            <nav className="container mx-auto px-6 py-6">
+            <nav className="container mx-auto px-[var(--cv-spacing-lg)] py-[var(--cv-spacing-lg)]">
               <div className="flex flex-col space-y-4">
                 {navItems.map((item) =>
                   item.href.startsWith('#') ? (
@@ -160,7 +155,7 @@ export function HeaderSection() {
                         const element = document.getElementById(targetId);
                         element?.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="text-lg font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-2 text-left"
+                      className="text-[var(--cv-font-size-lg)] font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-[var(--cv-spacing-sm)] text-left"
                     >
                       {item.title}
                     </button>
@@ -169,14 +164,14 @@ export function HeaderSection() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-2"
+                      className="text-[var(--cv-font-size-lg)] font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-[var(--cv-spacing-sm)]"
                     >
                       {item.title}
                     </Link>
                   )
                 )}
                 
-                <div className="border-t border-cv-border-muted pt-4 mt-4">
+                <div className="border-t border-cv-border-muted pt-[var(--cv-spacing-lg)] mt-[var(--cv-spacing-lg)]">
                   <LanguageSelector
                     language={language}
                     onLanguageChange={setLanguage}
@@ -190,7 +185,7 @@ export function HeaderSection() {
       )}
 
       {/* Spacer to prevent content overlap */}
-      <div style={{ height: 'var(--cv-header-height)' }} />
+      <div className="cv-header-base" />
     </>
   );
 }

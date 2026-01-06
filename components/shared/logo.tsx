@@ -6,9 +6,9 @@ export default function Logo({
   className = '' 
 }: LogoProps) {
   const sizeClasses = {
-    sm: 'text-base md:text-lg',
-    md: 'text-lg md:text-xl',
-    lg: 'text-xl md:text-2xl'
+    sm: 'text-[var(--cv-font-size-base)] md:text-[var(--cv-font-size-lg)]',
+    md: 'text-[var(--cv-font-size-lg)] md:text-[var(--cv-font-size-xl)]',
+    lg: 'text-[var(--cv-font-size-xl)] md:text-[var(--cv-font-size-2xl)]'
   };
 
   const variantClasses = {
@@ -25,16 +25,10 @@ export default function Logo({
 
   return (
     <div className={classes}>
-      <span 
-        className="text-cv-text-primary"
-        style={{ color: 'var(--cv-text-primary)' }}
-      >
+      <span className="text-cv-text-primary">
         PEDRO
       </span>
-      <span 
-        className="text-cv-accent"
-        style={{ color: 'var(--cv-accent)' }}
-      >
+      <span className="text-cv-accent">
         .ZABEU
       </span>
     </div>

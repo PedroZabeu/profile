@@ -7,12 +7,11 @@
   --color-foreground: var(--foreground);
   --color-border: var(--border);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-card-foreground: var(--foreground);
 
   /* Cores de identidade - Sistema Unificado */
-  --color-cv-text-primary: var(--cv-text-primary);
   --color-cv-accent: var(--cv-accent);
-  --color-threads-accent: var(--cv-accent);
+  --color-cv-text-primary: var(--foreground);
 
   /* Tipografia */
   --font-sans: var(--font-geist-sans);
@@ -38,26 +37,62 @@
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
 
-  /* Accent Colors - Sistema OKLCH Unificado */
+  /* Cores de Destaque e Identidade */
   --cv-text-primary: oklch(1 0 0);
   --cv-accent: oklch(0.85 0.21 200);
 
-  /* Button Colors */
-  --cv-btn-primary-bg: oklch(1 0 0);
+  /* Cores de Botões */
+  --cv-btn-primary-bg: var(--cv-text-primary);
   --cv-btn-primary-text: oklch(0 0 0);
   --cv-btn-primary-shimmer: oklch(1 0 0 / 0.4);
   --cv-btn-secondary-bg: transparent;
   --cv-btn-secondary-border: oklch(1 0 0 / 0.2);
 
 
-  /* WebGL Threads Configuration 
-     Cores convertidas automaticamente de --cv-accent via JavaScript */
+  /* Configurações de Componentes */
+  
+  /* WebGL Threads */
   --threads-opacity: 0.6;
   --threads-line-count: 40;
   --threads-line-width: 7.0;
   --threads-line-blur: 10.0;
   --threads-amplitude: 2.5;
   --threads-distance: 0.8;
+
+  /* Sistema de Espaçamento */
+  --cv-spacing-xs: 0.25rem;
+  --cv-spacing-sm: 0.5rem;
+  --cv-spacing-md: 0.75rem;
+  --cv-spacing-lg: 1rem;
+  --cv-spacing-xl: 1.5rem;
+  --cv-spacing-2xl: 2rem;
+
+  /* Sistema de Tipografia */
+  --cv-font-size-xs: 0.75rem;
+  --cv-font-size-sm: 0.875rem;
+  --cv-font-size-base: 1rem;
+  --cv-font-size-lg: 1.125rem;
+  --cv-font-size-xl: 1.25rem;
+  --cv-font-size-2xl: 1.5rem;
+  --cv-font-size-3xl: 1.875rem;
+  --cv-font-size-4xl: 2.25rem;
+  --cv-font-size-5xl: 3rem;
+
+  /* Sistema de Botões */
+  --cv-btn-height-sm: 1.75rem;
+  --cv-btn-height-md: 2rem;
+  --cv-btn-height-lg: 2.25rem;
+
+  /* Sistema de Ícones */
+  --cv-icon-xs: 0.75rem;
+  --cv-icon-sm: 1rem;
+  --cv-icon-md: 1.25rem;
+  --cv-icon-lg: 1.5rem;
+
+  /* Sombras e Efeitos */
+  --cv-shimmer-light: oklch(1 0 0 / 0.12);
+  --cv-shimmer-medium: oklch(1 0 0 / 0.25);
+  --cv-border-light: oklch(1 0 0 / 0.1);
 }
 
 /* Animações personalizadas */
@@ -89,7 +124,7 @@
   }
 
   .animate-shine {
-    animation: shine 25s linear infinite;
+    animation: shine 3s linear infinite;
   }
 
   .animate-spin-around {
@@ -97,26 +132,46 @@
   }
 
   .animate-shimmer-slide {
-    animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
+    animation: shimmer-slide 3s ease-in-out infinite alternate;
   }
 
   .duration-800 {
     transition-duration: 800ms;
   }
 
-  /* Threads Container */
+  /* Classes de Componentes */
   .threads-container {
     @apply absolute inset-0 z-0;
     opacity: var(--threads-opacity);
   }
 
-  /* Hero Section Classes */
   .hero-headline {
     @apply font-bold text-foreground leading-tight tracking-tight;
   }
 
   .hero-rotation-container {
     @apply flex items-center justify-center min-h-[4rem];
+  }
+
+  /* Classes Utilitárias */
+  .cv-header-base {
+    height: var(--cv-header-height);
+  }
+
+  .cv-header-scrolled {
+    height: var(--cv-header-height-scrolled);
+  }
+
+  .cv-shimmer-highlight {
+    box-shadow: inset 0 -8px 10px var(--cv-shimmer-light), inset 0 8px 10px var(--cv-shimmer-light);
+  }
+
+  .cv-shimmer-hover {
+    box-shadow: inset 0 -6px 10px var(--cv-shimmer-medium), inset 0 6px 10px var(--cv-shimmer-medium);
+  }
+
+  .cv-shimmer-active {
+    box-shadow: inset 0 -10px 10px var(--cv-shimmer-medium), inset 0 10px 10px var(--cv-shimmer-medium);
   }
 }
 

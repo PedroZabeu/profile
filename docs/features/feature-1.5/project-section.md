@@ -36,12 +36,18 @@ ProjectSection (com Betting Management)
 
 #### **Conteúdo do Hook**
 
-**Títulos em Dois Idiomas:**
-- **Português:** "Projetos em Destaque" + "Soluções inovadoras desenvolvidas com excelência técnica"
-- **Inglês:** "Featured Projects" + "Innovative solutions built with technical excellence"
+**Título e Subtítulo em Dois Idiomas:**
+
+🇧🇷 **Português:**
+- **Título:** "De problemas reais para produtos reais"
+- **Subtítulo:** "Onde faltam ferramentas eficientes, surgem produtos pensados para resolver dores reais"
+
+🇺🇸 **English:**
+- **Title:** "From real problems to real products"
+- **Subtitle:** "Where efficient tools are missing, products are created to solve real-world pains"
 
 **Indicador Visual Central:**
-- Texto pulsante: "Explore meus trabalhos abaixo" / "Explore my work below"
+- Texto pulsante: "Conheça as soluções" / "See the solutions"
 - Duas linhas horizontais nos lados do texto indicadoras
 - Indicador de scroll animado no final da seção
 
@@ -57,14 +63,15 @@ ProjectSection (com Betting Management)
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                                                                             │
-│                            PROJETOS EM DESTAQUE                            │
+│                 DE PROBLEMAS REAIS PARA PRODUTOS REAIS                     │
 │                       (text-6xl font-bold text-cv-text-primary)             │
 │                                                                             │
-│              Soluções inovadoras desenvolvidas com excelência técnica        │
+│        Onde faltam ferramentas eficientes, surgem produtos pensados       │
+│                   para resolver dores reais                                 │
 │                    (text-2xl text-foreground max-w-3xl mx-auto)             │
 │                                                                             │
 │                                                                             │
-│  ──────────────────────── ◉ Explore meus trabalhos abaixo ─────────────────  │
+│  ──────────────────────── ◉ Conheça as soluções ─────────────────────────  │
 │         (linha)            (pulse animate)            (linha)                │
 │                                                                             │
 │                                                                             │
@@ -80,19 +87,19 @@ ProjectSection (com Betting Management)
 ```
 ┌─────────────────────────────────┐
 │                                 │
-│        PROJETOS EM              │
-│        DESTAQUE                 │
+│     DE PROBLEMAS REAIS         │
+│     PARA PRODUTOS REAIS        │
 │      (text-5xl bold)           │
 │                                 │
-│   Soluções inovadoras          │
-│   desenvolvidas com             │
-│   excelência técnica           │
+│   Onde faltam ferramentas      │
+│   eficientes, surgem produtos  │
+│   pensados para resolver       │
+│   dores reais                  │
 │    (text-xl max-w)              │
 │                                 │
 │                                 │
-│   ────── ◉ Explore ──────      │
-│         meus trabalhos          │
-│         abaixo                  │
+│   ────── ◉ Conheça ──────      │
+│         as soluções             │
 │                                 │
 │                                 │
 │               ↓                 │
@@ -207,15 +214,17 @@ Baseado no sistema de cores moderno com fallback RGB:
 ## 🔄 Fluxo de Dados
 
 ```
-ProjectSection.tsx (Orquestrador)
+ProjectSection.tsx (Wrapper com Hook)
+    ↓
+ProjectEntryHook.tsx (seção intermediária)
     ↓
 Componentes Específicos (BettingMGMT, SchoolOfBets, Stakely)
-    ↓  
+    ↓
 ProjectFeature.tsx (Template Genérico)
     ↓
 Sub-componentes (Text, Demo)
     ↓
-Sistema de Cores (OKLCH) + i18n (Zustand)
+Sistema de Cores (OKLCH + types.ts) + i18n (Zustand)
 ```
 
 ## 🎯 Objetivos de UX

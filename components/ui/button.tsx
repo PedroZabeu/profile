@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-[var(--cv-spacing-sm)] whitespace-nowrap rounded-md text-[var(--cv-font-size-sm)] font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:w-[var(--icon-md)] h-[var(--icon-md)] shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -21,12 +21,12 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
+        default: "h-[var(--cv-btn-height-md)] px-[var(--cv-spacing-lg)] py-[var(--cv-spacing-sm)] has-[>svg]:px-[var(--cv-spacing-md)]",
+        sm: "h-[var(--cv-btn-height-sm)] rounded-md gap-[var(--cv-spacing-xs)] px-[var(--cv-spacing-md)] has-[>svg]:px-[calc(var(--cv-spacing-md)-0.25rem)]",
+        lg: "h-[var(--cv-btn-height-lg)] rounded-md px-[var(--cv-spacing-xl)] has-[>svg]:px-[var(--cv-spacing-lg)]",
+        icon: "w-[var(--cv-btn-height-md)] h-[var(--cv-btn-height-md)]",
+        "icon-sm": "w-[var(--cv-btn-height-sm)] h-[var(--cv-btn-height-sm)]",
+        "icon-lg": "w-[var(--cv-btn-height-lg)] h-[var(--cv-btn-height-lg)]",
       },
     },
     defaultVariants: {
