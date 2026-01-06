@@ -6,11 +6,12 @@ import { Menu, X } from 'lucide-react';
 import { LanguageSelector } from '@/components/blocks/header/LanguageSelector';
 import Logo from '@/components/shared/logo';
 import { cn } from '@/lib/utils';
+import { useSettingsStore } from '@/stores/settings';
 
 export function HeaderSection() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'pt'>('en');
+  const { language, setLanguage } = useSettingsStore();
 
   // Scroll effect
   useEffect(() => {
@@ -22,11 +23,11 @@ export function HeaderSection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Navigation items (placeholders for now)
+  // Navigation items
   const navItems = [
     { title: 'Home', href: '/' },
+    { title: 'Projects', href: '#projects' },
     { title: 'About', href: '/about' },
-    { title: 'Projects', href: '/projects' },
     { title: 'Contact', href: '/contact' },
   ];
 

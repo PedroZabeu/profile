@@ -11,7 +11,10 @@ export function ProjectSection({
   motionProps 
 }: ProjectSectionProps) {
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section 
+      id="projects"
+      className={`py-24 lg:py-32 ${className}`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-24 lg:space-y-32">
           {/* Currently only showing BettingMGMT */}

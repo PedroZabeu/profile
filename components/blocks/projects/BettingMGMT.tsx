@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { 
   LayoutGrid, 
   Users, 
@@ -10,17 +9,19 @@ import {
 import { ProjectFeature } from './templates/ProjectFeature';
 import { ProjectFeatureText } from '@/components/ui/projects/project-feature-text';
 import { ProjectFeatureDemo } from '@/components/ui/projects/project-feature-demo';
+import { useSettingsStore } from '@/stores/settings';
+import { ChartAreaIcon } from '@/components/ChartAreaIcon';
 
 // Dashboard Demo Component
-function BettingDashboardDemo({ language }: { language: 'pt' | 'en' }) {
+function BettingDashboardDemo({ language }: { language: 'en' | 'pt' }) {
   const labels = {
     pt: {
-      dashboard: '📊 Dashboard',
+      dashboard: 'Dashboard',
       totalBalance: 'SALDO TOTAL',
       accounts: 'Contas'
     },
     en: {
-      dashboard: '📊 Dashboard',
+      dashboard: 'Dashboard',
       totalBalance: 'TOTAL BALANCE',
       accounts: 'Accounts'
     }
@@ -32,7 +33,10 @@ function BettingDashboardDemo({ language }: { language: 'pt' | 'en' }) {
     <div className="flex h-full flex-col bg-background p-4 md:p-6">
       {/* Header */}
       <div className="mb-6 flex items-center gap-2">
-        <div className="text-lg font-semibold text-cv-text-primary">{currentLabels.dashboard}</div>
+        <div className="text-lg font-semibold text-cv-text-primary flex items-center gap-2">
+          <ChartAreaIcon className="w-6 h-6 text-cv-accent" />
+          {currentLabels.dashboard}
+        </div>
       </div>
 
       {/* Main Balance Card */}
@@ -77,33 +81,7 @@ function BettingDashboardDemo({ language }: { language: 'pt' | 'en' }) {
 }
 
 export function BettingMGMT() {
-  const [language, setLanguage] = useState<'pt' | 'en'>('en');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    // Get language from localStorage or browser
-    const savedLanguage = localStorage.getItem('cv-settings-storage');
-    if (savedLanguage) {
-      try {
-        const settings = JSON.parse(savedLanguage);
-        if (settings.state?.language) {
-          setLanguage(settings.state.language);
-        }
-      } catch (e) {
-        // Fallback to browser language
-        const browserLang = navigator.language;
-        setLanguage(browserLang.startsWith('pt') ? 'pt' : 'en');
-      }
-    } else {
-      const browserLang = navigator.language;
-      setLanguage(browserLang.startsWith('pt') ? 'pt' : 'en');
-    }
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  const { language } = useSettingsStore();
 
   const content = {
     pt: {
@@ -137,7 +115,7 @@ export function BettingMGMT() {
       features: [
         {
           icon: <LayoutGrid className="size-5" />,
-          text: 'Eliminates the need for multiple spreadsheets'
+          text: 'Eliminates need for multiple spreadsheets'
         },
         {
           icon: <ChartBar className="size-5" />,
@@ -152,7 +130,7 @@ export function BettingMGMT() {
           text: 'Integrated supplier management'
         }
       ],
-      cta: 'Explore the platform'
+      cta: 'Explore platform'
     }
   };
 
