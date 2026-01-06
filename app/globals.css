@@ -173,6 +173,111 @@
   .cv-shimmer-active {
     box-shadow: inset 0 -10px 10px var(--cv-shimmer-medium), inset 0 10px 10px var(--cv-shimmer-medium);
   }
+
+  /* Classes do School of Bets - reaproveitando sistema existente */
+  .school-bets-container {
+    @apply bg-card border rounded-lg p-4;
+    @apply flex flex-col justify-center items-center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .school-bets-header {
+    @apply flex items-center gap-2 mb-3 pb-2 border-b;
+    width: 100%;
+  }
+
+  .school-progress-container {
+    @apply bg-background border rounded-lg p-4 mb-3 w-full;
+  }
+
+  .school-progress-header {
+    @apply text-sm font-medium text-gray-400 mb-2;
+  }
+
+  .school-progress-bar {
+    @apply w-full bg-gray-800 rounded-full h-2 overflow-hidden;
+  }
+
+  .school-progress-fill {
+    @apply h-full transition-all duration-500 ease-out;
+    background-color: var(--cv-accent);
+  }
+
+  .school-progress-text {
+    @apply text-sm text-gray-400 mt-2 text-center;
+  }
+
+  .school-module-card {
+    @apply bg-background border rounded-lg p-4 w-full;
+  }
+
+  .school-module-header {
+    @apply flex items-center gap-2 mb-3;
+  }
+
+  .school-module-content {
+    @apply space-y-3 mb-3;
+  }
+
+  .school-module-metric {
+    @apply flex justify-between items-center text-sm;
+  }
+
+  .school-module-metric-label {
+    @apply text-gray-400;
+  }
+
+  .school-module-metric-value {
+    @apply font-medium text-foreground;
+  }
+
+  .school-module-next {
+    @apply text-xs font-medium;
+    color: var(--cv-accent);
+  }
+
+  .school-continue-btn {
+    @apply px-3 py-1 rounded-md text-sm font-medium transition-all duration-200;
+    @apply w-full justify-center;
+    background-color: oklch(from var(--cv-accent) / 0.2);
+    border: 1px solid oklch(from var(--cv-accent) / 0.5);
+    color: var(--cv-accent);
+  }
+
+  .school-continue-btn:hover {
+    background-color: oklch(from var(--cv-accent) / 0.3);
+  }
+
+  /* Animação do progress bar */
+  @keyframes school-progress-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  .school-progress-fill.animated {
+    animation: school-progress-pulse 2s infinite;
+  }
+
+  /* Responsivo para School of Bets */
+  @media (max-width: 640px) {
+    .school-bets-container {
+      @apply max-w-full p-3;
+    }
+    
+    .school-progress-container,
+    .school-module-card {
+      @apply p-3;
+    }
+    
+    .school-module-metric {
+      @apply text-xs;
+    }
+    
+    .school-continue-btn {
+      @apply w-full;
+    }
+  }
 }
 
 /* Estilos base */

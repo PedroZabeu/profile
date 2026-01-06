@@ -386,3 +386,84 @@ export const BETTING_MGMT_DATA: ProjectData = {
   url: 'https://bettingmgmt.vercel.app/',
   color: 'teal'
 };
+
+// Tipos específicos para o School of Bets (reaproveitando estrutura existente)
+export interface SchoolModuleData {
+  readonly id: string;
+  readonly title: string;
+  readonly description: string;
+  readonly totalLessons: number;
+  readonly completedLessons: number;
+  readonly progress: number; // percentage 0-100
+  readonly isLocked: boolean;
+  readonly nextLesson?: string;
+}
+
+export interface SchoolProgressData {
+  readonly currentModule: number;
+  readonly totalModules: number;
+  readonly overallProgress: number; // percentage 0-100
+  readonly modulesCompleted: number;
+  readonly estimatedHoursLeft: number;
+}
+
+export interface SchoolCourseProps {
+  readonly progress: SchoolProgressData;
+  readonly currentModule: SchoolModuleData;
+  readonly onContinueLearning: () => void;
+  readonly className?: string;
+  readonly motionProps?: MotionProps;
+}
+
+// Dados do School of Bets (seguindo padrão BETTING_MGMT_DATA)
+export const SCHOOL_OF_BETS_DATA: ProjectData = {
+  id: 'school-of-bets',
+  name: 'School of Bets',
+  title: {
+    pt: 'Plataforma Educacional para Formação de Apostadores (Beta)',
+    en: 'Educational Platform for Bettor Development (Beta)'
+  },
+  description: {
+    pt: 'Um ambiente de ensino voltado para quem quer entender apostas com base em fundamentos matemáticos e estatísticos — sem complexidade desnecessária. Os conteúdos são apresentados de forma prática, com exercícios guiados, simulações e atividades que mostram como aplicar conceitos como probabilidade, valor esperado e variabilidade nas decisões de aposta.',
+    en: 'A learning environment designed for those who want to understand betting through mathematical and statistical fundamentals — without unnecessary complexity. The content is presented in a practical way, with guided exercises, simulations, and activities that demonstrate how to apply concepts such as probability, expected value, and variance to betting decisions.'
+  },
+  features: [
+    {
+      icon: 'TrendingUp',
+      text: {
+        pt: 'Conteúdo progressivo com foco em aplicação no mundo real',
+        en: 'Progressive content focused on real-world application'
+      }
+    },
+    {
+      icon: 'Calculator',
+      text: {
+        pt: 'Explicação simplificada de conceitos quantitativos essenciais',
+        en: 'Simplified explanations of essential quantitative concepts'
+      }
+    },
+    {
+      icon: 'PlayCircle',
+      text: {
+        pt: 'Simulações práticas que conectam teoria e tomada de decisão',
+        en: 'Practical simulations that connect theory to decision-making'
+      }
+    },
+    {
+      icon: 'CheckSquare',
+      text: {
+        pt: 'Exercícios com feedback em tempo real para reforço do aprendizado',
+        en: 'Exercises with real-time feedback to reinforce learning'
+      }
+    },
+    {
+      icon: 'RefreshCw',
+      text: {
+        pt: 'Plataforma aprimorada continuamente ao longo do beta',
+        en: 'Platform continuously improved throughout the beta phase'
+      }
+    }
+  ],
+  url: 'https://school-of-bets.vercel.app/',
+  color: 'teal'
+};
