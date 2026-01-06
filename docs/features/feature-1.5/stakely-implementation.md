@@ -17,15 +17,14 @@ Sistema automatizado de envio e gestão de tips para tipsters. Conecta tipsters 
 ```
 Título: Sistema Inteligente para Tipsters
 
-Descrição: Sistema único de envio de tips que automatiza e resolve a principal dor do tipster: o cálculo de resultados de forma individualizada, cliente a cliente
+Descrição: A solução definitiva para tipsters que desejam ganhar escala com eficiência. Automatiza o envio de tips e o cálculo de resultados por cliente, reduz o trabalho manual e oferece clareza total sobre a performance de cada apostador.
 
 Features:
-• Grupos individualizados para cada cliente
-• Integração nativa com Telegram
-• Controle real do que cada cliente apostou
-• Planilhamento automático e personalizado de resultados
-• Métricas de perfomance em dashboards 
-
+• Comunicação segmentada e profissional para cada cliente
+• Integração nativa com Telegram para operação sem fricção
+• Registro real do que cada cliente apostou — sem suposições
+• Consolidação automática de resultados e histórico
+• Dashboards com métricas que fortalecem confiança e retenção
 
 CTA: Explore
 Link: https://stakely-bets.vercel.app/
@@ -35,14 +34,14 @@ Link: https://stakely-bets.vercel.app/
 ```
 Title: Intelligent System for Tipsters
 
-Description: Unique tip delivery system that automates and solves the tipster's main pain point: individualized result calculation, client by client
+Description: The ultimate solution for tipsters who want to scale with efficiency. Automates tip delivery and client-by-client result calculations, eliminates manual work, and provides full clarity over each customer's performance.
 
 Features:
-• Individual groups for each client
-• Native Telegram integration
-• Personalized control of each client's bets
-• Automatic and personalized result calculation
-• Performance metrics on dashboards
+• Professional, client-segmented communication channels
+• Native Telegram integration for a frictionless workflow
+• Accurate tracking of what each client actually bet — no guesswork
+• Automatic result consolidation and performance history
+• Insightful dashboards that strengthen trust and retention
 
 CTA: Explore
 Link: https://stakely-bets.vercel.app/
@@ -62,14 +61,11 @@ Demo que simula uma conversa de Telegram com um tipster enviando uma tip para um
 │  ┌─────────────────────────────┐│
 │  │  ⚽ Tip #124                 ││
 │  │                             ││
-│  │  🔴 Flamengo x Vasco        ││
-│  │  Over 2.5 gols @ 2.10       ││
-│  │                             ││
-│  │  📊 Análise:                ││
-│  │  Ambos times com bons ataques││
-│  │  Últimos 3 jogos: Over      ││
-│  │                             ││
-│  │  💰 Stake: 2 unidades        ││
+│  │  📅 Data: 06/01/2026         ││
+│  │  🏟️ Evento: Flamengo x Vasco ││
+│  │  💰 Odd: 2.10                ││
+│  │  🎯 Stake: 2 unidades        ││
+│  │  🏠 Casa: Bet365             ││
 │  │                             ││
 │  │  [✅] Conseguiu apostar      ││
 │  │  [❌] Não conseguiu apostar  ││
@@ -87,10 +83,11 @@ Demo que simula uma conversa de Telegram com um tipster enviando uma tip para um
 │ ┌─────────────────────┐│
 │ │ ⚽ Tip #124          ││
 │ │                     ││
-│ │ 🔴 Flamengo x Vasco ││
-│ │ Over 2.5 @ 2.10     ││
-│ │                     ││
-│ │ 💰 Stake: 2u        ││
+│ │ 📅 06/01/2026       ││
+│ │ 🏟️ Flamengo x Vasco││
+│ │ 💰 2.10             ││
+│ │ 🎯 2u               ││
+│ │ 🏠 Bet365           ││
 │ │                     ││
 │ │ ✅ Conseguiu apostar││
 │ │ ❌ Não conseguiu    ││
@@ -111,9 +108,11 @@ Demo que simula uma conversa de Telegram com um tipster enviando uma tip para um
 ### **Ícones e Indicadores**
 - **Grupo**: 💬 (ícone de chat)
 - **Tip**: ⚽ (ícone de futebol)
-- **Time**: 🔴 (indicador de time mandante)
-- **Análise**: 📊 (ícone de gráfico)
-- **Dinheiro**: 💰 (ícone de stake)
+- **Data**: 📅 (ícone de calendário)
+- **Evento**: 🏟️ (ícone de estádio)
+- **Odd**: 💰 (ícone de dinheiro/odd)
+- **Stake**: 🎯 (ícone de alvo/stake)
+- **Casa**: 🏠 (ícone de casa/bet house)
 
 ### **Animações Sugeridas**
 - **Mensagem**: Fade-in suave ao aparecer
@@ -125,14 +124,12 @@ Demo que simula uma conversa de Telegram com um tipster enviando uma tip para um
 ### **Tip Exemplo (Completa)**
 ```
 ⚽ Tip #124
-🔴 Flamengo x Vasco
-Over 2.5 gols @ 2.10
 
-📊 Análise:
-Ambos times com bons ataques
-Últimos 3 jogos: Over
-
-💰 Stake: 2 unidades
+📅 Data: 06/01/2026
+🏟️ Evento: Flamengo x Vasco
+💰 Odd: 2.10
+🎯 Stake: 2 unidades
+🏠 Casa: Bet365
 
 [✅] Conseguiu apostar
 [❌] Não conseguiu apostar
@@ -147,9 +144,10 @@ Ambos times com bons ataques
 
 ### **Elementos Localizados**
 - **Títulos**: "Grupo VIP" vs "VIP Group"
+- **Campos**: "Data" vs "Date", "Evento" vs "Event", "Casa" vs "Bookmaker"
 - **Ações**: "Conseguiu apostar" vs "Managed to bet"
 - **Negações**: "Não conseguiu" vs "Couldn't bet"
-- **Textos**: "Análise" vs "Analysis", "Stake" mantido
+- **Campos mantidos**: "Odd" e "Stake" (internacionais)
 
 ### **Adaptação Visual**
 - **Português**: Formato brasileiro (R$ 100,00)
@@ -159,12 +157,14 @@ Ambos times com bons ataques
 
 ## 🎯 Foco Principal do Demo
 
-### **Informações Essenciais (Apenas 5 elementos)**
+### **Informações Essenciais (Apenas 6 elementos)**
 1. **Grupo**: 💬 Nome do grupo individual
-2. **Tip**: ⚽ Identificação + Jogo + Mercado
-3. **Odds**: Valor decimal (@ 2.10)
-4. **Stake**: Quantidade em unidades (2u)
-5. **Confirmação**: Botões ✅/❌ para status da aposta
+2. **Data**: 📅 Data do evento
+3. **Evento**: 🏟️ Jogo/Partida
+4. **Odd**: 💰 Valor da odd (2.10)
+5. **Stake**: 🎯 Quantidade em unidades (2u)
+6. **Casa**: 🏠 Casa de apostas
+7. **Confirmação**: Botões ✅/❌ para status da aposta
 
 ### **Hierarquia Visual**
 1. **Cabeçalho** (topo - nome do grupo)
@@ -255,15 +255,11 @@ export interface ButtonProps extends React.ComponentProps<"button"> { /* sistema
 // 🆕 CRIAR - Tipos específicos do Stakely
 export interface StakelyTipData {
   id: string;
-  sport: string;
-  teams: {
-    home: string;
-    away: string;
-  };
-  market: string;
-  odds: string;
-  analysis: string;
-  stake: string;
+  date: string; // 📅 Data formatada
+  event: string; // 🏟️ Evento/Partida
+  odds: string; // 💰 Valor da odd
+  stake: string; // 🎯 Quantidade em unidades
+  bookmaker: string; // 🏠 Casa de apostas
   status: 'pending' | 'confirmed' | 'missed';
 }
 
@@ -291,43 +287,43 @@ export const STAKELY_DATA: ProjectData = {
     en: 'Intelligent System for Tipsters'
   },
   description: {
-    pt: 'Sistema único de envio de tips que automatiza e resolve a principal dor do tipster: o cálculo de resultados de forma individualizada, cliente a cliente',
-    en: 'Unique tip delivery system that automates and solves the tipster\'s main pain point: individualized result calculation, client by client'
+    pt: 'A solução definitiva para tipsters que desejam ganhar escala com eficiência. Automatiza o envio de tips e o cálculo de resultados por cliente, reduz o trabalho manual e oferece clareza total sobre a performance de cada apostador.',
+    en: 'The ultimate solution for tipsters who want to scale with efficiency. Automates tip delivery and client-by-client result calculations, eliminates manual work, and provides full clarity over each customer\'s performance.'
   },
   features: [
     {
       icon: 'Users',
       text: {
-        pt: 'Grupos individualizados para cada cliente',
-        en: 'Individual groups for each client'
+        pt: 'Comunicação segmentada e profissional para cada cliente',
+        en: 'Professional, client-segmented communication channels'
       }
     },
     {
       icon: 'MessageCircle',
       text: {
-        pt: 'Integração nativa com Telegram',
-        en: 'Native Telegram integration'
+        pt: 'Integração nativa com Telegram para operação sem fricção',
+        en: 'Native Telegram integration for a frictionless workflow'
       }
     },
     {
       icon: 'ShieldCheck',
       text: {
-        pt: 'Controle real do que cada cliente apostou',
-        en: 'Real control of what each client bet'
+        pt: 'Registro real do que cada cliente apostou — sem suposições',
+        en: 'Accurate tracking of what each client actually bet — no guesswork'
       }
     },
     {
       icon: 'LayoutGrid',
       text: {
-        pt: 'Planilhamento automático e personalizado de resultados',
-        en: 'Automatic and personalized result spreadsheet'
+        pt: 'Consolidação automática de resultados e histórico',
+        en: 'Automatic result consolidation and performance history'
       }
     },
     {
       icon: 'ChartBar',
       text: {
-        pt: 'Métricas de perfomance em dashboards',
-        en: 'Performance metrics on dashboards'
+        pt: 'Dashboards com métricas que fortalecem confiança e retenção',
+        en: 'Insightful dashboards that strengthen trust and retention'
       }
     }
   ],
