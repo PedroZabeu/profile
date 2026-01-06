@@ -55,13 +55,27 @@ export function HeaderSection() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
-              >
-                {item.title}
-              </Link>
+              item.href.startsWith('#') ? (
+                <button
+                  key={item.href}
+                  onClick={() => {
+                    const targetId = item.href.substring(1);
+                    const element = document.getElementById(targetId);
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-sm font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
+                >
+                  {item.title}
+                </button>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-cv-text-primary hover:text-cv-accent transition-colors"
+                >
+                  {item.title}
+                </Link>
+              )
             ))}
             <LanguageSelector
               language={language}
@@ -136,16 +150,31 @@ export function HeaderSection() {
           >
             <nav className="container mx-auto px-6 py-6">
               <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-lg font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-2"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
+                {navItems.map((item) =>
+                  item.href.startsWith('#') ? (
+                    <button
+                      key={item.href}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        const targetId = item.href.substring(1);
+                        const element = document.getElementById(targetId);
+                        element?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-lg font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-2 text-left"
+                    >
+                      {item.title}
+                    </button>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg font-medium text-cv-text-primary hover:text-cv-accent transition-colors py-2"
+                    >
+                      {item.title}
+                    </Link>
+                  )
+                )}
                 
                 <div className="border-t border-cv-border-muted pt-4 mt-4">
                   <LanguageSelector
