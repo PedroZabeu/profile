@@ -59,6 +59,18 @@ export interface ShimmerButtonProps extends React.ButtonHTMLAttributes<HTMLButto
   children?: React.ReactNode;
 }
 
+// Enhanced Motion Props with better typing
+export interface EnhancedMotionProps {
+  initial?: { opacity?: number; y?: number; filter?: string; scale?: number };
+  animate?: { opacity?: number; y?: number; filter?: string; scale?: number };
+  exit?: { opacity?: number; y?: number; filter?: string; scale?: number };
+  transition?: {
+    duration?: number;
+    delay?: number;
+    ease?: string;
+  };
+}
+
 export interface ThreadsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {
   /** Cor das threads: Hex string ou formato RGB [r, g, b] (0 a 1) */
   color?: [number, number, number] | string;
@@ -220,6 +232,80 @@ export interface ProjectData {
   }>;
   url: string;
   color: ColorTheme;
+}
+
+// Project Section Types
+export interface ProjectSectionProps {
+  className?: string;
+  motionProps?: MotionProps;
+}
+
+export interface ProjectFeatureProps {
+  children: React.ReactNode;
+  className?: string;
+  motionProps?: MotionProps;
+}
+
+// Client Only Types
+export interface ClientOnlyProps {
+  children: React.ReactNode;
+}
+
+// Project Feature Types
+export interface FeatureItem {
+  icon: React.ReactNode;
+  text: string;
+}
+
+export interface ProjectFeatureDemoProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export interface ProjectFeatureTextProps {
+  appName?: string;
+  title: string;
+  description: string;
+  features: FeatureItem[];
+  language?: Language;
+  className?: string;
+}
+
+// UI Component Props - Using type aliases instead of empty interfaces
+export type CardProps = React.ComponentProps<"div">;
+export type CardHeaderProps = React.ComponentProps<"div">;
+export type CardTitleProps = React.ComponentProps<"div">;
+export type CardDescriptionProps = React.ComponentProps<"div">;
+export type CardActionProps = React.ComponentProps<"div">;
+export type CardContentProps = React.ComponentProps<"div">;
+export type CardFooterProps = React.ComponentProps<"div">;
+
+export type InputProps = React.ComponentProps<"input">;
+
+export interface ButtonProps extends React.ComponentProps<"button"> {
+  asChild?: boolean;
+}
+
+// Note: Animated Lucide icons keep their original types due to motion/react complexity
+// DashboardIcon, UsersIcon, LayoutGridIcon, ChartBarIcon, ChartAreaIcon, ShieldCheckIcon
+
+// Hero Component Types
+export interface HeroStaticTitleProps {
+  text: string;
+  size?: SizeVariant;
+  className?: string;
+}
+
+export interface HeroSubtitleProps {
+  text: string;
+  size?: SizeVariant;
+  className?: string;
+}
+
+export interface LanguageSelectorProps {
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+  className?: string;
 }
 
 // Dados do Betting Management

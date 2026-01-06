@@ -7,6 +7,7 @@ import { ProjectFeature } from './templates/ProjectFeature';
 import { ProjectFeatureText } from '@/components/ui/projects/project-feature-text';
 import { ProjectFeatureDemo } from '@/components/ui/projects/project-feature-demo';
 import { useSettingsStore } from '@/stores/settings';
+import { Language } from '@/types';
 import { DashboardIcon } from '@/components/DashboardIcon';
 import { LayoutGridIcon } from '@/components/LayoutGridIcon';
 import { ChartBarIcon } from '@/components/ChartBarIcon';
@@ -15,7 +16,7 @@ import { ShieldCheckIcon } from '@/components/ShieldCheckIcon';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 
 // Dashboard Demo Component
-function BettingDashboardDemo({ language }: { language: 'en' | 'pt' }) {
+function BettingDashboardDemo({ language }: { language: Language }) {
   const labels = {
     pt: {
       dashboard: 'Dashboard',

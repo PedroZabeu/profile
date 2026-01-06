@@ -2,13 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { HERO_ANIMATIONS, HERO_SIZE_CLASSES, type SizeVariant } from '@/types';
-
-interface HeroSubtitleProps {
-    text: string;
-    size?: SizeVariant;
-    className?: string;
-}
+import { HERO_ANIMATIONS, HERO_SIZE_CLASSES, HeroSubtitleProps } from '@/types';
 
 export function HeroSubtitle({ text, size = 'default', className }: HeroSubtitleProps) {
     const sizes = HERO_SIZE_CLASSES[size];

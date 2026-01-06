@@ -1,26 +1,11 @@
-import { ReactNode } from 'react';
-import { Language } from '@/types';
-
-interface FeatureItem {
-  icon: ReactNode;
-  text: string;
-}
-
-interface ProjectFeatureTextProps {
-  appName?: string;
-  title: string;
-  description: string;
-  features: FeatureItem[];
-  language?: Language;
-  className?: string;
-}
+import { ProjectFeatureTextProps } from '@/types';
 
 export function ProjectFeatureText({
   appName,
   title,
   description,
   features,
-  language,
+  // language - TODO: Implement language support
   className = ''
 }: ProjectFeatureTextProps) {
   return (

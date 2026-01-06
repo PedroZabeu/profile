@@ -1,10 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
-
-interface ClientOnlyProps {
-  children: ReactNode;
-}
+import { ClientOnlyProps } from '@/types';
 
 export function ClientOnly({ children }: ClientOnlyProps) {
   return <>{children}</>;

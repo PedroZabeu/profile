@@ -2,13 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { HERO_ANIMATIONS, HERO_SIZE_CLASSES, type SizeVariant } from '@/types';
-
-interface HeroStaticTitleProps {
-    text: string;
-    size?: SizeVariant;
-    className?: string;
-}
+import { HERO_ANIMATIONS, HERO_SIZE_CLASSES, HeroStaticTitleProps } from '@/types';
 
 export function HeroStaticTitle({ text, size = 'default', className }: HeroStaticTitleProps) {
     const sizes = HERO_SIZE_CLASSES[size];

@@ -2,12 +2,7 @@
 
 import React from 'react';
 import { Globe } from 'lucide-react';
-
-interface LanguageSelectorProps {
-  language: 'en' | 'pt';
-  onLanguageChange: (language: 'en' | 'pt') => void;
-  className?: string;
-}
+import { LanguageSelectorProps } from '@/types';
 
 export function LanguageSelector({ language, onLanguageChange, className }: LanguageSelectorProps) {
   const toggleLang = () => {

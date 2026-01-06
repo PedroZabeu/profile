@@ -46,7 +46,7 @@ const ChartBarIcon = forwardRef<ChartBarIconHandle, ChartBarIconProps>(
    (e?: React.MouseEvent<HTMLDivElement>) => {
     if (!isAnimated || reduced) return;
     if (!isControlled.current) controls.start("animate");
-    else onMouseEnter?.(e as any);
+    else onMouseEnter?.(e!);
    },
    [controls, reduced, isAnimated, onMouseEnter],
   );
@@ -56,7 +56,7 @@ const ChartBarIcon = forwardRef<ChartBarIconHandle, ChartBarIconProps>(
     if (!isControlled.current) {
      controls.start("normal");
     } else {
-     onMouseLeave?.(e as any);
+     onMouseLeave?.(e!);
     }
    },
    [controls, onMouseLeave],

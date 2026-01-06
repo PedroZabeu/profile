@@ -1,14 +1,9 @@
 import { BettingMGMT } from '@/components/blocks/projects/BettingMGMT';
-import { MotionProps } from '@/types';
-
-interface ProjectSectionProps {
-  className?: string;
-  motionProps?: MotionProps;
-}
+import { ProjectSectionProps } from '@/types';
 
 export function ProjectSection({ 
   className = '',
-  motionProps 
+  // motionProps - TODO: Implement motion props
 }: ProjectSectionProps) {
   return (
     <section 

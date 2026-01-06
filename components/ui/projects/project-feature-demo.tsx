@@ -1,9 +1,4 @@
-import { ReactNode } from 'react';
-
-interface ProjectFeatureDemoProps {
-  children: ReactNode;
-  className?: string;
-}
+import { ProjectFeatureDemoProps } from '@/types';
 
 export function ProjectFeatureDemo({ 
   children, 
