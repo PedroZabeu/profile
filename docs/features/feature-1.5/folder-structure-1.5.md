@@ -8,16 +8,17 @@ Definir a estrutura organizacional de arquivos para a seção de projetos, segui
 ```
 components/
 ├─ sections/
-│  └─ ProjectSection.tsx              # Orquestrador principal
+│  └─ ProjectSection.tsx              # Orquestrador principal + Hook wrapper
 │
 ├─ blocks/
 │  └─ projects/
 │     ├─ templates/
 │     │  └─ ProjectFeature.tsx        # Template genérico (Features-5)
 │     │
-│     ├─ BettingMGMT.tsx              # Componente específico
-│     ├─ SchoolOfBets.tsx             # Componente específico
-│     └─ Stakely.tsx                  # Componente específico
+│     ├─ ProjectEntryHook.tsx          # Hook de entrada visual (novo)
+│     ├─ BettingMGMT.tsx               # Componente específico
+│     ├─ SchoolOfBets.tsx              # Componente específico
+│     └─ Stakely.tsx                   # Componente específico
 │
 ├─ ui/
 │  └─ projects/
@@ -26,24 +27,18 @@ components/
 │
 └─ types/
    └─ projects.ts                     # Tipos TypeScript
-
-stores/
-└─ settings.ts                        # Estado global i18n (Zustand)
-
-lib/
-├─ color-utils.ts                     # Helpers OKLCH + RGB
-└─ utils.ts                          # Utilitários gerais
-
-types.ts                              # Sistema de cores e helpers
 ```
 
 ## 📁 Responsabilidades
 
 ### **Orquestrador Principal**
-- `ProjectSection.tsx`: Gerencia os 3 projetos, animações e estado global
+- `ProjectSection.tsx`: Wrapper que inclui hook de entrada + gerencia projetos
 
 ### **Template Genérico**
 - `ProjectFeature.tsx`: Base reutilizável para todos os projetos
+
+### **Hook de Entrada**
+- `ProjectEntryHook.tsx`: Seção intermediária entre Hero e Projects
 
 ### **Componentes Específicos**
 - `BettingMGMT.tsx`: Customizações do projeto Betting Management
@@ -66,7 +61,9 @@ types.ts                              # Sistema de cores e helpers
 ## 🔄 Fluxo de Dados
 
 ```
-ProjectSection.tsx
+ProjectSection.tsx (Wrapper com Hook)
+    ↓
+ProjectEntryHook.tsx (seção intermediária)
     ↓
 Componentes Específicos (BettingMGMT, SchoolOfBets, Stakely)
     ↓

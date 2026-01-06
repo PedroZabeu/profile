@@ -22,71 +22,119 @@ Implementar animação suave quando o usuário faz scroll para a seção de proj
 - **Fade-in Progressivo**: Elementos aparecem em sequência durante o scroll
 - **Timing Controlado**: Animações sincronizadas para experiência fluida
 
-### **Hook de Entrada**
-O Projects Section deve ter um hook animado antes de exibir os projetos:
+### **Hook de Entrada Visual**
+Seção intermediária entre Hero e Projects com mensagem de transição animada:
 
-#### **Estrutura do Hook**
+#### **Posicionamento no Layout**
+```
+HeroSection
+    ↓ scroll
+ProjectEntryHook (nova seção)
+    ↓ automático após 2-3s ou scroll
+ProjectSection (com Betting Management)
+```
+
+#### **Componente do Hook**
 ```typescript
-// Hook customizado para gerenciar entrada da seção
-const useProjectSectionEntry = () => {
+// components/blocks/projects/ProjectEntryHook.tsx
+export const ProjectEntryHook = () => {
+  const { language } = useSettingsStore()
   const [isVisible, setIsVisible] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   
   useEffect(() => {
-    // Delay inicial para criar suspense
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-      setIsVisible(true)
-    }, 300)
-    
-    return () => clearTimeout(timer)
+    setIsVisible(true)
   }, [])
   
-  return { isVisible, isLoading }
-}
-```
-
-#### **Loading State**
-- **Skeleton Loading**: Cards esqueletizados animados
-- **Shimmer Effect**: Efeito de brilho passando pelos elementos
-- **Placeholder Content**: Estrutura básica dos projetos sem conteúdo
-- **Smooth Transition**: Fade suave do loading para conteúdo real
-
-#### **Animação de Entrada**
-```css
-/* Classes de animação */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  const messages = {
+    pt: {
+      title: "Projetos em Destaque",
+      subtitle: "Soluções inovadoras desenvolvidas com excelência técnica",
+      indicator: "Explore meus trabalhos abaixo"
+    },
+    en: {
+      title: "Featured Projects", 
+      subtitle: "Innovative solutions built with technical excellence",
+      indicator: "Explore my work below"
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-```
-
-#### **Implementação no Componente**
-```typescript
-const ProjectSection = () => {
-  const { isVisible, isLoading } = useProjectSectionEntry()
   
-  if (isLoading) {
-    return <ProjectSectionSkeleton />
-  }
+  const msg = messages[language]
   
   return (
-    <section className={`transition-opacity duration-600 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-      {/* Conteúdo dos projetos */}
+    <section className={`py-32 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className="container mx-auto px-4 text-center">
+        <div className="space-y-6">
+          {/* Título Principal */}
+          <h2 className="text-5xl lg:text-6xl font-bold text-cv-text-primary">
+            {msg.title}
+          </h2>
+          
+          {/* Subtítulo */}
+          <p className="text-xl lg:text-2xl text-foreground max-w-3xl mx-auto">
+            {msg.subtitle}
+          </p>
+          
+          {/* Indicador Visual */}
+          <div className="flex items-center justify-center gap-3 mt-12">
+            <div className="w-12 h-0.5 bg-cv-accent/60"></div>
+            <span className="text-cv-accent font-medium animate-pulse">
+              {msg.indicator}
+            </span>
+            <div className="w-12 h-0.5 bg-cv-accent/60"></div>
+          </div>
+          
+          {/* Indicador de Scroll */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-cv-accent/40 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-cv-accent rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
 ```
+
+#### **Integração no ProjectSection**
+```typescript
+// components/sections/ProjectSection.tsx
+export function ProjectSection({ className, motionProps }: ProjectSectionProps) {
+  return (
+    <>
+      {/* Hook de entrada antes dos projetos */}
+      <ProjectEntryHook />
+      
+      {/* Seção dos projetos */}
+      <section 
+        id="projects"
+        className={`py-24 lg:py-32 ${className}`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-24 lg:space-y-32">
+            <BettingMGMT />
+            {/* Future projects */}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+```
+
+#### **Animações e Efeitos**
+- **Fade-in Up**: Entrada suave de baixo para cima
+- **Pulse Effects**: Indicador visual pulsando
+- **Scroll Indicator**: Animação bounce contínua
+- **Auto-progression**: Após 3s, scroll automático suave para primeiro projeto
+- **Manual Control**: Usuário pode scroll manualmente a qualquer momento
+
+#### **Design Visual**
+- **Background**: Mesmo `--background` do restante do site
+- **Cores**: Sistema OKLCH com `text-cv-text-primary` e `text-cv-accent`
+- **Tipografia**: Hierarquia clara com títulos grandes
+- **Espaçamento**: `py-32` para impacto visual
+- **Centralização**: Conteúdo centralizado com `text-center`
 
 ## 🌐 Internacionalização
 

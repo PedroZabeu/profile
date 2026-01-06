@@ -1,18 +1,17 @@
 'use client';
 
 import { 
-  LayoutGrid, 
-  Users, 
-  ShieldCheck, 
-  ChartBar,
   ExternalLink
 } from 'lucide-react';
 import { ProjectFeature } from './templates/ProjectFeature';
 import { ProjectFeatureText } from '@/components/ui/projects/project-feature-text';
 import { ProjectFeatureDemo } from '@/components/ui/projects/project-feature-demo';
 import { useSettingsStore } from '@/stores/settings';
-import { ChartAreaIcon } from '@/components/ChartAreaIcon';
 import { DashboardIcon } from '@/components/DashboardIcon';
+import { LayoutGridIcon } from '@/components/LayoutGridIcon';
+import { ChartBarIcon } from '@/components/ChartBarIcon';
+import { UsersIcon } from '@/components/UsersIcon';
+import { ShieldCheckIcon } from '@/components/ShieldCheckIcon';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 
 // Dashboard Demo Component
@@ -37,7 +36,11 @@ function BettingDashboardDemo({ language }: { language: 'en' | 'pt' }) {
       {/* Header */}
       <div className="mb-6 flex items-center gap-2">
         <div className="text-lg font-semibold text-cv-text-primary flex items-center gap-2">
-          <DashboardIcon className="w-6 h-6 text-cv-accent" />
+          <DashboardIcon 
+            size={24} 
+            isAnimated={true} 
+            className="text-cv-accent" 
+          />
           {currentLabels.dashboard}
         </div>
       </div>
@@ -90,22 +93,22 @@ export function BettingMGMT() {
     pt: {
       appName: 'Betting Management',
       title: 'Sistema Completo para Gestão de Apostas',
-      description: 'Centralize todas as operações em uma única plataforma, eliminando planilhas e oferecendo controle total para diferentes níveis de acesso.',
+      description: 'Gerencie todas as contas a partir de uma única plataforma, eliminando planilhas e oferecendo controle total para diferentes níveis de acesso.',
       features: [
         {
-          icon: <LayoutGrid className="size-5" />,
+          icon: <LayoutGridIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Elimina a necessidade de múltiplas planilhas'
         },
         {
-          icon: <ChartBar className="size-5" />,
+          icon: <ChartBarIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Resultados detalhados e consolidados em tempo real'
         },
         {
-          icon: <Users className="size-5" />,
+          icon: <UsersIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Acesso protegido para apostadores, investidores e operadores'
         },
         {
-          icon: <ShieldCheck className="size-5" />,
+          icon: <ShieldCheckIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Gestão integrada de fornecedores'
         }
       ],
@@ -117,19 +120,19 @@ export function BettingMGMT() {
       description: 'Manage all accounts from a single platform, eliminating spreadsheets and offering complete control for different access levels.',
       features: [
         {
-          icon: <LayoutGrid className="size-5" />,
+          icon: <LayoutGridIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Eliminates need for multiple spreadsheets'
         },
         {
-          icon: <ChartBar className="size-5" />,
+          icon: <ChartBarIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Detailed and consolidated results in real-time'
         },
         {
-          icon: <Users className="size-5" />,
+          icon: <UsersIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Protected access for bettors, investors and operators'
         },
         {
-          icon: <ShieldCheck className="size-5" />,
+          icon: <ShieldCheckIcon size={20} isAnimated={true} className="text-cv-accent" />,
           text: 'Integrated supplier management'
         }
       ],
