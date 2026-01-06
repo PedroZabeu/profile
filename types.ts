@@ -111,6 +111,22 @@ export interface HeroCtaProps {
   variant?: 'default' | 'stacked';
 }
 
+// ProjectEntryHook Types (reaproveitando HeroTexts structure)
+export interface ProjectEntryTexts {
+  title: Record<Language, string>;
+  subtitle: Record<Language, string>;
+  cta: Record<Language, string>;
+}
+
+export interface ProjectEntryHookProps {
+  language: Language;
+  className?: string;
+  onAutoScrollComplete?: () => void;
+  autoScrollDelay?: number; // ms, padrão 3000
+  onCtaClick?: () => void; // Handler para click no CTA
+  enableAutoScroll?: boolean; // Controle de auto-scroll
+}
+
 // Textos i18n para o Hero
 export const HERO_TEXTS: Record<Language, HeroTexts> = {
   pt: {
@@ -125,6 +141,22 @@ export const HERO_TEXTS: Record<Language, HeroTexts> = {
     ctaPrimary: 'About me',
     ctaSecondary: 'My projects',
   },
+};
+
+// Textos i18n para o ProjectEntryHook
+export const PROJECT_ENTRY_TEXTS: ProjectEntryTexts = {
+  title: {
+    pt: 'De problemas reais para produtos reais',
+    en: 'From real problems to real products'
+  },
+  subtitle: {
+    pt: 'Onde faltam ferramentas eficientes, surgem produtos pensados para resolver dores reais',
+    en: 'Where efficient tools are missing, products are created to solve real-world pains'
+  },
+  cta: {
+    pt: 'Explore',
+    en: 'Explore'
+  }
 };
 
 // Configurações de tamanho do Hero
@@ -238,6 +270,7 @@ export interface ProjectData {
 export interface ProjectSectionProps {
   className?: string;
   motionProps?: MotionProps;
+  includeEntryHook?: boolean; // Controle se inclui o ProjectEntryHook
 }
 
 export interface ProjectFeatureProps {

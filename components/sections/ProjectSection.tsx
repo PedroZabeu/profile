@@ -1,4 +1,6 @@
 import { BettingMGMT } from '@/components/blocks/projects/BettingMGMT';
+import { SchoolOfBets } from '@/components/blocks/projects/SchoolOfBets';
+import { Stakely } from '@/components/blocks/projects/Stakely';
 import { ProjectSectionProps } from '@/types';
 
 export function ProjectSection({ 
@@ -12,13 +14,20 @@ export function ProjectSection({
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-24 lg:space-y-32">
-          {/* Currently only showing BettingMGMT */}
-          <BettingMGMT />
+          {/* Betting Management - Live Project */}
+          <div id="betting-mgmt">
+            <BettingMGMT />
+          </div>
           
-          {/* Future projects will be added here:
-          <SchoolOfBets />
-          <Stakely />
-          */}
+          {/* School of Bets - Educational Platform */}
+          <div id="school-of-bets">
+            <SchoolOfBets />
+          </div>
+          
+          {/* Stakely - Investment Analysis Tool */}
+          <div id="stakely">
+            <Stakely />
+          </div>
         </div>
       </div>
     </section>

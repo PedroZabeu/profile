@@ -42,8 +42,8 @@ export function HeroCta({ language, className, variant = 'default' }: HeroCtaPro
                 background="var(--cv-btn-secondary-bg)"
                 className="text-white font-medium hover:scale-105 transition-transform border border-[var(--cv-btn-secondary-border)]"
                 onClick={() => {
-                    const projectsSection = document.getElementById('projects');
-                    projectsSection?.scrollIntoView({ behavior: 'smooth' });
+                    const projectEntryHook = document.getElementById('project-entry-hook');
+                    projectEntryHook?.scrollIntoView({ behavior: 'smooth' });
                 }}
             >
                 <AnimatePresence mode="wait">
