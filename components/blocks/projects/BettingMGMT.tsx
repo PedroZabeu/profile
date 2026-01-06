@@ -4,13 +4,16 @@ import {
   LayoutGrid, 
   Users, 
   ShieldCheck, 
-  ChartBar 
+  ChartBar,
+  ExternalLink
 } from 'lucide-react';
 import { ProjectFeature } from './templates/ProjectFeature';
 import { ProjectFeatureText } from '@/components/ui/projects/project-feature-text';
 import { ProjectFeatureDemo } from '@/components/ui/projects/project-feature-demo';
 import { useSettingsStore } from '@/stores/settings';
 import { ChartAreaIcon } from '@/components/ChartAreaIcon';
+import { DashboardIcon } from '@/components/DashboardIcon';
+import { ShimmerButton } from '@/components/ui/shimmer-button';
 
 // Dashboard Demo Component
 function BettingDashboardDemo({ language }: { language: 'en' | 'pt' }) {
@@ -34,7 +37,7 @@ function BettingDashboardDemo({ language }: { language: 'en' | 'pt' }) {
       {/* Header */}
       <div className="mb-6 flex items-center gap-2">
         <div className="text-lg font-semibold text-cv-text-primary flex items-center gap-2">
-          <ChartAreaIcon className="w-6 h-6 text-cv-accent" />
+          <DashboardIcon className="w-6 h-6 text-cv-accent" />
           {currentLabels.dashboard}
         </div>
       </div>
@@ -111,7 +114,7 @@ export function BettingMGMT() {
     en: {
       appName: 'Betting Management',
       title: 'Complete System for Betting Management',
-      description: 'Centralize all operations in a single platform, eliminating spreadsheets and offering complete control for different access levels.',
+      description: 'Manage all accounts from a single platform, eliminating spreadsheets and offering complete control for different access levels.',
       features: [
         {
           icon: <LayoutGrid className="size-5" />,
@@ -138,13 +141,29 @@ export function BettingMGMT() {
 
   return (
     <ProjectFeature>
-      <ProjectFeatureText
-        appName={currentContent.appName}
-        title={currentContent.title}
-        description={currentContent.description}
-        features={currentContent.features}
-        language={language}
-      />
+      <div className="lg:col-span-2 space-y-6">
+        <ProjectFeatureText
+          appName={currentContent.appName}
+          title={currentContent.title}
+          description={currentContent.description}
+          features={currentContent.features}
+          language={language}
+        />
+        
+        {/* CTA Button */}
+        <div className="pt-4">
+          <ShimmerButton
+            shimmerColor="var(--cv-accent)"
+            shimmerSize="0.1em"
+            background="var(--cv-btn-primary-bg)"
+            className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
+            onClick={() => window.open('https://bettingmgmt.vercel.app/', '_blank')}
+          >
+            <ExternalLink className="w-4 h-4" />
+            {currentContent.cta}
+          </ShimmerButton>
+        </div>
+      </div>
       
       <ProjectFeatureDemo>
         <BettingDashboardDemo language={language} />

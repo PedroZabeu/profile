@@ -1,5 +1,13 @@
 # Ajustes
 
-1. criar uma animação eleggante para quando fazemos um scroll para a feature (pode ser parallax ou algo do tipo)
+1. trocar os icones por lucide animated ... ex: npx shadcn@latest add "https://animateicons.in/icons/dashboard.json"
 
-2. O Projects Section deve ter um hook antes de entrar para os projetos em si
+2. trocar texto:
+ - trocar (sai): Centralize all operations in
+ - por (entra): Manage all accounts from
+
+ 3. trocar texto:
+ - trocar (sai): Eliminates need for multiple spreadsheets
+ - por (entra): Eliminates the need for multiple spreadsheets
+
+ 4. Colocar um botão CTA que direciona ao projeto: https://bettingmgmt.vercel.app/
