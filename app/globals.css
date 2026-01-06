@@ -38,16 +38,16 @@
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
 
-  /* Accent Color */
-  --cv-text-primary: #ffffff;
-  --cv-accent: #7DFDFE;
+  /* Accent Colors - Sistema OKLCH Unificado */
+  --cv-text-primary: oklch(1 0 0);
+  --cv-accent: oklch(0.85 0.21 200);
 
   /* Button Colors */
-  --cv-btn-primary-bg: #ffffff;
-  --cv-btn-primary-text: #000000;
-  --cv-btn-primary-shimmer: rgba(255, 255, 255, 0.4);
+  --cv-btn-primary-bg: oklch(1 0 0);
+  --cv-btn-primary-text: oklch(0 0 0);
+  --cv-btn-primary-shimmer: oklch(1 0 0 / 0.4);
   --cv-btn-secondary-bg: transparent;
-  --cv-btn-secondary-border: rgba(255, 255, 255, 0.2);
+  --cv-btn-secondary-border: oklch(1 0 0 / 0.2);
 
 
   /* WebGL Threads Configuration 

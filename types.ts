@@ -167,30 +167,103 @@ export const EXPERTISE_AREAS: ExpertiseAreas = {
   en: ['Equity Research', 'M&A', 'Retail', 'Software', 'Machine Learning', 'Sports Betting'],
 };
 
-// Sistema unificado de cores para CSS e WebGL
+// Sistema unificado de cores SSOT (Single Source of Truth)
 export const COLOR_SYSTEM = {
-  teal: { hex: '#7DFDFE', rgb: [0.49, 0.99, 1.0] },
-  blue: { hex: '#3366E6', rgb: [0.2, 0.4, 0.9] },
-  violet: { hex: '#804CCC', rgb: [0.5, 0.3, 0.8] },
-  emerald: { hex: '#1AB399', rgb: [0.1, 0.7, 0.4] },
-  rose: { hex: '#E64D80', rgb: [0.9, 0.3, 0.4] },
-  cyan: { hex: '#1AB3CC', rgb: [0.1, 0.7, 0.8] },
-  amber: { hex: '#E6B319', rgb: [0.9, 0.7, 0.1] },
-  pink: { hex: '#E66699', rgb: [0.9, 0.4, 0.6] },
+  teal: { oklch: 'oklch(0.85 0.21 200)', rgb: [0.49, 0.99, 1.0] },
+  blue: { oklch: 'oklch(0.62 0.18 240)', rgb: [0.2, 0.4, 0.9] },
+  violet: { oklch: 'oklch(0.65 0.22 290)', rgb: [0.5, 0.3, 0.8] },
+  emerald: { oklch: 'oklch(0.65 0.15 160)', rgb: [0.1, 0.7, 0.4] },
+  rose: { oklch: 'oklch(0.68 0.24 350)', rgb: [0.9, 0.3, 0.4] },
+  cyan: { oklch: 'oklch(0.65 0.18 190)', rgb: [0.1, 0.7, 0.8] },
+  amber: { oklch: 'oklch(0.78 0.15 70)', rgb: [0.9, 0.7, 0.1] },
+  pink: { oklch: 'oklch(0.68 0.22 340)', rgb: [0.9, 0.4, 0.6] },
 } as const;
 
 // Tipo para o sistema de cores
 export type ColorSystemKey = keyof typeof COLOR_SYSTEM;
 
+// Helper para obter cor RGB para WebGL threads
+export function getThreadColor(color: ColorTheme): [number, number, number] {
+  return [...COLOR_SYSTEM[color].rgb] as [number, number, number];
+}
 
-// Cores normalizadas para threads WebGL (mantido para compatibilidade)
-export const HERO_THREADS_COLORS: Record<string, [number, number, number]> = {
-  teal: [...COLOR_SYSTEM.teal.rgb],
-  blue: [...COLOR_SYSTEM.blue.rgb],
-  violet: [...COLOR_SYSTEM.violet.rgb],
-  emerald: [...COLOR_SYSTEM.emerald.rgb],
-  rose: [...COLOR_SYSTEM.rose.rgb],
-  cyan: [...COLOR_SYSTEM.cyan.rgb],
-  amber: [...COLOR_SYSTEM.amber.rgb],
-  pink: [...COLOR_SYSTEM.pink.rgb],
-} as const;
+// Helper para obter cor OKLCH para CSS
+export function getCssColor(color: ColorTheme): string {
+  return COLOR_SYSTEM[color].oklch;
+}
+
+// Helper para detectar e converter cores automaticamente
+export function colorToRgb(color: string | [number, number, number]): [number, number, number] {
+  if (Array.isArray(color)) {
+    return [...color] as [number, number, number];
+  }
+  
+  // Se for string OKLH, converter para RGB (simplificado)
+  if (color.startsWith('oklch')) {
+    // Para o Betting Management, vamos usar teal como padrão
+    return [...COLOR_SYSTEM.teal.rgb] as [number, number, number];
+  }
+  
+  // Fallback para teal
+  return [...COLOR_SYSTEM.teal.rgb] as [number, number, number];
+}
+
+// Tipos para projetos
+export interface ProjectData {
+  id: string;
+  name: string;
+  title: Record<Language, string>;
+  description: Record<Language, string>;
+  features: Array<{
+    icon: string; // Nome do ícone do lucide-react
+    text: Record<Language, string>;
+  }>;
+  url: string;
+  color: ColorTheme;
+}
+
+// Dados do Betting Management
+export const BETTING_MGMT_DATA: ProjectData = {
+  id: 'betting-mgmt',
+  name: 'Betting Management',
+  title: {
+    pt: 'Sistema Completo para Gestão de Apostas',
+    en: 'Complete System for Betting Management'
+  },
+  description: {
+    pt: 'Centralize todas as operações em uma única plataforma, eliminando planilhas e oferecendo controle total para diferentes níveis de acesso.',
+    en: 'Centralize all operations in a single platform, eliminating spreadsheets and offering complete control for different access levels.'
+  },
+  features: [
+    {
+      icon: 'LayoutGrid',
+      text: {
+        pt: 'Elimina a necessidade de múltiplas planilhas',
+        en: 'Eliminates the need for multiple spreadsheets'
+      }
+    },
+    {
+      icon: 'ChartBar',
+      text: {
+        pt: 'Resultados detalhados e consolidados em tempo real',
+        en: 'Detailed and consolidated results in real-time'
+      }
+    },
+    {
+      icon: 'Users',
+      text: {
+        pt: 'Acesso protegido para apostadores, investidores e operadores',
+        en: 'Protected access for bettors, investors and operators'
+      }
+    },
+    {
+      icon: 'ShieldCheck',
+      text: {
+        pt: 'Gestão integrada de fornecedores',
+        en: 'Integrated supplier management'
+      }
+    }
+  ],
+  url: 'https://bettingmgmt.vercel.app/',
+  color: 'teal'
+};

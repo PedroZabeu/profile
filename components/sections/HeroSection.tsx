@@ -6,13 +6,13 @@ import { useSettingsStore } from '@/stores/settings';
 import { HeroThreads } from '@/components/blocks/hero/HeroThreads';
 import { HeroHeadline } from '@/components/blocks/hero/HeroHeadline';
 import { HeroCta } from '@/components/blocks/hero/HeroCta';
-import { HERO_THREADS_COLORS, HERO_ANIMATIONS, type SizeVariant } from '@/types';
+import { getThreadColor, HERO_ANIMATIONS, type SizeVariant } from '@/types';
 
 export function HeroSection() {
     const { language, color, size, loop } = useSettingsStore();
 
     const threadColor = useMemo(
-        () => HERO_THREADS_COLORS[color] || HERO_THREADS_COLORS.teal,
+        () => getThreadColor(color || 'teal'),
         [color]
     );
 

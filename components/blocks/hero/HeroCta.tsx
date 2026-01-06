@@ -37,7 +37,7 @@ export function HeroCta({ language, className, variant = 'default' }: HeroCtaPro
             </ShimmerButton>
 
             <ShimmerButton
-                shimmerColor="var(--color-cv-accent)"
+                shimmerColor="var(--cv-accent)"
                 shimmerSize="0.05em"
                 background="var(--cv-btn-secondary-bg)"
                 className="text-white font-medium hover:scale-105 transition-transform border border-[var(--cv-btn-secondary-border)]"
