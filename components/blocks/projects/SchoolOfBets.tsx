@@ -13,11 +13,13 @@ import {
   Calculator,
   PlayCircle,
   CheckSquare,
-  RefreshCw
+  RefreshCw,
+  ExternalLink
 } from 'lucide-react'
 import { ProjectFeature } from './templates/ProjectFeature';
 import { ProjectFeatureText } from '@/components/ui/projects/project-feature-text';
 import { ProjectFeatureDemo } from '@/components/ui/projects/project-feature-demo';
+import { ShimmerButton } from '@/components/ui/shimmer-button';
 import { useSettingsStore } from '@/stores/settings';
 import type { 
   SchoolCourseProps, 
@@ -227,7 +229,7 @@ export function SchoolOfBets() {
 
   return (
     <ProjectFeature>
-      <div className="lg:col-span-2">
+      <div className="lg:col-span-2 space-y-6">
         <ProjectFeatureText
           appName="School of Bets"
           title={language === 'pt' ? 'Plataforma Educacional para Apostadores' : 'Educational Platform for Bettors'}
@@ -269,8 +271,22 @@ export function SchoolOfBets() {
           ]}
           language={language}
         />
+
+        {/* CTA Button */}
+        <div className="pt-4">
+          <ShimmerButton
+            shimmerColor="var(--cv-accent)"
+            shimmerSize="0.1em"
+            background="var(--cv-btn-primary-bg)"
+            className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
+            onClick={() => window.open('https://school-of-bets.vercel.app/', '_blank')}
+          >
+            <ExternalLink className="w-4 h-4" />
+            {language === 'pt' ? 'Conheça a plataforma' : 'Explore platform'}
+          </ShimmerButton>
+        </div>
       </div>
-      
+
       <ProjectFeatureDemo>
         <SchoolCourse 
           progress={mockProgress}
