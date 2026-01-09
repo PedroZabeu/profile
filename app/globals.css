@@ -7,11 +7,11 @@
   --color-foreground: var(--foreground);
   --color-border: var(--border);
   --color-card: var(--card);
-  --color-card-foreground: var(--foreground);
+  --color-card-foreground: var(--card-foreground);
 
   /* Cores de identidade - Sistema Unificado */
   --color-cv-accent: var(--cv-accent);
-  --color-cv-text-primary: var(--foreground);
+  --color-cv-text-primary: var(--cv-text-primary);
 
   /* Tipografia */
   --font-sans: var(--font-geist-sans);
@@ -38,7 +38,7 @@
   --card-foreground: oklch(0.985 0 0);
 
   /* Cores de Destaque e Identidade */
-  --cv-text-primary: oklch(1 0 0);
+  --cv-text-primary: oklch(0.985 0 0);
   --cv-accent: oklch(0.85 0.21 200);
 
   /* Cores de Botões */
