@@ -467,3 +467,164 @@ export const SCHOOL_OF_BETS_DATA: ProjectData = {
   url: 'https://school-of-bets.vercel.app/',
   color: 'teal'
 };
+
+// ============================================
+// ABOUT SECTION TYPES (Feature 1.6)
+// ============================================
+
+// Enums para tags específicas - evita string genérica
+export enum AboutFeatureTag {
+  // Executive/Entrepreneur
+  EXECUTIVE = 'executive',
+  ENTREPRENEUR = 'entrepreneur',
+  // Builder
+  R = 'R',
+  PYTHON = 'python',
+  REACT = 'react',
+  // AI-Powered
+  CLAUDE = 'claude',
+  CURSOR = 'cursor',
+  AGENTS = 'agents',
+  AICODING = 'aicoding',
+}
+
+// Enum para ícones específicos
+export enum AboutFeatureIcon {
+  TRENDING_UP = 'TrendingUp',
+  CODE = 'Code',
+  BRAIN = 'Brain',
+}
+
+export type AboutFeatureIconType = AboutFeatureIcon.TRENDING_UP | AboutFeatureIcon.CODE | AboutFeatureIcon.BRAIN;
+
+// Tipo para texto multilíngue
+export interface AboutFeatureText {
+  readonly en: string;
+  readonly pt: string;
+}
+
+// Tipo readonly para conjunto de tags
+export type AboutFeatureTags = ReadonlyArray<AboutFeatureTag>;
+
+// Tipo específico para dados de um card
+export interface AboutCardData {
+  readonly id: string;
+  readonly icon: AboutFeatureIcon;
+  readonly title: AboutFeatureText;
+  readonly description: AboutFeatureText;
+  readonly tags: AboutFeatureTags;
+}
+
+// Enum para categorias de cards
+export enum AboutFeatureCategory {
+  STRATEGIC_THINKER = 'strategic-thinker',
+  BUILDER = 'builder',
+  AI_POWERED = 'ai-powered',
+}
+
+// Props do componente AboutSection
+export interface AboutSectionProps {
+  readonly className?: string;
+}
+
+// Props do componente AboutCardDecorator
+export interface AboutCardDecoratorProps {
+  readonly icon: AboutFeatureIcon;
+  readonly className?: string;
+}
+
+// Props do componente individual do card
+export interface AboutCardProps {
+  readonly data: AboutCardData;
+  readonly className?: string;
+}
+
+// Dados tipados para Card 1 - Strategic Thinker
+export const STRATEGIC_THINKER_DATA: AboutCardData = {
+  id: AboutFeatureCategory.STRATEGIC_THINKER,
+  icon: 'TrendingUp' as AboutFeatureIcon,
+  title: {
+    en: 'Strategic Thinker',
+    pt: 'Pensamento Estratégico',
+  },
+  description: {
+    en: 'Former CFO and finance executive with 10+ years framing complex decisions, risk, and incentives — now applying strategic mindset to data-driven products.',
+    pt: 'Ex-CFO e executivo financeiro com 10+ anos estruturando decisões complexas, risco e incentivos — hoje aplicando mentalidade estratégica em produtos orientados por dados.',
+  },
+  tags: [AboutFeatureTag.EXECUTIVE, AboutFeatureTag.ENTREPRENEUR],
+} as const;
+
+// Dados tipados para Card 2 - Builder
+export const BUILDER_DATA: AboutCardData = {
+  id: AboutFeatureCategory.BUILDER,
+  icon: 'Code' as AboutFeatureIcon,
+  title: {
+    en: 'Builder',
+    pt: 'Construtor',
+  },
+  description: {
+    en: 'Builds end-to-end systems using Python, R, and TypeScript — from ML models and APIs to production-ready apps with persistent data and permissions.',
+    pt: 'Desenvolve sistemas ponta a ponta com Python, R e TypeScript — de modelos ML e APIs a aplicações em produção com dados persistentes e controle de permissões.',
+  },
+  tags: [AboutFeatureTag.R, AboutFeatureTag.PYTHON, AboutFeatureTag.REACT],
+} as const;
+
+// Dados tipados para Card 3 - AI-Powered
+export const AI_POWERED_DATA: AboutCardData = {
+  id: AboutFeatureCategory.AI_POWERED,
+  icon: 'Brain' as AboutFeatureIcon,
+  title: {
+    en: 'AI-POWERED',
+    pt: 'AI-POWERED',
+  },
+  description: {
+    en: 'Embraces AI coding agents as core tools — using Cursor and Claude Code to deliver faster iterations, cleaner code, and more efficient development cycles.',
+    pt: 'Adota agentes de codificação IA como ferramentas centrais — usando Cursor e Claude Code para entregar iterações mais rápidas, código mais limpo e ciclos de desenvolvimento mais eficientes.',
+  },
+  tags: [AboutFeatureTag.CLAUDE, AboutFeatureTag.CURSOR, AboutFeatureTag.AGENTS, AboutFeatureTag.AICODING],
+} as const;
+
+// Array tipado com todos os cards
+export const ABOUT_FEATURES_DATA: readonly AboutCardData[] = [
+  STRATEGIC_THINKER_DATA,
+  BUILDER_DATA,
+  AI_POWERED_DATA,
+];
+
+// Type guards para validação
+export function isAboutFeatureTag(value: string): value is AboutFeatureTag {
+  return Object.values(AboutFeatureTag).includes(value as AboutFeatureTag);
+}
+
+export function isAboutFeatureIcon(value: string): value is AboutFeatureIcon {
+  return Object.values(AboutFeatureIcon).includes(value as AboutFeatureIcon);
+}
+
+export function isAboutFeatureCategory(value: string): value is AboutFeatureCategory {
+  return Object.values(AboutFeatureCategory).includes(value as AboutFeatureCategory);
+}
+
+// Tipo para mapeamento de card por ID
+export type AboutFeatureCardsMap = Record<AboutFeatureCategory, AboutCardData>;
+
+// Tipo para renderização de ícones (componentes Lucide)
+export type LucideIconComponent = React.ComponentType<{ className?: string }>;
+
+// Mapeamento de enum para componente Lucide (declarado para ser preenchido no componente)
+export const ABOUT_ICON_MAP: Record<string, LucideIconComponent> = {
+  TrendingUp: {} as LucideIconComponent,
+  Code: {} as LucideIconComponent,
+  Brain: {} as LucideIconComponent,
+};
+
+// Textos i18n para o About Section
+export const ABOUT_SECTION_TEXTS: Record<Language, { title: string; subtitle: string }> = {
+  en: {
+    title: 'About me',
+    subtitle: 'You think like strategist, build like engineer, execute with AI.',
+  },
+  pt: {
+    title: 'Sobre mim',
+    subtitle: 'Você pensa como estrategista, constrói como engenheiro e executa com IA.',
+  },
+};

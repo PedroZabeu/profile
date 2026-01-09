@@ -3,6 +3,7 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProjectEntryHook } from "@/components/sections/ProjectEntryHook";
 import { ProjectSection } from "@/components/sections/ProjectSection";
+import { AboutSection } from "@/components/sections/AboutSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <ProjectEntryHook />
       <ProjectSection />
+      <AboutSection />
     </main>
   );
 }
