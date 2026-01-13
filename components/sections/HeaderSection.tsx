@@ -25,10 +25,10 @@ export function HeaderSection() {
 
   // Navigation items
   const navItems = [
-    { title: 'Home', href: '/' },
+    { title: 'Home', href: '#hero' },
     { title: 'Projects', href: '#project-entry-hook' },
-    { title: 'About', href: '/about' },
-    { title: 'Contact', href: '/contact' },
+    { title: 'About', href: '#about' },
+    { title: 'Contact', href: '#contact' },
   ];
 
   return (

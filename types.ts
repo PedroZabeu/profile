@@ -628,3 +628,107 @@ export const ABOUT_SECTION_TEXTS: Record<Language, { title: string; subtitle: st
     subtitle: 'Você pensa como estrategista, constrói como engenheiro e executa com IA.',
   },
 };
+
+// ============================================
+// CONTACT SECTION TYPES (Feature 1.7)
+// ============================================
+
+export enum ContactPlatform {
+  EMAIL = 'email',
+  LINKEDIN = 'linkedin',
+  GITHUB = 'github',
+  WHATSAPP = 'whatsapp',
+  TELEGRAM = 'telegram',
+}
+
+export type ContactPlatformType = ContactPlatform.EMAIL | ContactPlatform.LINKEDIN | ContactPlatform.GITHUB | ContactPlatform.WHATSAPP | ContactPlatform.TELEGRAM;
+
+export interface ContactInfo {
+  readonly platform: ContactPlatformType;
+  readonly label: string;
+  readonly value: string;
+  readonly url: string;
+  readonly icon: React.ReactNode;
+}
+
+export interface ContactFormData {
+  readonly name: string;
+  readonly email: string;
+  readonly message: string;
+}
+
+export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
+export interface ContactFormState {
+  readonly status: FormStatus;
+  readonly error?: string;
+}
+
+export interface SocialButtonProps {
+  readonly platform: ContactPlatformType;
+  readonly url: string;
+  readonly icon: React.ReactNode;
+  readonly className?: string;
+}
+
+export interface ContactFormProps {
+  readonly className?: string;
+  readonly onSubmit?: (data: ContactFormData) => Promise<void>;
+}
+
+export interface ContactInfoProps {
+  readonly contacts: readonly ContactInfo[];
+  readonly className?: string;
+}
+
+export interface ContactSectionProps {
+  readonly className?: string;
+  readonly motionProps?: MotionProps;
+}
+
+export const CONTACT_SECTION_TEXTS: Record<Language, { title: string; subtitle: string; nameLabel: string; emailLabel: string; messageLabel: string; submitLabel: string; successMessage: string; errorMessage: string }> = {
+  en: {
+    title: 'Get in touch',
+    subtitle: 'Let\'s work together?',
+    nameLabel: 'Name',
+    emailLabel: 'Email',
+    messageLabel: 'Message',
+    submitLabel: 'Send',
+    successMessage: 'Message sent successfully!',
+    errorMessage: 'Failed to send message. Please try again.',
+  },
+  pt: {
+    title: 'Entre em contato',
+    subtitle: 'Vamos trabalhar juntos?',
+    nameLabel: 'Nome',
+    emailLabel: 'Email',
+    messageLabel: 'Mensagem',
+    submitLabel: 'Enviar',
+    successMessage: 'Mensagem enviada com sucesso!',
+    errorMessage: 'Falha ao enviar mensagem. Tente novamente.',
+  },
+};
+
+export const CONTACT_INFO_DATA: readonly ContactInfo[] = [
+  {
+    platform: ContactPlatform.EMAIL,
+    label: 'Email',
+    value: 'pedroibzabeu@gmail.com',
+    url: 'mailto:pedroibzabeu@gmail.com',
+    icon: null,
+  },
+  {
+    platform: ContactPlatform.WHATSAPP,
+    label: 'WhatsApp',
+    value: '+55 11 97122-9926',
+    url: 'https://wa.me/5511971229926',
+    icon: null,
+  },
+  {
+    platform: ContactPlatform.TELEGRAM,
+    label: 'Telegram',
+    value: '@pzabeu',
+    url: 'https://t.me/pzabeu',
+    icon: null,
+  },
+] as const;

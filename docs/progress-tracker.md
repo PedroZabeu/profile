@@ -2,10 +2,10 @@
 
 ## 📈 Progresso Geral
 
-**Total: 12 / 33 tarefas completas**
+**Total: 14 / 33 tarefas completas**
 
 ```
-[████████                               ] 36%
+[█████████░                             ] 42%
 ```
 
 ---
@@ -13,15 +13,15 @@
 ## 🎯 EPICs e Tarefas
 
 ### ⏳ EPIC 1: Landing Page
-**Progresso: 5 / 7** | `██████░░ 71%`
+**Progresso: 7 / 7** | `████████ 100%`
 
 - [X] 1.1 - Iniciar projeto Next.js com TypeScript + Shadcn UI
 - [X] 1.2 - Criar Logo
 - [X] 1.3 - Criar Header
 - [X] 1.4 - Criar Section Hero
 - [X] 1.5 - Criar Section Projects (BettingMGMT implementado)
-- [ ] 1.6 - Criar Section About
-- [ ] 1.7 - Criar Section Contact
+- [X] 1.6 - Criar Section About
+- [X] 1.7 - Criar Section Contact
 
 ---
 
