@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pedro Zabeu - Interactive Portfolio
 
-## Getting Started
+Modern and interactive portfolio built with **Next.js**, **TypeScript**, and **Tailwind CSS**. Designed to showcase projects, technical expertise, and professional experience with a premium aesthetic.
 
-First, run the development server:
+## 🚀 Vision & Identity
+
+Built at the intersection of **Strategic Thinking**, **Engineering**, and **AI-Powered Execution**. This portfolio reflects a career transitioning from finance leadership to AI-driven product development.
+
+- **Strategic Thinker**: 10+ years framing complex decisions and risk.
+- **Builder**: Systems built from end-to-end using Python, R, and TypeScript.
+- **AI-Powered**: Leveraging agents and modern tools for efficient delivery.
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS & Vanilla CSS for premium micro-animations
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Development Tools**: Claude Code & Cursor (AI-Driven Development)
+
+## 📂 Featured Projects
+
+1.  **Betting Management**: Complete system for managing betting accounts and operations.
+2.  **School of Bets**: Educational platform for bettor development based on math and statistics.
+3.  **Stakely**: Intelligent system for tipsters with automated results and Telegram integration.
+
+## 📄 Documentation & Links
+
+- **Professional CV**: [Pedro Zabeu - Full Resume (2025)](./docs/other/Pedro%20Zabeu%20-%20CV%202025.md)
+- **Github**: [PedroZabeu](https://github.com/PedroZabeu)
+- **LinkedIn**: [pedroivo-zabeu](https://linkedin.com/in/pedroivo-zabeu)
+
+## 🛠️ Getting Started
+
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 License
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Created by **Pedro Zabeu**. All rights reserved.
