@@ -58,25 +58,25 @@ export const skillsData: SkillCluster[] = [
     skills: [
       {
         name: 'Frontend Development',
-        score: 9,
+        score: 7.5,
         technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
         description: 'Building responsive, performant, and accessible web applications with modern frameworks'
       },
       {
         name: 'Backend Development',
-        score: 8.5,
+        score: 7,
         technologies: ['Node.js', 'API Design', 'Database Architecture'],
         description: 'Designing scalable APIs and database architectures for complex applications'
       },
       {
         name: 'Product Vision',
-        score: 9,
+        score: 9.5,
         technologies: ['User Research', 'Feature Planning', 'MVP Development'],
         description: 'End-to-end product development from concept validation to market delivery'
       },
       {
         name: 'Full-cycle Development',
-        score: 9,
+        score: 8,
         technologies: ['From concept to deployment', 'Iterative improvement'],
         description: 'Complete product lifecycle management with continuous improvement and deployment'
       }
