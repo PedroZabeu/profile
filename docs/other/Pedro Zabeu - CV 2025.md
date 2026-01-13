@@ -3,7 +3,7 @@
 +55 11 97122-9926 ● pedroibzabeu@gmail.com ● LinkedIn: [in/pedro-ivo-barreto-zabeu-95a066111]
 
 **SUMMARY**
-Finance executive and entrepreneur with 10+ years of experience in M&A, equity research, and strategic planning. Founded and scaled sports betting analytics company achieving 18.24% monthly returns through proprietary ML models. Expert in financial modeling, risk management, and full-stack development using AI-powered tools.
+Finance executive and entrepreneur with 15+ years of experience in M&A, equity research, and strategic planning. Founded and scaled sports betting analytics company achieving 18.24% monthly returns through proprietary ML models. Expert in financial modeling, risk management, and full-stack development using AI-powered tools.
 
 **EXPERIENCE**
 
@@ -88,9 +88,6 @@ Finance executive and entrepreneur with 10+ years of experience in M&A, equity r
 **Economics Bachelor Degree**
 *FEA/USP: 2006 – 2012*
 *FACAMP: 2016*
-
-**CFA Level II Candidate**
-*Passed Level I in June 2019 Exam among top decile of candidates*
 
 **LANGUAGES**
 Portuguese (Native), English (Fluent), Spanish (Advanced)
