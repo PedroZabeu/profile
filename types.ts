@@ -12,7 +12,7 @@ export interface MotionProps {
   transition?: {
     duration?: number;
     delay?: number;
-    ease?: string;
+    ease?: any;
   };
 }
 

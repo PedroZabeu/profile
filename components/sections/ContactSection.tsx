@@ -31,7 +31,7 @@ export function ContactSection({ className, motionProps }: ContactSectionProps) 
       <motion.div
         initial={initial}
         animate={animate}
-        transition={transition}
+        transition={transition as any}
         className="max-w-6xl mx-auto px-4"
       >
         <div className="text-center mb-12">
