@@ -57,35 +57,35 @@ const MailIcon = forwardRef<MailIconHandle, MailIconProps>(
    };
   });
 
-  const handleEnter = useCallback(
-   (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isAnimated || reduced) return;
-    if (!isControlled.current) {
-     containerControls.start("animate");
-     flapControls.start("animate");
-     bodyControls.start("animate");
-    } else onMouseEnter?.(e as any);
-   },
-   [
-    containerControls,
-    flapControls,
-    bodyControls,
-    reduced,
-    onMouseEnter,
-    isAnimated,
-   ],
-  );
+   const handleEnter = useCallback(
+    (e?: React.MouseEvent<HTMLDivElement>) => {
+     if (!isAnimated || reduced) return;
+     if (!isControlled.current) {
+      containerControls.start("animate");
+      flapControls.start("animate");
+      bodyControls.start("animate");
+     } else if (e) onMouseEnter?.(e);
+    },
+    [
+     containerControls,
+     flapControls,
+     bodyControls,
+     reduced,
+     onMouseEnter,
+     isAnimated,
+    ],
+   );
 
-  const handleLeave = useCallback(
-   (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isControlled.current) {
-     containerControls.start("normal");
-     flapControls.start("normal");
-     bodyControls.start("normal");
-    } else onMouseLeave?.(e as any);
-   },
-   [containerControls, flapControls, bodyControls, onMouseLeave],
-  );
+   const handleLeave = useCallback(
+    (e?: React.MouseEvent<HTMLDivElement>) => {
+     if (!isControlled.current) {
+      containerControls.start("normal");
+      flapControls.start("normal");
+      bodyControls.start("normal");
+     } else if (e) onMouseLeave?.(e);
+    },
+    [containerControls, flapControls, bodyControls, onMouseLeave],
+   );
 
   const containerVariants: Variants = {
    normal: { scale: 1 },

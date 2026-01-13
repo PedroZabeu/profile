@@ -9,7 +9,7 @@ import { GithubIcon } from "@/components/GithubIcon"
 import { LinkedInIcon } from "@/components/LinkedinIcon"
 import { cn } from "@/lib/utils"
 import type { ContactInfoProps, ContactInfo } from "@/types"
-import { CONTACT_INFO_DATA, ContactPlatform } from "@/types"
+import { ContactPlatform } from "@/types"
 
 export function ContactInfo({ contacts, className }: ContactInfoProps) {
   const iconMap: Record<string, React.ReactNode> = {

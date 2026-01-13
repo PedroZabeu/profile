@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 import { ContactForm } from "@/components/blocks/contact/ContactForm"
 import { ContactInfo } from "@/components/blocks/contact/ContactInfo"
 import { cn } from "@/lib/utils"
-import type { ContactSectionProps, ContactFormData } from "@/types"
+import type { ContactSectionProps } from "@/types"
 import { CONTACT_SECTION_TEXTS, CONTACT_INFO_DATA } from "@/types"
 import { useSettingsStore } from "@/stores/settings"
 
@@ -12,7 +12,7 @@ export function ContactSection({ className, motionProps }: ContactSectionProps) 
   const { language } = useSettingsStore()
   const texts = CONTACT_SECTION_TEXTS[language]
 
-  const handleSubmit = async (data: ContactFormData): Promise<void> => {
+  const handleSubmit = async (): Promise<void> => {
     await new Promise((resolve) => setTimeout(resolve, 1500))
   }
 
@@ -22,11 +22,18 @@ export function ContactSection({ className, motionProps }: ContactSectionProps) 
     transition: { duration: 0.5 },
   }
 
-  const finalMotionProps = { ...defaultMotionProps, ...motionProps }
+  const initial = motionProps?.initial ?? defaultMotionProps.initial
+  const animate = motionProps?.animate ?? defaultMotionProps.animate
+  const transition = motionProps?.transition ?? defaultMotionProps.transition
 
   return (
     <section id="contact" className={cn("py-20 md:py-32", className)}>
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4">
+      <motion.div
+        initial={initial}
+        animate={animate}
+        transition={transition}
+        className="max-w-6xl mx-auto px-4"
+      >
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
             {texts.title}

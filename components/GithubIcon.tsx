@@ -42,25 +42,25 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
    };
   });
 
-  const handleEnter = useCallback(
-   (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isAnimated || reduced) return;
-    if (!isControlled.current) controls.start("animate");
-    else onMouseEnter?.(e as any);
-   },
-   [controls, reduced, onMouseEnter, isAnimated],
-  );
+   const handleEnter = useCallback(
+    (e?: React.MouseEvent<HTMLDivElement>) => {
+     if (!isAnimated || reduced) return;
+     if (!isControlled.current) controls.start("animate");
+     else if (e) onMouseEnter?.(e);
+    },
+    [controls, reduced, onMouseEnter, isAnimated],
+   );
 
-  const handleLeave = useCallback(
-   (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isControlled.current) {
-     controls.start("normal");
-    } else {
-     onMouseLeave?.(e as any);
-    }
-   },
-   [controls, onMouseLeave],
-  );
+   const handleLeave = useCallback(
+    (e?: React.MouseEvent<HTMLDivElement>) => {
+     if (!isControlled.current) {
+      controls.start("normal");
+     } else if (e) {
+      onMouseLeave?.(e);
+     }
+    },
+    [controls, onMouseLeave],
+   );
 
   const svgVariants: Variants = {
    normal: {

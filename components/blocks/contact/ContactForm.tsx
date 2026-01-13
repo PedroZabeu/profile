@@ -59,6 +59,7 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
         throw new Error('Failed to send message')
       }
     } catch (err) {
+      console.error(err)
       setStatus('error')
       setError(texts.errorMessage)
     }

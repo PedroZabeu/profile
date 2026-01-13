@@ -28,14 +28,6 @@ import type {
   SchoolModuleData
 } from '@/types'
 
-// Helper para formatar texto localizado (reaproveitando padrão existing)
-const formatLocalizedText = (
-  text: string | Record<'pt' | 'en', string>,
-  language: 'pt' | 'en'
-): string => {
-  return typeof text === 'string' ? text : text[language]
-}
-
 // Componente Progress Bar (reaproveitando sistema de animações existente)
 const SchoolProgressBar: React.FC<{
   progress: number;
