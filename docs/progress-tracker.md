@@ -2,10 +2,10 @@
 
 ## 📈 Progresso Geral
 
-**Total: 14 / 33 tarefas completas**
+**Total: 15 / 34 tarefas completas**
 
 ```
-[█████████░                             ] 42%
+[█████████░                             ] 44%
 ```
 
 ---
@@ -25,57 +25,35 @@
 
 ---
 
-### ✅ EPIC 2: Timeline
-**Progresso: 0 / 2** | `░░░░░░░░░░ 0%`
+### ✅ EPIC 2: Skills
+**Progresso: 1 / 1** | `████████ 100%`
 
-- [ ] 2.1 - Timeline Item
-- [ ] 2.2 - Full Timeline
-
----
-
-### ✅ EPIC 3: Skills
-**Progresso: 0 / 2** | `░░░░░░░░░░ 0%`
-
-- [ ] 3.1 - Skill Item
-- [ ] 3.2 - Full Skills
+- [X] 2.1 - Skills
 
 ---
 
-### ❌ EPIC 4: App Demo 1 - Stakely
-**Progresso: 0 / 5** | `░░░░░░░░░░ 0%`
+### ⏳ EPIC 3: Timeline
+**Progresso: 0 / 1** | `░░░░░░░░░░ 0%`
 
-- [ ] 4.1 - Implementar estrutura base (reutilizar template)
-- [ ] 4.2 - Criar conteúdo e textos específicos
-- [ ] 4.3 - Simulate Sending Bet (Tipster)
-- [ ] 4.4 - Simulate Receiving Bets (Subscribers)
-- [ ] 4.5 - Simulate Updating Bet Status
+- [ ] 3.1 - Full Timeline (planejado: ver docs/features/feature-3.1/feature-3.1.md)
 
 ---
 
-### ⏳ EPIC 5: App Demo 2 - Betting Management
-**Progresso: 7 / 8** | `████████░ 87%`
+### ⏳ EPIC 4: About Hook
+**Progresso: 0 / 1** | `░░░░░░░░░░ 0%`
 
-- [X] 5.1 - Criar estrutura de componentes (ProjectFeature, Text, Demo)
-- [X] 5.2 - Implementar BettingMGMT com dashboard mock
-- [X] 5.3 - Adicionar internacionalização PT/EN
-- [X] 5.4 - Integrar na landing page abaixo do Hero
-- [X] 5.5 - Implementar layout responsivo (mobile/desktop)
-- [X] 5.6 - Criar sistema de cores OKLCH
-- [X] 5.7 - Adicionar tipos e dados do projeto
-- [ ] 5.8 - Implementar simulações interativas (Account CRUD)
+- [ ] 4.1 - About Hook (planejado: ver docs/features/feature-4.1/feature-4.1.md)
 
 ---
 
-### ❌ EPIC 6: App Demo 3 - School of Bets
-**Progresso: 0 / 5** | `░░░░░░░░░░ 0%`
+### ❌ EPIC 5: Education
+**Progresso: 0 / 1** | `░░░░░░░░░░ 0%`
 
-- [ ] 6.1 - Implementar estrutura base (reutilizar template)
-- [ ] 6.2 - Criar conteúdo e textos específicos
-- [ ] 6.3 - Module 1: What is Positive Expected Value
-- [ ] 6.4 - Module 2: Bankroll Management
-- [ ] 6.5 - Interactive Course Components
+- [ ] 4.1 - Education Section
 
 ---
+
+
 
 ## 📋 Legenda
 
