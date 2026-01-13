@@ -28,7 +28,7 @@ Built at the intersection of **Strategic Thinking**, **Engineering**, and **AI-P
 
 - **Professional CV**: [Pedro Zabeu - Full Resume (2025)](./docs/other/Pedro%20Zabeu%20-%20CV%202025.md)
 - **Github**: [PedroZabeu](https://github.com/PedroZabeu)
-- **LinkedIn**: [pedroivo-zabeu](https://linkedin.com/in/pedroivo-zabeu)
+- **LinkedIn**: [pedro-ivo-barreto-zabeu-95a066111](https://linkedin.com/in/pedro-ivo-barreto-zabeu-95a066111)
 
 ## 🛠️ Getting Started
 

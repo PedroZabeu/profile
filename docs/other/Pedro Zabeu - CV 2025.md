@@ -1,6 +1,6 @@
 **Pedro Ivo Barreto Zabeu**
 
-+55 11 97122-9926 ● pedroibzabeu@gmail.com ● LinkedIn: [in/pedroivo-zabeu]
++55 11 97122-9926 ● pedroibzabeu@gmail.com ● LinkedIn: [in/pedro-ivo-barreto-zabeu-95a066111]
 
 **SUMMARY**
 Finance executive and entrepreneur with 10+ years of experience in M&A, equity research, and strategic planning. Founded and scaled sports betting analytics company achieving 18.24% monthly returns through proprietary ML models. Expert in financial modeling, risk management, and full-stack development using AI-powered tools.

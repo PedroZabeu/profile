@@ -13,7 +13,7 @@ Implementar a seção de contato como parte final da landing page, permitindo qu
 
 ### Dados de Contato
 - **Email**: pedroibzabeu@gmail.com
-- **LinkedIn**: https://linkedin.com/in/pedroivo-zabeu
+- **LinkedIn**: https://linkedin.com/in/pedro-ivo-barreto-zabeu-95a066111
 - **GitHub**: https://github.com/PedroZabeu
 - **WhatsApp**: +55 11 97122-9926 (https://wa.me/5511971229926)
 - **Telegram**: @pzabeu (https://t.me/pzabeu)
@@ -159,7 +159,7 @@ Usando componentes AnimateIcons via shadcn:
 - [ ] Validação de campos (nome, email, mensagem)
 - [ ] Botão de envio desabilitado durante envio
 - [ ] Feedback de sucesso/erro após envio
-- [ ] Link para LinkedIn funcionando (https://linkedin.com/in/pedroivo-zabeu)
+- [ ] Link para LinkedIn funcionando (https://linkedin.com/in/pedro-ivo-barreto-zabeu-95a066111)
 - [ ] Link para GitHub funcionando (https://github.com/PedroZabeu)
 - [ ] Link para WhatsApp funcionando (https://wa.me/5511971229926)
 - [ ] Link para Telegram funcionando (https://t.me/pzabeu)
