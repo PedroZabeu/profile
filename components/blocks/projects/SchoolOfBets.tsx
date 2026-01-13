@@ -14,7 +14,8 @@ import {
   PlayCircle,
   CheckSquare,
   RefreshCw,
-  ExternalLink
+  ExternalLink,
+  LayoutGrid
 } from 'lucide-react'
 import { ProjectFeature } from './templates/ProjectFeature';
 import { ProjectFeatureText } from '@/components/ui/projects/project-feature-text';
@@ -41,9 +42,9 @@ const SchoolProgressBar: React.FC<{
   isAnimated?: boolean;
 }> = React.memo(({ progress, isAnimated = true }) => {
   return (
-    <div className="school-progress-bar">
+    <div className="w-full bg-border/40 rounded-full h-1.5 overflow-hidden">
       <div
-        className={`school-progress-fill ${isAnimated ? 'animated' : ''}`}
+        className={`h-full bg-cv-accent transition-all duration-1000 ease-out ${isAnimated ? 'animate-pulse' : ''}`}
         style={{ width: `${progress}%` }}
       />
     </div>
@@ -51,108 +52,6 @@ const SchoolProgressBar: React.FC<{
 })
 
 SchoolProgressBar.displayName = 'SchoolProgressBar'
-
-// Componente Progress Metrics (seguindo exatamente o layout do plano)
-const SchoolProgressMetrics: React.FC<{
-  progress: SchoolProgressData;
-  language: 'pt' | 'en';
-}> = React.memo(({ progress, language }) => {
-  const localizedTexts = {
-    pt: {
-      seuProgresso: 'SEU PROGRESSO',
-      moduloDe: 'Módulo {current} de {total}'
-    },
-    en: {
-      seuProgresso: 'YOUR PROGRESS',
-      moduloDe: 'Module {current} of {total}'
-    }
-  }
-
-  const texts = localizedTexts[language]
-
-  return (
-    <div className="school-progress-container">
-      <div className="school-progress-header">
-        {texts.seuProgresso}
-      </div>
-      <SchoolProgressBar progress={progress.overallProgress} />
-      <div className="school-progress-text text-center">
-        {texts.moduloDe.replace('{current}', progress.currentModule.toString()).replace('{total}', progress.totalModules.toString())}
-      </div>
-    </div>
-  )
-})
-
-SchoolProgressMetrics.displayName = 'SchoolProgressMetrics'
-
-// Componente Module Card (seguindo exatamente o layout do plano)
-const SchoolModuleCard: React.FC<{
-  module: SchoolModuleData;
-  language: 'pt' | 'en';
-  onContinue: () => void;
-}> = React.memo(({ module, language, onContinue }) => {
-  const localizedTexts = {
-    pt: {
-      aulas: 'Aulas: {completed} de {total}',
-      concluido: 'Concluído: {progress}%',
-      proxima: 'Próxima: {nextLesson}',
-      continuarAula: 'Continuar Aula'
-    },
-    en: {
-      aulas: 'Lessons: {completed} of {total}',
-      concluido: 'Completed: {progress}%',
-      proxima: 'Next: {nextLesson}',
-      continuarAula: 'Continue Lesson'
-    }
-  }
-
-  const texts = localizedTexts[language]
-
-  return (
-    <div className="school-module-card">
-      <div className="school-module-header">
-        <BookOpen className="w-5 h-5 text-cv-accent" />
-        <h3 className="font-medium text-foreground">{module.title}</h3>
-      </div>
-
-      <div className="school-module-content space-y-3">
-        <div className="school-module-metric">
-          <span className="school-module-metric-label flex items-center gap-2">
-            <Clock className="w-4 h-4" />
-            {texts.aulas.replace('{completed}', module.completedLessons.toString()).replace('{total}', module.totalLessons.toString())}
-          </span>
-        </div>
-
-        <div className="school-module-metric">
-          <span className="school-module-metric-label flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-cv-accent" />
-            {texts.concluido.replace('{progress}', module.progress.toString())}
-          </span>
-        </div>
-
-        {module.nextLesson && (
-          <div className="school-module-metric">
-            <span className="school-module-metric-label flex items-center gap-2">
-              <FileText className="w-4 h-4 text-cv-accent" />
-              {texts.proxima.replace('{nextLesson}', module.nextLesson)}
-            </span>
-          </div>
-        )}
-      </div>
-
-      <button
-        className="school-continue-btn flex items-center gap-2"
-        onClick={onContinue}
-        disabled={module.isLocked}
-      >
-        <Play className="w-4 h-4" />
-        {texts.continuarAula}
-      </button>
-    </div>
-  )
-})
-
-SchoolModuleCard.displayName = 'SchoolModuleCard'
 
 // Componente principal SchoolCourse
 export const SchoolCourse: React.FC<SchoolCourseProps> = ({
@@ -162,41 +61,164 @@ export const SchoolCourse: React.FC<SchoolCourseProps> = ({
   className,
   motionProps
 }) => {
-  // Obter linguagem do store ou context existente (reaproveitando sistema)
-  const [language] = React.useState<'pt' | 'en'>('pt')
+  const language = 'pt' // Padrão para o demo
 
-  // Motion defaults (reaproveitando HERO_ANIMATIONS structure)
-  const defaultMotionProps = {
-    initial: { opacity: 0, y: 20, filter: 'blur(4px)' },
-    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-    transition: { duration: 0.3, ease: 'easeOut' }
-  }
-
-  const finalMotionProps = { ...defaultMotionProps, ...motionProps }
+  const texts = {
+    pt: {
+      dashboard: 'Dashboard',
+      modules: 'Módulos',
+      stats: 'Estatísticas',
+      progress: 'Meu Progresso',
+      timeSpent: 'Tempo de Estudo',
+      avgScore: 'Nota Média',
+      continue: 'Continuar Aula',
+      lessons: 'aulas',
+      completed: 'concluído',
+      next: 'Próxima'
+    },
+    en: {
+      dashboard: 'Dashboard',
+      modules: 'Modules',
+      stats: 'Statistics',
+      progress: 'My Progress',
+      timeSpent: 'Study Time',
+      avgScore: 'Avg Score',
+      continue: 'Continue Lesson',
+      lessons: 'lessons',
+      completed: 'completed',
+      next: 'Next'
+    }
+  }[language]
 
   return (
     <motion.div
-      className={`school-bets-container ${className || ''}`}
-      {...finalMotionProps}
+      className={`flex h-full w-full bg-background overflow-hidden ${className || ''}`}
+      {...motionProps}
     >
-      {/* Header (reaproveitando estrutura header existente) */}
-      <div className="school-bets-header">
-        <GraduationCap className="w-6 h-6 text-cv-accent" />
-        <h2 className="text-lg font-medium text-foreground">School of Bets</h2>
+      {/* Sidebar Decorativa */}
+      <div className="hidden sm:flex flex-col w-12 lg:w-16 border-r border-border/50 items-center py-6 gap-6 bg-card/30">
+        <div className="p-2 rounded-xl bg-cv-accent/10 text-cv-accent">
+          <GraduationCap size={20} />
+        </div>
+        <div className="p-2 rounded-xl text-muted-foreground/50 hover:text-cv-accent transition-colors">
+          <LayoutGrid size={20} />
+        </div>
+        <div className="p-2 rounded-xl text-muted-foreground/50 hover:text-cv-accent transition-colors">
+          <BookOpen size={20} />
+        </div>
+        <div className="p-2 rounded-xl text-muted-foreground/50 hover:text-cv-accent transition-colors">
+          <TrendingUp size={20} />
+        </div>
+        <div className="mt-auto p-2 rounded-xl text-muted-foreground/20">
+          <Calculator size={20} />
+        </div>
       </div>
 
-      {/* Progress Section */}
-      <SchoolProgressMetrics
-        progress={progress}
-        language={language}
-      />
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* Top Navbar */}
+        <div className="h-14 border-b border-border/50 flex items-center justify-between px-6 bg-card/10">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-cv-text-primary">School of Bets</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-cv-accent/20 text-cv-accent font-bold tracking-wider uppercase">Beta</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-cv-accent/10 border border-cv-accent/20 flex items-center justify-center text-[10px] font-bold text-cv-accent">
+              PZ
+            </div>
+          </div>
+        </div>
 
-      {/* Module Section */}
-      <SchoolModuleCard
-        module={currentModule}
-        language={language}
-        onContinue={onContinueLearning}
-      />
+        {/* Dashboard Content */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+          {/* Header Stats */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="p-4 rounded-2xl border border-border/50 bg-card/30 space-y-1">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{texts.progress}</p>
+              <div className="flex items-end gap-2">
+                <span className="text-2xl font-bold text-cv-text-primary">{progress.overallProgress}%</span>
+                <span className="text-[10px] text-cv-accent mb-1.5">+5% exp</span>
+              </div>
+              <SchoolProgressBar progress={progress.overallProgress} />
+            </div>
+            <div className="p-4 rounded-2xl border border-border/50 bg-card/30 space-y-1">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{texts.timeSpent}</p>
+              <div className="flex items-center gap-2">
+                <Clock size={16} className="text-cv-accent" />
+                <span className="text-xl font-bold text-cv-text-primary">12.5h</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground">8h left to target</p>
+            </div>
+            <div className="hidden lg:block p-4 rounded-2xl border border-border/50 bg-card/30 space-y-1">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{texts.avgScore}</p>
+              <div className="flex items-center gap-2">
+                <CheckSquare size={16} className="text-cv-accent" />
+                <span className="text-xl font-bold text-cv-text-primary">8.5 / 10</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground">Top 15% of students</p>
+            </div>
+          </div>
+
+          {/* Current Module Hero */}
+          <div className="relative group overflow-hidden rounded-3xl border border-cv-accent/30 bg-cv-accent/5 p-6 space-y-4">
+            <div className="flex items-start justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-cv-accent">
+                  <PlayCircle size={18} />
+                  <span className="text-xs font-bold uppercase tracking-widest">{texts.next}</span>
+                </div>
+                <h3 className="text-xl font-bold text-cv-text-primary tracking-tight">{currentModule.title}</h3>
+                <p className="text-sm text-muted-foreground line-clamp-1">{currentModule.description}</p>
+              </div>
+              <div className="hidden sm:block p-3 rounded-2xl bg-cv-accent/10 border border-cv-accent/20">
+                <BookOpen className="text-cv-accent" size={24} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 pb-2">
+              <div className="flex items-center gap-2">
+                <FileText size={14} className="text-muted-foreground" />
+                <span className="text-xs text-foreground font-medium">{currentModule.completedLessons}/{currentModule.totalLessons} {texts.lessons}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle size={14} className="text-cv-accent" />
+                <span className="text-xs text-foreground font-medium">{currentModule.progress}% {texts.completed}</span>
+              </div>
+            </div>
+
+            <button
+              onClick={onContinueLearning}
+              className="w-full py-3 px-4 bg-cv-accent text-background font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+            >
+              <Play size={16} fill="currentColor" />
+              {texts.continue}
+            </button>
+
+            {/* Background elements para "preencher" e dar elegância */}
+            <div className="absolute -right-4 -bottom-4 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-700">
+              <GraduationCap size={160} />
+            </div>
+          </div>
+
+          {/* Additional Preview Section */}
+          <div className="space-y-3">
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{texts.modules}</p>
+            <div className="space-y-2 opacity-50">
+              {[1, 2].map((i) => (
+                <div key={i} className="flex items-center gap-4 p-3 rounded-xl border border-border/30 bg-card/10 grayscale">
+                  <div className="w-8 h-8 rounded-lg bg-border/20 flex items-center justify-center">
+                    <CheckCircle size={14} className="text-cv-accent" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="h-2 w-24 bg-border/40 rounded italic" />
+                  </div>
+                  <div className="h-2 w-8 bg-border/20 rounded" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </motion.div>
   )
 }
