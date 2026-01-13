@@ -1,9 +1,9 @@
 'use client';
 
-import { 
-  Users, 
-  MessageCircle, 
-  ShieldCheck, 
+import {
+  Users,
+  MessageCircle,
+  ShieldCheck,
   LayoutGrid,
   ChartBar,
   ExternalLink
@@ -81,7 +81,7 @@ function StakelyDemo({ language }: { language: Language }) {
                 {content.resolvedTip.result}
               </span>
             </div>
-            
+
             <div className="flex items-center justify-between">
               <span className="text-green-400 font-medium text-sm">
                 {content.resolvedTip.profit}
@@ -166,12 +166,12 @@ export function Stakely() {
         {
           icon: <LayoutGrid size={20} className="text-cv-accent" />,
           text: 'Consolidação automática de resultados e histórico'
-    },
-    {
-      icon: <ChartBar size={20} className="text-cv-accent" />,
-      text: 'Dashboards com métricas que fortalecem confiança e retenção'
-    }
-  ],
+        },
+        {
+          icon: <ChartBar size={20} className="text-cv-accent" />,
+          text: 'Dashboards com métricas que fortalecem confiança e retenção'
+        }
+      ],
       cta: 'Explore platform'
     },
     en: {
@@ -194,12 +194,12 @@ export function Stakely() {
         {
           icon: <LayoutGrid size={20} className="text-cv-accent" />,
           text: 'Automatic result consolidation and performance history'
-    },
-    {
-      icon: <ChartBar size={20} className="text-cv-accent" />,
-      text: 'Insightful dashboards that strengthen trust and retention'
-    }
-  ],
+        },
+        {
+          icon: <ChartBar size={20} className="text-cv-accent" />,
+          text: 'Insightful dashboards that strengthen trust and retention'
+        }
+      ],
       cta: 'Explore platform'
     }
   };
@@ -207,34 +207,40 @@ export function Stakely() {
   const currentContent = content[language];
 
   return (
-    <ProjectFeature>
-      <div className="lg:col-span-2 space-y-6">
-        <ProjectFeatureText
-          appName={currentContent.appName}
-          title={currentContent.title}
-          description={currentContent.description}
-          features={currentContent.features}
-          language={language}
-        />
-        
-        {/* CTA Button */}
-        <div className="pt-4">
-          <ShimmerButton
-            shimmerColor="var(--cv-accent)"
-            shimmerSize="0.1em"
-            background="var(--cv-btn-primary-bg)"
-            className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
-            onClick={() => window.open('https://stakely-bets.vercel.app/', '_blank')}
-          >
-            <ExternalLink className="w-4 h-4" />
-            {currentContent.cta}
-          </ShimmerButton>
-        </div>
+    <div className="space-y-6">
+      {/* App Name - Outside the main alignment grid */}
+      <div className="text-sm font-medium text-cv-accent">
+        {currentContent.appName}
       </div>
-      
-      <ProjectFeatureDemo>
-        <StakelyDemo language={language} />
-      </ProjectFeatureDemo>
-    </ProjectFeature>
+
+      <ProjectFeature>
+        <div className="lg:col-span-2">
+          <ProjectFeatureText
+            title={currentContent.title}
+            description={currentContent.description}
+            features={currentContent.features}
+            language={language}
+          />
+        </div>
+
+        <ProjectFeatureDemo>
+          <StakelyDemo language={language} />
+        </ProjectFeatureDemo>
+      </ProjectFeature>
+
+      {/* CTA Button - Outside the main alignment grid */}
+      <div className="pt-4">
+        <ShimmerButton
+          shimmerColor="var(--cv-accent)"
+          shimmerSize="0.1em"
+          background="var(--cv-btn-primary-bg)"
+          className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
+          onClick={() => window.open('https://stakely-bets.vercel.app/', '_blank')}
+        >
+          <ExternalLink className="w-4 h-4" />
+          {currentContent.cta}
+        </ShimmerButton>
+      </div>
+    </div>
   );
 }

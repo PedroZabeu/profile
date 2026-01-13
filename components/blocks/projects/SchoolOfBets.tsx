@@ -2,10 +2,10 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { 
-  GraduationCap, 
-  Clock, 
-  CheckCircle, 
+import {
+  GraduationCap,
+  Clock,
+  CheckCircle,
   BookOpen,
   FileText,
   Play,
@@ -21,10 +21,10 @@ import { ProjectFeatureText } from '@/components/ui/projects/project-feature-tex
 import { ProjectFeatureDemo } from '@/components/ui/projects/project-feature-demo';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 import { useSettingsStore } from '@/stores/settings';
-import type { 
-  SchoolCourseProps, 
-  SchoolProgressData, 
-  SchoolModuleData 
+import type {
+  SchoolCourseProps,
+  SchoolProgressData,
+  SchoolModuleData
 } from '@/types'
 
 // Helper para formatar texto localizado (reaproveitando padrão existing)
@@ -42,7 +42,7 @@ const SchoolProgressBar: React.FC<{
 }> = React.memo(({ progress, isAnimated = true }) => {
   return (
     <div className="school-progress-bar">
-      <div 
+      <div
         className={`school-progress-fill ${isAnimated ? 'animated' : ''}`}
         style={{ width: `${progress}%` }}
       />
@@ -114,7 +114,7 @@ const SchoolModuleCard: React.FC<{
         <BookOpen className="w-5 h-5 text-cv-accent" />
         <h3 className="font-medium text-foreground">{module.title}</h3>
       </div>
-      
+
       <div className="school-module-content space-y-3">
         <div className="school-module-metric">
           <span className="school-module-metric-label flex items-center gap-2">
@@ -122,14 +122,14 @@ const SchoolModuleCard: React.FC<{
             {texts.aulas.replace('{completed}', module.completedLessons.toString()).replace('{total}', module.totalLessons.toString())}
           </span>
         </div>
-        
+
         <div className="school-module-metric">
           <span className="school-module-metric-label flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-cv-accent" />
             {texts.concluido.replace('{progress}', module.progress.toString())}
           </span>
         </div>
-        
+
         {module.nextLesson && (
           <div className="school-module-metric">
             <span className="school-module-metric-label flex items-center gap-2">
@@ -139,8 +139,8 @@ const SchoolModuleCard: React.FC<{
           </div>
         )}
       </div>
-      
-      <button 
+
+      <button
         className="school-continue-btn flex items-center gap-2"
         onClick={onContinue}
         disabled={module.isLocked}
@@ -175,7 +175,7 @@ export const SchoolCourse: React.FC<SchoolCourseProps> = ({
   const finalMotionProps = { ...defaultMotionProps, ...motionProps }
 
   return (
-    <motion.div 
+    <motion.div
       className={`school-bets-container ${className || ''}`}
       {...finalMotionProps}
     >
@@ -186,14 +186,14 @@ export const SchoolCourse: React.FC<SchoolCourseProps> = ({
       </div>
 
       {/* Progress Section */}
-      <SchoolProgressMetrics 
-        progress={progress} 
-        language={language} 
+      <SchoolProgressMetrics
+        progress={progress}
+        language={language}
       />
 
       {/* Module Section */}
-      <SchoolModuleCard 
-        module={currentModule} 
+      <SchoolModuleCard
+        module={currentModule}
         language={language}
         onContinue={onContinueLearning}
       />
@@ -228,72 +228,78 @@ export function SchoolOfBets() {
   };
 
   return (
-    <ProjectFeature>
-      <div className="lg:col-span-2 space-y-6">
-        <ProjectFeatureText
-          appName="School of Bets"
-          title={language === 'pt' ? 'Plataforma Educacional para Apostadores' : 'Educational Platform for Bettors'}
-          description={language === 'pt' 
-            ? 'Ambiente de ensino voltado para quem quer entender apostas com base em fundamentos matemáticos e estatísticos — sem complexidade desnecessária.'
-            : 'A learning environment designed for those who want to understand betting through mathematical and statistical fundamentals.'
-          }
-          features={[
-            {
-              icon: <TrendingUp size={20} className="text-cv-accent" />,
-              text: language === 'pt' 
-                ? 'Conteúdo progressivo com foco em aplicação no mundo real'
-                : 'Progressive content focused on real-world application'
-            },
-            {
-              icon: <Calculator size={20} className="text-cv-accent" />,
-              text: language === 'pt' 
-                ? 'Explicação simplificada de conceitos quantitativos essenciais'
-                : 'Simplified explanations of essential quantitative concepts'
-            },
-            {
-              icon: <PlayCircle size={20} className="text-cv-accent" />,
-              text: language === 'pt' 
-                ? 'Simulações práticas que conectam teoria e tomada de decisão'
-                : 'Practical simulations that connect theory to decision-making'
-            },
-            {
-              icon: <CheckSquare size={20} className="text-cv-accent" />,
-              text: language === 'pt' 
-                ? 'Exercícios com feedback em tempo real para reforço do aprendizado'
-                : 'Exercises with real-time feedback to reinforce learning'
-            },
-            {
-              icon: <RefreshCw size={20} className="text-cv-accent" />,
-              text: language === 'pt' 
-                ? 'Plataforma aprimorada continuamente ao longo do beta'
-                : 'Platform continuously improved throughout beta phase'
-            }
-          ]}
-          language={language}
-        />
-
-        {/* CTA Button */}
-        <div className="pt-4">
-          <ShimmerButton
-            shimmerColor="var(--cv-accent)"
-            shimmerSize="0.1em"
-            background="var(--cv-btn-primary-bg)"
-            className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
-            onClick={() => window.open('https://school-of-bets.vercel.app/', '_blank')}
-          >
-            <ExternalLink className="w-4 h-4" />
-            {language === 'pt' ? 'Conheça a plataforma' : 'Explore platform'}
-          </ShimmerButton>
-        </div>
+    <div className="space-y-6">
+      {/* App Name - Outside the main alignment grid */}
+      <div className="text-sm font-medium text-cv-accent">
+        School of Bets
       </div>
 
-      <ProjectFeatureDemo>
-        <SchoolCourse 
-          progress={mockProgress}
-          currentModule={mockCurrentModule}
-          onContinueLearning={() => console.log('Continue learning')}
-        />
-      </ProjectFeatureDemo>
-    </ProjectFeature>
+      <ProjectFeature>
+        <div className="lg:col-span-2">
+          <ProjectFeatureText
+            title={language === 'pt' ? 'Plataforma Educacional para Apostadores' : 'Educational Platform for Bettors'}
+            description={language === 'pt'
+              ? 'Ambiente de ensino voltado para quem quer entender apostas com base em fundamentos matemáticos e estatísticos — sem complexidade desnecessária.'
+              : 'A learning environment designed for those who want to understand betting through mathematical and statistical fundamentals.'
+            }
+            features={[
+              {
+                icon: <TrendingUp size={20} className="text-cv-accent" />,
+                text: language === 'pt'
+                  ? 'Conteúdo progressivo com foco em aplicação no mundo real'
+                  : 'Progressive content focused on real-world application'
+              },
+              {
+                icon: <Calculator size={20} className="text-cv-accent" />,
+                text: language === 'pt'
+                  ? 'Explicação simplificada de conceitos quantitativos essenciais'
+                  : 'Simplified explanations of essential quantitative concepts'
+              },
+              {
+                icon: <PlayCircle size={20} className="text-cv-accent" />,
+                text: language === 'pt'
+                  ? 'Simulações práticas que conectam teoria e tomada de decisão'
+                  : 'Practical simulations that connect theory to decision-making'
+              },
+              {
+                icon: <CheckSquare size={20} className="text-cv-accent" />,
+                text: language === 'pt'
+                  ? 'Exercícios com feedback em tempo real para reforço do aprendizado'
+                  : 'Exercises with real-time feedback to reinforce learning'
+              },
+              {
+                icon: <RefreshCw size={20} className="text-cv-accent" />,
+                text: language === 'pt'
+                  ? 'Plataforma aprimorada continuamente ao longo do beta'
+                  : 'Platform continuously improved throughout beta phase'
+              }
+            ]}
+            language={language}
+          />
+        </div>
+
+        <ProjectFeatureDemo>
+          <SchoolCourse
+            progress={mockProgress}
+            currentModule={mockCurrentModule}
+            onContinueLearning={() => console.log('Continue learning')}
+          />
+        </ProjectFeatureDemo>
+      </ProjectFeature>
+
+      {/* CTA Button - Outside the main alignment grid */}
+      <div className="pt-4">
+        <ShimmerButton
+          shimmerColor="var(--cv-accent)"
+          shimmerSize="0.1em"
+          background="var(--cv-btn-primary-bg)"
+          className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
+          onClick={() => window.open('https://school-of-bets.vercel.app/', '_blank')}
+        >
+          <ExternalLink className="w-4 h-4" />
+          {language === 'pt' ? 'Conheça a plataforma' : 'Explore platform'}
+        </ShimmerButton>
+      </div>
+    </div>
   );
 }

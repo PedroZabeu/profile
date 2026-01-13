@@ -1,9 +1,9 @@
 import { ProjectFeatureProps, MotionProps } from '@/types';
 
-export function ProjectFeature({ 
-  children, 
+export function ProjectFeature({
+  children,
   className = '',
-  motionProps 
+  motionProps
 }: ProjectFeatureProps) {
   const defaultMotion: MotionProps = {
     initial: { opacity: 0, y: 20 },
@@ -15,10 +15,10 @@ export function ProjectFeature({
 
   return (
     <div
-      {...motionConfig} 
+      {...motionConfig}
       className={`
         grid gap-12 lg:gap-24 xl:gap-32
-        lg:grid-cols-5 lg:items-center
+        lg:grid-cols-5
         ${className}
       `}
     >

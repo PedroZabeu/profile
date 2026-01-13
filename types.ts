@@ -241,13 +241,13 @@ export function colorToRgb(color: string | [number, number, number]): [number, n
   if (Array.isArray(color)) {
     return [...color] as [number, number, number];
   }
-  
+
   // Se for string OKLH, converter para RGB (simplificado)
   if (color.startsWith('oklch')) {
     // Para o Betting Management, vamos usar teal como padrão
     return [...COLOR_SYSTEM.teal.rgb] as [number, number, number];
   }
-  
+
   // Fallback para teal
   return [...COLOR_SYSTEM.teal.rgb] as [number, number, number];
 }
@@ -296,7 +296,6 @@ export interface ProjectFeatureDemoProps {
 }
 
 export interface ProjectFeatureTextProps {
-  appName?: string;
   title: string;
   description: string;
   features: FeatureItem[];

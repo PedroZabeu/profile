@@ -1,6 +1,6 @@
 'use client';
 
-import { 
+import {
   ExternalLink
 } from 'lucide-react';
 import { ProjectFeature } from './templates/ProjectFeature';
@@ -37,10 +37,10 @@ function BettingDashboardDemo({ language }: { language: Language }) {
       {/* Header */}
       <div className="mb-6 flex items-center gap-2">
         <div className="text-lg font-semibold text-cv-text-primary flex items-center gap-2">
-          <DashboardIcon 
-            size={24} 
-            isAnimated={true} 
-            className="text-cv-accent" 
+          <DashboardIcon
+            size={24}
+            isAnimated={true}
+            className="text-cv-accent"
           />
           {currentLabels.dashboard}
         </div>
@@ -144,34 +144,40 @@ export function BettingMGMT() {
   const currentContent = content[language];
 
   return (
-    <ProjectFeature>
-      <div className="lg:col-span-2 space-y-6">
-        <ProjectFeatureText
-          appName={currentContent.appName}
-          title={currentContent.title}
-          description={currentContent.description}
-          features={currentContent.features}
-          language={language}
-        />
-        
-        {/* CTA Button */}
-        <div className="pt-4">
-          <ShimmerButton
-            shimmerColor="var(--cv-accent)"
-            shimmerSize="0.1em"
-            background="var(--cv-btn-primary-bg)"
-            className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
-            onClick={() => window.open('https://bettingmgmt.vercel.app/', '_blank')}
-          >
-            <ExternalLink className="w-4 h-4" />
-            {currentContent.cta}
-          </ShimmerButton>
-        </div>
+    <div className="space-y-6">
+      {/* App Name - Outside the main alignment grid */}
+      <div className="text-sm font-medium text-cv-accent">
+        {currentContent.appName}
       </div>
-      
-      <ProjectFeatureDemo>
-        <BettingDashboardDemo language={language} />
-      </ProjectFeatureDemo>
-    </ProjectFeature>
+
+      <ProjectFeature>
+        <div className="lg:col-span-2">
+          <ProjectFeatureText
+            title={currentContent.title}
+            description={currentContent.description}
+            features={currentContent.features}
+            language={language}
+          />
+        </div>
+
+        <ProjectFeatureDemo>
+          <BettingDashboardDemo language={language} />
+        </ProjectFeatureDemo>
+      </ProjectFeature>
+
+      {/* CTA Button - Outside the main alignment grid */}
+      <div className="pt-4">
+        <ShimmerButton
+          shimmerColor="var(--cv-accent)"
+          shimmerSize="0.1em"
+          background="var(--cv-btn-primary-bg)"
+          className="text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2"
+          onClick={() => window.open('https://bettingmgmt.vercel.app/', '_blank')}
+        >
+          <ExternalLink className="w-4 h-4" />
+          {currentContent.cta}
+        </ShimmerButton>
+      </div>
+    </div>
   );
 }
