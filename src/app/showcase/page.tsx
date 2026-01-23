@@ -146,23 +146,31 @@ export default function ShowcasePage() {
 
             {/* Mission Briefing Cards Section */}
             <section className="relative z-30 min-h-screen bg-[#0D1B2A] text-white p-20 flex flex-col items-center justify-center border-t border-white/5">
-                <h2 className="text-5xl font-comfortaa mb-12 tracking-tighter">Mission Briefing Cards</h2>
+                <h2 className="text-5xl font-comfortaa mb-12 tracking-tighter">Expedition Briefing Cards</h2>
                 <div className="max-w-2xl text-center space-y-6">
                     <p className="text-xl text-slate-400 font-light leading-relaxed">
-                        The interactive CTA cards draw inspiration from military mission briefings, where precision, clarity, and comprehensive planning are essential for success. Just as military operations require detailed intelligence, strategic objectives, and coordinated execution, these cards present Pedro&apos;s career, projects, and adventures with the same level of thoroughness and attention to detail that characterizes mission planning.
+                        The interactive CTA cards draw inspiration from expedition mission briefings, where precision, clarity, and comprehensive planning are essential for success.
                     </p>
-                    <div className="flex justify-center gap-4 pt-12">
+                    <div className="flex justify-center gap-6 pt-12">
+                        <div className="flex flex-col items-center">
+                            <div className="text-[#F1F5F9] font-oxanium text-sm font-bold mb-2" style={{ fontFamily: "'Oxanium', sans-serif" }}>
+                                OXANIUM
+                            </div>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Card Typography</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive" }}>
+                                COMFORTAA
+                            </div>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Headings</span>
+                        </div>
                         <div className="flex flex-col items-center">
                             <div className="w-12 h-1 bg-[#F1F5F9] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Mist</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-1 bg-white/10 border border-white/20 mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Briefing Card</span>
-                        </div>
-                        <div className="flex flex-col items-center">
                             <div className="w-1 h-1 bg-[#F1F5F9] rounded-full mb-2 animate-pulse" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Intelligence Dot</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Expedition Dot</span>
                         </div>
                     </div>
                 </div>
