@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Logo } from "@/components/brand/Logo";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import CareerCTA from "@/components/CareerCTA";
 
 const CLOUD_IMAGES = [
     "/images/clouds/clouds-png-13367.png",
@@ -64,6 +65,7 @@ export default function ShowcasePage() {
                         className="object-cover brightness-[0.85] scale-105"
                         priority
                     />
+                    <CareerCTA />
                 </motion.div>
 
                 {/* Layer 1: Unidirectional Clouds (Right to Left) */}

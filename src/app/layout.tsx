@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Comfortaa } from "next/font/google";
+import { Geist, Geist_Mono, Comfortaa, Oxanium } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +17,11 @@ const comfortaa = Comfortaa({
   subsets: ["latin"],
 });
 
+const oxanium = Oxanium({
+  variable: "--font-oxanium",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Pedro Zabeu | Outdoor Profile",
   description: "Personal portfolio of Pedro Zabeu",
@@ -30,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${comfortaa.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${comfortaa.variable} ${oxanium.variable} antialiased`}
       >
         {children}
       </body>
