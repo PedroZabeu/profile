@@ -32,7 +32,7 @@ export const Logo = ({ className = "" }: LogoProps) => {
                 animate="animate"
             >
                 <span style={{ color: colors.nightSummit }}>pedro</span>
-                <span className="font-bold bg-gradient-to-r from-[#3b84e4] to-[#4B5866] bg-clip-text text-transparent">
+                <span className="font-bold" style={{ color: '#82b7f5' }}>
                     .zabeu
                 </span>
             </motion.div>
