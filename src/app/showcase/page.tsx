@@ -131,7 +131,13 @@ export default function ShowcasePage() {
                     <p className="text-xl text-slate-400 font-light leading-relaxed">
                         A minimalist text-only logo crafted with the Comfortaa font, inspired by the clean and rugged aesthetics of mountain landscapes and Pedro&apos;s love for the outdoors and mountains. &quot;pedro&quot; uses the deep Night Summit tone, while &quot;.zabeu&quot; features a vibrant blue accent, reflecting the blend of professional depth and outdoor energy.
                     </p>
-                    <div className="flex justify-center gap-4 pt-12">
+                    <div className="flex justify-center gap-6 pt-12">
+                        <div className="flex flex-col items-center">
+                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive" }}>
+                                COMFORTAA
+                            </div>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Logo Font</span>
+                        </div>
                         <div className="flex flex-col items-center">
                             <div className="w-12 h-1 bg-[#0D1B2A] border border-white/30 mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Night Summit</span>
@@ -156,17 +162,15 @@ export default function ShowcasePage() {
                             <div className="text-[#F1F5F9] font-oxanium text-sm font-bold mb-2" style={{ fontFamily: "'Oxanium', sans-serif" }}>
                                 OXANIUM
                             </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Card Typography</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive" }}>
-                                COMFORTAA
-                            </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Headings</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Expedition Font</span>
                         </div>
                         <div className="flex flex-col items-center">
                             <div className="w-12 h-1 bg-[#F1F5F9] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Mist</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="w-12 h-1 bg-white/10 border border-white/20 mb-2" />
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Briefing Card</span>
                         </div>
                         <div className="flex flex-col items-center">
                             <div className="w-1 h-1 bg-[#F1F5F9] rounded-full mb-2 animate-pulse" />
