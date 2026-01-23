@@ -133,19 +133,17 @@ export default function ShowcasePage() {
                     </p>
                     <div className="flex justify-center gap-6 pt-12">
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#F1F5F9]/10 border border-[#F1F5F9]/30 rounded flex items-center justify-center mb-2">
-                                <span className="text-[#F1F5F9] font-comfortaa text-xs font-bold" style={{ fontFamily: "'Comfortaa', cursive" }}>
-                                    Aa
-                                </span>
+                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive", minHeight: '16px', display: 'flex', alignItems: 'center' }}>
+                                COMFORTAA
                             </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Comfortaa</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Logo Font</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#0D1B2A] border border-white/30 rounded mb-2" />
+                            <div className="w-12 h-4 bg-[#0D1B2A] border border-white/30 mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Night Summit</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#82b7f5] rounded mb-2" />
+                            <div className="w-12 h-4 bg-[#82b7f5] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Blue</span>
                         </div>
                     </div>
@@ -161,23 +159,23 @@ export default function ShowcasePage() {
                     </p>
                     <div className="flex justify-center gap-6 pt-12">
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#F1F5F9]/10 border border-[#F1F5F9]/30 rounded flex items-center justify-center mb-2">
-                                <span className="text-[#F1F5F9] font-oxanium text-xs font-bold" style={{ fontFamily: "'Oxanium', sans-serif" }}>
-                                    Aa
-                                </span>
+                            <div className="text-[#F1F5F9] font-oxanium text-sm font-bold mb-2" style={{ fontFamily: "'Oxanium', sans-serif", minHeight: '16px', display: 'flex', alignItems: 'center' }}>
+                                OXANIUM
                             </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Oxanium</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Expedition Font</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#F1F5F9] rounded mb-2" />
+                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive", minHeight: '16px', display: 'flex', alignItems: 'center' }}>
+                                COMFORTAA
+                            </div>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Headings</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="w-12 h-4 bg-[#F1F5F9] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Mist</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-white/10 border border-white/20 rounded mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Briefing Card</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-1 h-4 bg-[#F1F5F9] rounded-full mb-2 animate-pulse" />
+                            <div className="w-1 h-1 bg-[#F1F5F9] rounded-full mb-2 animate-pulse" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Expedition Dot</span>
                         </div>
                     </div>
