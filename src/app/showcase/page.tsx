@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import CareerCTA from "@/components/CareerCTA";
 import ProjectsCTA from "@/components/ProjectsCTA";
+import AdventuresCTA from "@/components/AdventuresCTA";
 
 const CLOUD_IMAGES = [
     "/images/clouds/clouds-png-13367.png",
@@ -68,6 +69,7 @@ export default function ShowcasePage() {
                     />
                     <CareerCTA />
                     <ProjectsCTA />
+                    <AdventuresCTA />
                 </motion.div>
 
                 {/* Layer 1: Unidirectional Clouds (Right to Left) */}
