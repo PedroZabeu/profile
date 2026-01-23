@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState, useMemo } from "react";
 
 interface CareerModalProps {
     onClose: () => void;
@@ -10,12 +10,12 @@ interface CareerModalProps {
 export default function CareerModal({ onClose }: CareerModalProps) {
     const title = "CAREER";
     const description = "Executive and entrepreneur with 15+ years of experience in finance and tech";
-    const highlights = [
+    const highlights = useMemo(() => [
         "Equity Valuation",
         "Risk Management",
         "Machine Learning",
         "Full Stack Development"
-    ];
+    ], []);
     const cta = "Learn More";
 
     const [typedTitle, setTypedTitle] = useState("");
@@ -74,7 +74,7 @@ export default function CareerModal({ onClose }: CareerModalProps) {
         return () => {
             isCancelled = true;
         };
-    }, []);
+    }, [highlights]);
 
     return (
         <motion.div
