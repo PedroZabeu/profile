@@ -13,7 +13,7 @@ export default function AdventuresCTA() {
             <motion.div
                 className="absolute z-10 cursor-pointer flex items-center justify-center"
                 style={{
-                    left: "62.5%",
+                    left: "75%",
                     top: "40%",
                     transform: "translate(-50%, -50%)",
                 }}

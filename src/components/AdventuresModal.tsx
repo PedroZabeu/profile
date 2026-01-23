@@ -91,7 +91,7 @@ export default function AdventuresModal({ onClose }: AdventuresModalProps) {
                 aria-labelledby="adventures-title"
                 initial={{
                     scale: 0,
-                    x: "calc(62.5vw - 50vw)",
+                    x: "calc(75vw - 50vw)",
                     y: "calc(40vh - 50vh)"
                 }}
                 animate={{
@@ -101,7 +101,7 @@ export default function AdventuresModal({ onClose }: AdventuresModalProps) {
                 }}
                 exit={{
                     scale: 0,
-                    x: "calc(62.5vw - 50vw)",
+                    x: "calc(75vw - 50vw)",
                     y: "calc(40vh - 50vh)"
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
