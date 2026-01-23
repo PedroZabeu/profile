@@ -125,14 +125,14 @@ export default function ShowcasePage() {
                     <p className="text-xl text-slate-400 font-light leading-relaxed">
                         A minimalist text-only logo crafted with the Comfortaa font, inspired by the clean and rugged aesthetics of mountain landscapes. &quot;pedro&quot; uses the deep Night Summit tone, while &quot;.zabeu&quot; features a vibrant blue accent, reflecting the blend of professional depth and outdoor energy.
                     </p>
-                    <div className="grid grid-cols-2 gap-8 pt-12">
+                    <div className="flex justify-center gap-4 pt-12">
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-1 bg-[#0D1B2A] mb-2" />
+                            <div className="w-12 h-1 bg-[#0D1B2A] border border-white/30 mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Night Summit</span>
                         </div>
                         <div className="flex flex-col items-center">
                             <div className="w-12 h-1 bg-[#82b7f5] mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Glacier Steel</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Blue</span>
                         </div>
                     </div>
                 </div>
