@@ -11,7 +11,7 @@ export default function CareerCTA() {
     return (
         <>
             <motion.div
-                className="absolute z-10 cursor-pointer"
+                className="absolute z-10 cursor-pointer flex items-center justify-center"
                 style={{
                     left: "25%",
                     top: "75%",
@@ -23,8 +23,36 @@ export default function CareerCTA() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
             >
+                {/* Sonar Rings */}
+                {!isOpen && (
+                    <>
+                        <motion.div
+                            className="absolute w-4 h-4 rounded-full border border-[#F1F5F9]/60"
+                            initial={{ scale: 1, opacity: 0.8 }}
+                            animate={{ scale: 3.5, opacity: 0 }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeOut",
+                            }}
+                        />
+                        <motion.div
+                            className="absolute w-4 h-4 rounded-full border border-[#F1F5F9]/40"
+                            initial={{ scale: 1, opacity: 0.6 }}
+                            animate={{ scale: 2.5, opacity: 0 }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeOut",
+                                delay: 0.5,
+                            }}
+                        />
+                    </>
+                )}
+
+                {/* Main Pulsing Dot */}
                 <motion.div
-                    className="w-4 h-4 bg-[#F1F5F9] rounded-full"
+                    className="relative w-4 h-4 bg-[#F1F5F9] rounded-full z-10"
                     animate={{
                         scale: isOpen ? 0 : [1, 1.2, 1],
                         boxShadow: isOpen
