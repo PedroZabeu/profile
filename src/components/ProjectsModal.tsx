@@ -15,7 +15,7 @@ export default function ProjectsModal({ onClose }: ProjectsModalProps) {
         "Stakely",
         "School of Bets"
     ], []);
-    const cta = "Explore";
+    const cta = "Details";
 
     const [typedTitle, setTypedTitle] = useState("");
     const [typedDescription, setTypedDescription] = useState("");
