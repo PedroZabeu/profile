@@ -165,12 +165,6 @@ export default function ShowcasePage() {
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">EXPEDITION FONT</span>
                         </div>
                         <div className="flex flex-col items-center h-20 justify-end">
-                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive" }}>
-                                COMFORTAA
-                            </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">HEADINGS</span>
-                        </div>
-                        <div className="flex flex-col items-center h-20 justify-end">
                             <div className="w-12 h-1 bg-[#F1F5F9] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">ALPINE MIST</span>
                         </div>
