@@ -120,10 +120,10 @@ export default function ShowcasePage() {
 
             {/* Content Section */}
             <section className="relative z-30 min-h-screen bg-[#0D1B2A] text-white p-20 flex flex-col items-center justify-center border-t border-white/5">
-                <h2 className="text-5xl font-comfortaa mb-12 tracking-tighter">Logo Design Process</h2>
+                <h2 className="text-5xl font-comfortaa mb-12 tracking-tighter">Design Inspiration</h2>
                 <div className="max-w-2xl text-center space-y-6">
                     <p className="text-xl text-slate-400 font-light leading-relaxed">
-                        A minimalist text-only logo crafted with the Comfortaa font, inspired by the clean and rugged aesthetics of mountain landscapes. &quot;pedro&quot; uses the deep Night Summit tone, while &quot;.zabeu&quot; features a vibrant blue accent, reflecting the blend of professional depth and outdoor energy.
+                        A minimalist text-only logo crafted with the Comfortaa font, inspired by the clean and rugged aesthetics of mountain landscapes and Pedro&apos;s love for the outdoors and mountains. &quot;pedro&quot; uses the deep Night Summit tone, while &quot;.zabeu&quot; features a vibrant blue accent, reflecting the blend of professional depth and outdoor energy.
                     </p>
                     <div className="flex justify-center gap-4 pt-12">
                         <div className="flex flex-col items-center">
