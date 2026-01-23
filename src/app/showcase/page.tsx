@@ -120,23 +120,18 @@ export default function ShowcasePage() {
 
             {/* Content Section */}
             <section className="relative z-30 min-h-screen bg-[#0D1B2A] text-white p-20 flex flex-col items-center justify-center border-t border-white/5">
-                <h2 className="text-5xl font-comfortaa mb-12 tracking-tighter">Geometric Peak</h2>
+                <h2 className="text-5xl font-comfortaa mb-12 tracking-tighter">Logo Design Process</h2>
                 <div className="max-w-2xl text-center space-y-6">
                     <p className="text-xl text-slate-400 font-light leading-relaxed">
-                        A precise construction of rounded rectangles forming the skyline of a mountain,
-                        blending the initials <span className="text-white font-medium">P</span> and <span className="text-white font-medium">Z</span>.
+                        A minimalist text-only logo crafted with the Comfortaa font, inspired by the clean and rugged aesthetics of mountain landscapes. &quot;pedro&quot; uses the deep Night Summit tone, while &quot;.zabeu&quot; features a vibrant blue accent, reflecting the blend of professional depth and outdoor energy.
                     </p>
-                    <div className="grid grid-cols-3 gap-8 pt-12">
+                    <div className="grid grid-cols-2 gap-8 pt-12">
                         <div className="flex flex-col items-center">
                             <div className="w-12 h-1 bg-[#0D1B2A] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Night Summit</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-1 bg-[#4B5866] mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Slate Rock</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-1 bg-[#7A8FA3] mb-2" />
+                            <div className="w-12 h-1 bg-[#82b7f5] mb-2" />
                             <span className="text-[10px] uppercase tracking-widest text-slate-500">Glacier Steel</span>
                         </div>
                     </div>
