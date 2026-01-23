@@ -132,19 +132,19 @@ export default function ShowcasePage() {
                         A minimalist text-only logo crafted with the Comfortaa font, inspired by the clean and rugged aesthetics of mountain landscapes and Pedro&apos;s love for the outdoors and mountains. &quot;pedro&quot; uses the deep Night Summit tone, while &quot;.zabeu&quot; features a vibrant blue accent, reflecting the blend of professional depth and outdoor energy.
                     </p>
                     <div className="flex justify-center gap-6 pt-12">
-                        <div className="flex flex-col items-center">
-                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive", minHeight: '16px', display: 'flex', alignItems: 'center' }}>
+                        <div className="flex flex-col items-center h-20 justify-end">
+                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive" }}>
                                 COMFORTAA
                             </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Logo Font</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">LOGO FONT</span>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#0D1B2A] border border-white/30 mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Night Summit</span>
+                        <div className="flex flex-col items-center h-20 justify-end">
+                            <div className="w-12 h-1 bg-[#0D1B2A] border border-white/30 mb-2" />
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">NIGHT SUMMIT</span>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#82b7f5] mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Blue</span>
+                        <div className="flex flex-col items-center h-20 justify-end">
+                            <div className="w-12 h-1 bg-[#82b7f5] mb-2" />
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">ALPINE BLUE</span>
                         </div>
                     </div>
                 </div>
@@ -158,25 +158,25 @@ export default function ShowcasePage() {
                         The interactive CTA cards draw inspiration from expedition mission briefings, where precision, clarity, and comprehensive planning are essential for success.
                     </p>
                     <div className="flex justify-center gap-6 pt-12">
-                        <div className="flex flex-col items-center">
-                            <div className="text-[#F1F5F9] font-oxanium text-sm font-bold mb-2" style={{ fontFamily: "'Oxanium', sans-serif", minHeight: '16px', display: 'flex', alignItems: 'center' }}>
+                        <div className="flex flex-col items-center h-20 justify-end">
+                            <div className="text-[#F1F5F9] font-oxanium text-sm font-bold mb-2" style={{ fontFamily: "'Oxanium', sans-serif" }}>
                                 OXANIUM
                             </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Expedition Font</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">EXPEDITION FONT</span>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive", minHeight: '16px', display: 'flex', alignItems: 'center' }}>
+                        <div className="flex flex-col items-center h-20 justify-end">
+                            <div className="text-[#F1F5F9] font-comfortaa text-sm font-bold mb-2" style={{ fontFamily: "'Comfortaa', cursive" }}>
                                 COMFORTAA
                             </div>
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Headings</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">HEADINGS</span>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-4 bg-[#F1F5F9] mb-2" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Alpine Mist</span>
+                        <div className="flex flex-col items-center h-20 justify-end">
+                            <div className="w-12 h-1 bg-[#F1F5F9] mb-2" />
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">ALPINE MIST</span>
                         </div>
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-center h-20 justify-end">
                             <div className="w-1 h-1 bg-[#F1F5F9] rounded-full mb-2 animate-pulse" />
-                            <span className="text-[10px] uppercase tracking-widest text-slate-500">Expedition Dot</span>
+                            <span className="text-[10px] uppercase tracking-widest text-slate-500">EXPEDITION DOT</span>
                         </div>
                     </div>
                 </div>
