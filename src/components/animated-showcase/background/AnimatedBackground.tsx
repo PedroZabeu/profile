@@ -1,10 +1,11 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
+import { motion, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
+import AnimatedClouds from "./AnimatedClouds";
 
 interface AnimatedBackgroundProps {
-    scrollY: any;
+    scrollY: MotionValue<number>;
     mousePosition: { x: number; y: number };
 }
 
@@ -30,6 +31,9 @@ export default function AnimatedBackground({ scrollY, mousePosition }: AnimatedB
                 priority
             />
         </motion.div>
+
+        {/* Layer 1: Animated Clouds */}
+        <AnimatedClouds />
         </>
     );
 }
