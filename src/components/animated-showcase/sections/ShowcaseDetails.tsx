@@ -5,10 +5,11 @@ import { SendIcon } from "@/components/SendIcon";
 import { LinkedInIcon } from "@/components/LinkedinIcon";
 import { GithubIcon } from "@/components/GithubIcon";
 import { MailIcon } from "@/components/MailIcon";
+import ContactIcon from "./ContactIcon";
 
 export default function ShowcaseDetails() {
     return (
-        <section className="relative z-30 min-h-[70vh] bg-[#0D1B2A] text-white p-8 md:p-20 flex flex-col items-center justify-center border-t border-white/5">
+        <section id="showcase-details" className="relative z-30 min-h-[70vh] bg-[#0D1B2A] text-white p-8 md:p-20 flex flex-col items-center justify-center border-t border-white/5">
 
             {/* Logo Design Section */}
             <div className="max-w-2xl text-center space-y-6 mb-16">
@@ -65,74 +66,53 @@ export default function ShowcaseDetails() {
             <div className="w-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-16" />
 
             {/* Contact Section */}
-            <div className="max-w-2xl text-center space-y-6">
+            <div id="contact-section" className="max-w-2xl text-center space-y-6">
                 <h2 className="text-3xl md:text-5xl font-comfortaa tracking-tighter">Get In Touch</h2>
                 <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
                     Let&apos;s connect and discuss your next outdoor adventure or project.
                 </p>
                 <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 pt-12">
                     {/* WhatsApp */}
-                    <a
-                        href="https://wa.me/5511999999999"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex flex-col items-center gap-2 transition-transform hover:scale-110"
-                    >
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                            <MessageCircleIcon className="w-full h-full text-green-500" />
-                        </div>
-                        <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 font-comfortaa">WhatsApp</span>
-                    </a>
+                    <ContactIcon
+                        href="https://wa.me/5511971229926"
+                        icon={MessageCircleIcon}
+                        label="WhatsApp"
+                        value="+55 11 97122-9926"
+                        iconColor="text-green-500"
+                    />
 
                     {/* Telegram */}
-                    <a
-                        href="https://t.me/pedrozabeu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex flex-col items-center gap-2 transition-transform hover:scale-110"
-                    >
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                            <SendIcon className="w-full h-full text-blue-500" />
-                        </div>
-                        <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 font-comfortaa">Telegram</span>
-                    </a>
+                    <ContactIcon
+                        href="https://t.me/pzabeu"
+                        icon={SendIcon}
+                        label="Telegram"
+                        value="@pzabeu"
+                        iconColor="text-blue-500"
+                    />
 
                     {/* LinkedIn */}
-                    <a
-                        href="https://linkedin.com/in/pedrozabeu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex flex-col items-center gap-2 transition-transform hover:scale-110"
-                    >
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                            <LinkedInIcon className="w-full h-full text-[#F1F5F9]" />
-                        </div>
-                        <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 font-comfortaa">LinkedIn</span>
-                    </a>
+                    <ContactIcon
+                        href="https://www.linkedin.com/in/pedro-ivo-barreto-zabeu-95a066111/"
+                        icon={LinkedInIcon}
+                        label="LinkedIn"
+                        value="https://www.linkedin.com/in/pedro-ivo-barreto-zabeu-95a066111/"
+                    />
 
                     {/* GitHub */}
-                    <a
+                    <ContactIcon
                         href="https://github.com/pedrozabeu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex flex-col items-center gap-2 transition-transform hover:scale-110"
-                    >
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                            <GithubIcon className="w-full h-full text-[#F1F5F9]" />
-                        </div>
-                        <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 font-comfortaa">GitHub</span>
-                    </a>
+                        icon={GithubIcon}
+                        label="GitHub"
+                        value="https://github.com/pedrozabeu"
+                    />
 
                     {/* Email */}
-                    <a
-                        href="mailto:pedro.zabeu@example.com"
-                        className="group flex flex-col items-center gap-2 transition-transform hover:scale-110"
-                    >
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                            <MailIcon className="w-full h-full text-[#F1F5F9]" />
-                        </div>
-                        <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 font-comfortaa">Email</span>
-                    </a>
+                    <ContactIcon
+                        href="mailto:pedroibzabeu@gmail.com"
+                        icon={MailIcon}
+                        label="Email"
+                        value="pedroibzabeu@gmail.com"
+                    />
                 </div>
             </div>
         </section>

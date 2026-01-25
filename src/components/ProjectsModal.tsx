@@ -5,9 +5,10 @@ import { useEffect, useState, useMemo } from "react";
 
 interface ProjectsModalProps {
     onClose: () => void;
+    origin?: { x: number; y: number };
 }
 
-export default function ProjectsModal({ onClose }: ProjectsModalProps) {
+export default function ProjectsModal({ onClose, origin = { x: 37.5, y: 37.5 } }: ProjectsModalProps) {
     const title = "PROJECTS";
     const description = "Full-stack web applications builder. From PRD to fully functioning apps";
     const highlights = useMemo(() => [
@@ -90,8 +91,8 @@ export default function ProjectsModal({ onClose }: ProjectsModalProps) {
                 aria-labelledby="projects-title"
                 initial={{
                     scale: 0,
-                    x: "calc(37.5vw - 50vw)",
-                    y: "calc(37.5vh - 50vh)"
+                    x: `calc(${origin.x}vw - 50vw)`,
+                    y: `calc(${origin.y}vh - 50vh)`
                 }}
                 animate={{
                     scale: 1,
@@ -100,8 +101,8 @@ export default function ProjectsModal({ onClose }: ProjectsModalProps) {
                 }}
                 exit={{
                     scale: 0,
-                    x: "calc(37.5vw - 50vw)",
-                    y: "calc(37.5vh - 50vh)"
+                    x: `calc(${origin.x}vw - 50vw)`,
+                    y: `calc(${origin.y}vh - 50vh)`
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 onClick={(e) => e.stopPropagation()}

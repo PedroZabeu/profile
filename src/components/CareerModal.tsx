@@ -5,9 +5,10 @@ import { useEffect, useState, useMemo } from "react";
 
 interface CareerModalProps {
     onClose: () => void;
+    origin?: { x: number; y: number };
 }
 
-export default function CareerModal({ onClose }: CareerModalProps) {
+export default function CareerModal({ onClose, origin = { x: 25, y: 75 } }: CareerModalProps) {
     const title = "CAREER";
     const description = "Executive and entrepreneur with 15+ years of experience in finance and tech";
     const highlights = useMemo(() => [
@@ -91,8 +92,8 @@ export default function CareerModal({ onClose }: CareerModalProps) {
                 aria-labelledby="career-title"
                 initial={{
                     scale: 0,
-                    x: "calc(25vw - 50vw)",
-                    y: "calc(75vh - 50vh)"
+                    x: `calc(${origin.x}vw - 50vw)`,
+                    y: `calc(${origin.y}vh - 50vh)`
                 }}
                 animate={{
                     scale: 1,
@@ -101,8 +102,8 @@ export default function CareerModal({ onClose }: CareerModalProps) {
                 }}
                 exit={{
                     scale: 0,
-                    x: "calc(25vw - 50vw)",
-                    y: "calc(75vh - 50vh)"
+                    x: `calc(${origin.x}vw - 50vw)`,
+                    y: `calc(${origin.y}vh - 50vh)`
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 onClick={(e) => e.stopPropagation()}

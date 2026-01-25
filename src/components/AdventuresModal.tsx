@@ -5,9 +5,10 @@ import { useEffect, useState, useMemo } from "react";
 
 interface AdventuresModalProps {
     onClose: () => void;
+    origin?: { x: number; y: number };
 }
 
-export default function AdventuresModal({ onClose }: AdventuresModalProps) {
+export default function AdventuresModal({ onClose, origin = { x: 72, y: 40 } }: AdventuresModalProps) {
     const title = "ADVENTURES";
     const description = "Mountain climber and outdoor explorer with expeditions across the world";
     const highlights = useMemo(() => [
@@ -91,8 +92,8 @@ export default function AdventuresModal({ onClose }: AdventuresModalProps) {
                 aria-labelledby="adventures-title"
                 initial={{
                     scale: 0,
-                    x: "calc(72vw - 50vw)",
-                    y: "calc(40vh - 50vh)"
+                    x: `calc(${origin.x}vw - 50vw)`,
+                    y: `calc(${origin.y}vh - 50vh)`
                 }}
                 animate={{
                     scale: 1,
@@ -101,8 +102,8 @@ export default function AdventuresModal({ onClose }: AdventuresModalProps) {
                 }}
                 exit={{
                     scale: 0,
-                    x: "calc(72vw - 50vw)",
-                    y: "calc(40vh - 50vh)"
+                    x: `calc(${origin.x}vw - 50vw)`,
+                    y: `calc(${origin.y}vh - 50vh)`
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 onClick={(e) => e.stopPropagation()}
