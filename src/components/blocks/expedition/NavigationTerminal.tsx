@@ -5,7 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS, ANIMATION_TIMINGS } from "@/lib/data/expedition";
 import Link from "next/link";
 
-const TerminalButton = ({ label, href, delay }: { label: string; href: string; delay: number }) => {
+interface TerminalButtonProps {
+    id: string;
+    label: string;
+    href: string;
+    delay: number;
+    isActive: boolean;
+    onClick: (id: string) => void;
+}
+
+const TerminalButton = ({ id, label, href, delay, isActive, onClick }: TerminalButtonProps) => {
     const [isHovered, setIsHovered] = useState(false);
     const [typedLabel, setTypedLabel] = useState("");
     const [isTyping, setIsTyping] = useState(true);
@@ -42,16 +51,26 @@ const TerminalButton = ({ label, href, delay }: { label: string; href: string; d
         }
     };
 
+    const handleClick = (e: React.MouseEvent) => {
+        if (href.startsWith("#")) {
+            e.preventDefault();
+            onClick(id);
+        }
+    };
+
     return (
-        <Link href={href} className="block w-fit">
+        <Link href={href} className="block w-fit" onClick={handleClick} id={`nav-button-${id}`}>
             <motion.div
-                className="font-oxanium text-2xl md:text-3xl text-glacier-steel cursor-pointer py-2 group flex items-center gap-2"
+                className={`font-oxanium text-2xl md:text-3xl cursor-pointer py-2 group flex items-center gap-2 transition-colors ${isActive ? "text-white" : "text-glacier-steel"
+                    }`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 animate={isHovered ? "glitch" : "initial"}
                 variants={glitchVariants}
             >
-                <span className="text-alpine-mist opacity-50">{"> "}</span>
+                <span className={`transition-opacity ${isActive ? "opacity-100" : "opacity-50 text-alpine-mist"}`}>
+                    {isActive ? "> " : "> "}
+                </span>
                 <span className="relative">
                     {typedLabel}
                     {isTyping && (
@@ -62,20 +81,28 @@ const TerminalButton = ({ label, href, delay }: { label: string; href: string; d
                         />
                     )}
 
+                    {/* Active Indicator Underline */}
+                    {isActive && (
+                        <motion.div
+                            layoutId="activeUnderline"
+                            className="absolute -bottom-1 left-0 right-0 h-[2px] bg-white/50"
+                        />
+                    )}
+
                     {/* Glitch Overlay Effect */}
                     <AnimatePresence>
-                        {isHovered && (
+                        {(isHovered || isActive) && (
                             <>
                                 <motion.span
-                                    className="absolute inset-0 text-red-500/50 mix-blend-screen"
-                                    animate={{ x: [-2, 2, -1], y: [1, -1, 0] }}
+                                    className="absolute inset-0 text-red-500/30 mix-blend-screen"
+                                    animate={{ x: [-1, 1, -0.5], y: [0.5, -0.5, 0] }}
                                     transition={{ duration: 0.1, repeat: Infinity }}
                                 >
                                     {label}
                                 </motion.span>
                                 <motion.span
-                                    className="absolute inset-0 text-cyan-500/50 mix-blend-screen"
-                                    animate={{ x: [2, -2, 1], y: [-1, 1, 0] }}
+                                    className="absolute inset-0 text-cyan-500/30 mix-blend-screen"
+                                    animate={{ x: [1, -1, 0.5], y: [-0.5, 0.5, 0] }}
                                     transition={{ duration: 0.1, repeat: Infinity }}
                                 >
                                     {label}
@@ -89,9 +116,14 @@ const TerminalButton = ({ label, href, delay }: { label: string; href: string; d
     );
 };
 
-export const NavigationTerminal = () => {
+interface NavigationTerminalProps {
+    activeTab: string | null;
+    onTabChange: (id: string | null) => void;
+}
+
+export const NavigationTerminal = ({ activeTab, onTabChange }: NavigationTerminalProps) => {
     return (
-        <div className="flex flex-col gap-4 p-8 md:p-16 items-center md:items-start">
+        <div className="flex flex-col gap-4 p-8 md:p-16 items-center md:items-start shrink-0">
             <div className="font-oxanium text-alpine-mist opacity-70 mb-4 tracking-widest text-sm flex flex-col items-center md:items-start text-center md:text-left">
                 [ COMMAND TERMINAL ]
                 <div className="h-[1px] w-32 bg-alpine-mist/30 mt-1" />
@@ -100,9 +132,12 @@ export const NavigationTerminal = () => {
                 {NAV_ITEMS.map((item, index) => (
                     <TerminalButton
                         key={item.id}
+                        id={item.id}
                         label={item.label}
                         href={item.path}
                         delay={0.5 + index * 0.4}
+                        isActive={activeTab === item.id}
+                        onClick={(id) => onTabChange(activeTab === id ? null : id)}
                     />
                 ))}
             </div>

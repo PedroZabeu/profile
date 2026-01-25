@@ -1,12 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { TopographyBackground } from "@/components/blocks/expedition/TopographyBackground";
 import { NavigationTerminal } from "@/components/blocks/expedition/NavigationTerminal";
 import { ScanLine } from "@/components/blocks/expedition/ScanLine";
 import { ExpeditionFooter } from "@/components/blocks/expedition/ExpeditionFooter";
-import { motion } from "framer-motion";
+import { CareerBox } from "@/components/blocks/expedition/CareerBox";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const ExpeditionHub = () => {
+    const [activeTab, setActiveTab] = useState<string | null>(null);
+
     return (
         <main className="relative w-full h-screen bg-night-summit overflow-hidden flex flex-col">
             {/* Background Layers */}
@@ -14,8 +18,17 @@ export const ExpeditionHub = () => {
             <ScanLine />
 
             {/* Main Content Area */}
-            <div className="relative z-10 flex-1 flex flex-col">
-                <NavigationTerminal />
+            <div className="relative z-10 flex-1 flex flex-col md:flex-row">
+                <NavigationTerminal
+                    activeTab={activeTab}
+                    onTabChange={setActiveTab}
+                />
+
+                <AnimatePresence>
+                    {activeTab === 'career' && (
+                        <CareerBox isOpen={activeTab === 'career'} />
+                    )}
+                </AnimatePresence>
             </div>
 
             {/* Status Indicators (Bottom Left) */}
@@ -24,7 +37,7 @@ export const ExpeditionHub = () => {
                     animate={{ opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 4, repeat: Infinity }}
                 >
-                    SYSTEM: STANDBY // SIGNAL_STABLE
+                    SYSTEM: {activeTab ? `SYNCING_${activeTab.toUpperCase()}` : 'STANDBY // SIGNAL_STABLE'}
                 </motion.div>
                 <div>
                     EXPEDITION_HUB_V3.0 // {new Date().getFullYear()}
