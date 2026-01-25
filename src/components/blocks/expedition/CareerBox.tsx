@@ -70,6 +70,7 @@ export const CareerBox = ({ isOpen }: CareerBoxProps) => {
                                 key={milestone.id}
                                 index={index}
                                 {...milestone}
+                                onClick={() => console.log(`Accessing log for: ${milestone.company}`)}
                             />
                         ))}
                     </div>
