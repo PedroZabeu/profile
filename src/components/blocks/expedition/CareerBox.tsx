@@ -43,12 +43,26 @@ export const CareerBox = ({ isOpen, onClose }: CareerBoxProps) => {
         // Small delay to allow expansion before checking visibility if needed
     };
 
+    const boxVariants = {
+        initial: { scale: 0, opacity: 0 },
+        animate: {
+            scale: 1,
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeOut" as any, delay: 0.2 }
+        },
+        exit: {
+            scale: 0,
+            opacity: 0,
+            transition: { duration: 0.4, ease: "easeOut" as any }
+        }
+    };
+
     return (
         <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            variants={boxVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             style={{
                 transformOrigin: isMobile ? "top" : "top left"
             }}
@@ -83,10 +97,10 @@ export const CareerBox = ({ isOpen, onClose }: CareerBoxProps) => {
                         <span>[</span> <X size={14} /> <span>]</span>
                     </button>
                 </div>
-            </div>
+            </div >
 
             {/* Content Viewport */}
-            <div
+            < div
                 ref={scrollRef}
                 className="flex-1 overflow-y-auto overflow-x-hidden relative custom-scrollbar font-oxanium"
             >
@@ -117,7 +131,7 @@ export const CareerBox = ({ isOpen, onClose }: CareerBoxProps) => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
-        </motion.div>
+            </div >
+        </motion.div >
     );
 };

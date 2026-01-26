@@ -6,6 +6,7 @@ import { NavigationTerminal } from "@/components/blocks/expedition/NavigationTer
 import { ScanLine } from "@/components/blocks/expedition/ScanLine";
 import { ExpeditionFooter } from "@/components/blocks/expedition/ExpeditionFooter";
 import { CareerBox } from "@/components/blocks/expedition/CareerBox";
+import { SkillsBox } from "@/components/blocks/expedition/SkillsBox";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const ExpeditionHub = () => {
@@ -27,10 +28,18 @@ export const ExpeditionHub = () => {
                     onTabChange={setActiveTab}
                 />
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {activeTab === 'career' && (
                         <CareerBox
+                            key="career-box"
                             isOpen={activeTab === 'career'}
+                            onClose={() => setActiveTab(null)}
+                        />
+                    )}
+                    {activeTab === 'skills' && (
+                        <SkillsBox
+                            key="skills-box"
+                            isOpen={activeTab === 'skills'}
                             onClose={() => setActiveTab(null)}
                         />
                     )}
