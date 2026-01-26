@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS, ANIMATION_TIMINGS } from "@/lib/data/expedition";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface TerminalButtonProps {
     id: string;
@@ -11,10 +12,11 @@ interface TerminalButtonProps {
     href: string;
     delay: number;
     isActive: boolean;
-    onClick: (id: string) => void;
+    onClick: (id: string | null) => void;
 }
 
 const TerminalButton = ({ id, label, href, delay, isActive, onClick }: TerminalButtonProps) => {
+    const router = useRouter();
     const [isHovered, setIsHovered] = useState(false);
     const [typedLabel, setTypedLabel] = useState("");
     const [isTyping, setIsTyping] = useState(true);
@@ -55,6 +57,15 @@ const TerminalButton = ({ id, label, href, delay, isActive, onClick }: TerminalB
         if (href.startsWith("#")) {
             e.preventDefault();
             onClick(id);
+        } else if (href === "/") {
+            e.preventDefault();
+            // Close the tab first to trigger exit animation
+            onClick(null);
+
+            // Wait for career box exit animation (0.4s) plus a small buffer
+            setTimeout(() => {
+                router.push("/");
+            }, 500);
         }
     };
 
@@ -123,7 +134,10 @@ interface NavigationTerminalProps {
 
 export const NavigationTerminal = ({ activeTab, onTabChange }: NavigationTerminalProps) => {
     return (
-        <div className="flex flex-col gap-4 p-8 md:p-16 items-center md:items-start shrink-0">
+        <div
+            className="flex flex-col gap-4 p-8 md:p-16 items-center md:items-start shrink-0"
+            onClick={(e) => e.stopPropagation()}
+        >
             <div className="font-oxanium text-alpine-mist opacity-70 mb-4 tracking-widest text-sm flex flex-col items-center md:items-start text-center md:text-left">
                 [ COMMAND TERMINAL ]
                 <div className="h-[1px] w-32 bg-alpine-mist/30 mt-1" />

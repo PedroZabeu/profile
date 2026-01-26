@@ -12,7 +12,10 @@ export const ExpeditionHub = () => {
     const [activeTab, setActiveTab] = useState<string | null>(null);
 
     return (
-        <main className="relative w-full h-screen bg-night-summit overflow-hidden flex flex-col">
+        <main
+            className="relative w-full h-screen bg-night-summit overflow-hidden flex flex-col"
+            onClick={() => setActiveTab(null)}
+        >
             {/* Background Layers */}
             <TopographyBackground />
             <ScanLine />
@@ -26,13 +29,19 @@ export const ExpeditionHub = () => {
 
                 <AnimatePresence>
                     {activeTab === 'career' && (
-                        <CareerBox isOpen={activeTab === 'career'} />
+                        <CareerBox
+                            isOpen={activeTab === 'career'}
+                            onClose={() => setActiveTab(null)}
+                        />
                     )}
                 </AnimatePresence>
             </div>
 
             {/* Status Indicators (Bottom Left) */}
-            <div className="absolute bottom-12 left-12 z-20 font-mono text-[10px] text-glacier-steel opacity-50 flex flex-col gap-1">
+            <div
+                className="absolute bottom-12 left-12 z-20 font-oxanium text-[10px] text-glacier-steel opacity-50 flex flex-col gap-1"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <motion.div
                     animate={{ opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 4, repeat: Infinity }}
@@ -45,7 +54,9 @@ export const ExpeditionHub = () => {
             </div>
 
             {/* Footer Contact Area */}
-            <ExpeditionFooter />
+            <div onClick={(e) => e.stopPropagation()}>
+                <ExpeditionFooter />
+            </div>
         </main>
     );
 };
