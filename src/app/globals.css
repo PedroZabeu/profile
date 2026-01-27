@@ -7,6 +7,7 @@
   --glacier-steel: #7A8FA3;
   --night-summit: #0D1B2A;
   --alpine-mist: #F1F5F9;
+  --alpine-blue: #82B7F5;
   --fresh-powder: #FFFFFF;
   --radius: 0.625rem;
   --background: #F1F5F9;
@@ -48,6 +49,7 @@
   --color-glacier-steel: var(--glacier-steel);
   --color-night-summit: var(--night-summit);
   --color-alpine-mist: var(--alpine-mist);
+  --color-alpine-blue: var(--alpine-blue);
   --color-fresh-powder: var(--fresh-powder);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

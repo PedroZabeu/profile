@@ -81,13 +81,13 @@ const ContactIcon = ({
     );
 };
 
-export const ExpeditionFooter = () => {
+export const ExpeditionFooter = ({ standalone = true }: { standalone?: boolean }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 1 }}
-            className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20"
+            className={standalone ? "absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20" : "relative"}
         >
             <div className="flex items-center gap-8">
                 <div className="flex flex-col items-end">
