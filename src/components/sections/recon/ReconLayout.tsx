@@ -9,6 +9,7 @@ import { TacticalArchive } from "@/components/blocks/recon/TacticalArchive";
 import { useState, useEffect } from "react";
 import { Adventure } from "@/lib/data/adventures";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { AdventureBriefingModal } from "@/components/blocks/recon/AdventureBriefingModal";
 
 interface ReconLayoutProps {
     showTopography?: boolean;
@@ -18,6 +19,7 @@ export const ReconLayout = ({ showTopography = false }: ReconLayoutProps) => {
     const [systemStatus, setSystemStatus] = useState("INITIALIZING_SCAN");
     const [selectedAdventure, setSelectedAdventure] = useState<Adventure | null>(null);
     const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
+    const [isBriefingOpen, setIsBriefingOpen] = useState(false);
     const isDesktop = useMediaQuery("(min-width: 768px)");
 
     useEffect(() => {
@@ -29,8 +31,26 @@ export const ReconLayout = ({ showTopography = false }: ReconLayoutProps) => {
 
     const handleSelectAdventure = (adventure: Adventure) => {
         setSelectedAdventure(adventure);
-        setSystemStatus(`TARGET_ACQUIRED // ${adventure.id.toUpperCase().replace('-', '_')}`);
+        setSystemStatus(`TARGET_ACQUIRING // ${adventure.id.toUpperCase().replace('-', '_')}`);
         setIsMobileDrawerOpen(false);
+    };
+
+    const handleLockComplete = () => {
+        if (selectedAdventure) {
+            setSystemStatus(`DOWNLOADING_LOGS... // ${selectedAdventure.id.toUpperCase().replace('-', '_')}`);
+
+            // 0.5s Technical Delay according to F-4.4 plan
+            setTimeout(() => {
+                setSystemStatus(`TARGET_LOCKED // ${selectedAdventure.id.toUpperCase().replace('-', '_')}`);
+                setIsBriefingOpen(true);
+            }, 500);
+        }
+    };
+
+    const handleCloseModal = () => {
+        setIsBriefingOpen(false);
+        setSelectedAdventure(null);
+        setSystemStatus("SIGNAL_STABLE // RECON_ACTIVE");
     };
 
     return (
@@ -150,19 +170,8 @@ export const ReconLayout = ({ showTopography = false }: ReconLayoutProps) => {
                         <Globe
                             delay={1.2}
                             focusLocation={selectedAdventure ? { lat: selectedAdventure.lat, lng: selectedAdventure.lng } : null}
+                            onLockComplete={handleLockComplete}
                         />
-                        {selectedAdventure && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="absolute pointer-events-none"
-                            >
-                                <div className="w-40 h-40 border border-alpine-blue/20 rounded-full animate-ping opacity-20" />
-                                <div className="absolute inset-0 flex items-center justify-center text-[10px] text-alpine-blue tracking-tighter font-bold">
-                                    [ LOCK_ON_SYNC ]
-                                </div>
-                            </motion.div>
-                        )}
                     </div>
                 </section>
             </div>
@@ -190,6 +199,12 @@ export const ReconLayout = ({ showTopography = false }: ReconLayoutProps) => {
                     </div>
                 </div>
             </footer>
+
+            <AdventureBriefingModal
+                adventure={selectedAdventure}
+                isOpen={isBriefingOpen}
+                onClose={handleCloseModal}
+            />
         </main>
     );
 };

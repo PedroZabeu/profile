@@ -1,43 +1,62 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import createGlobe from "cobe";
-import { motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { ADVENTURE_CLUSTERS } from "@/lib/data/adventures";
 
 interface GlobeProps {
     delay?: number;
     focusLocation?: { lat: number; lng: number } | null;
+    onLockComplete?: () => void;
 }
 
-export const Globe = ({ delay = 1.2, focusLocation }: GlobeProps) => {
+export const Globe = ({ delay = 1.2, focusLocation, onLockComplete }: GlobeProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const pointerInteracting = useRef(null);
-    const pointerInteractionMovement = useRef(0);
+    const focusAnglesRef = useRef<[number, number]>([0, 0]);
+    const activeLocationRef = useRef<{ lat: number; lng: number } | null>(null);
+    const isLockedRef = useRef(false);
 
-    // Spring values for smooth transition
-    const r = useSpring(0, {
-        stiffness: 280,
-        damping: 40,
-        mass: 1,
-    });
+    // Use refs for animation state to prevent resets during re-renders
+    const currentPhiRef = useRef(0);
+    const currentThetaRef = useRef(0.3);
 
-    const focusR = useSpring(0, {
-        stiffness: 280,
-        damping: 40,
-    });
+    // Helper to convert lat/long to COBE angles
+    const locationToAngles = (lat: number, long: number): [number, number] => {
+        return [Math.PI - ((long * Math.PI) / 180 - Math.PI / 2), (lat * Math.PI) / 180];
+    };
 
-    // Prepare markers from all clusters
-    const allMarkers = ADVENTURE_CLUSTERS.flatMap(cluster =>
-        cluster.adventures.map(adv => ({
-            location: [adv.lat, adv.lng] as [number, number],
-            size: 0.05
-        }))
-    );
+    // Prepare unique markers from all clusters to avoid overlapping glow
+    const allMarkers = useMemo(() => {
+        const uniqueMarkers = new Map<string, { location: [number, number]; size: number }>();
+
+        ADVENTURE_CLUSTERS.forEach(cluster => {
+            cluster.adventures.forEach(adv => {
+                const key = `${adv.lat},${adv.lng}`;
+                if (!uniqueMarkers.has(key)) {
+                    uniqueMarkers.set(key, {
+                        location: [adv.lat, adv.lng],
+                        size: 0.05
+                    });
+                }
+            });
+        });
+
+        return Array.from(uniqueMarkers.values());
+    }, []);
+
+    // Update refs when props change
+    useEffect(() => {
+        activeLocationRef.current = focusLocation ?? null;
+        if (focusLocation) {
+            focusAnglesRef.current = locationToAngles(focusLocation.lat, focusLocation.lng);
+            isLockedRef.current = false;
+        }
+    }, [focusLocation]);
 
     useEffect(() => {
-        let phi = 0;
         let width = 0;
+        const doublePi = Math.PI * 2;
 
         const onResize = () => {
             if (canvasRef.current) {
@@ -59,27 +78,48 @@ export const Globe = ({ delay = 1.2, focusLocation }: GlobeProps) => {
             diffuse: 1.2,
             mapSamples: 16000,
             mapBrightness: 6,
-            baseColor: [0.05, 0.1, 0.16],
-            markerColor: [0.51, 0.72, 0.96],
-            glowColor: [0.51, 0.72, 0.96],
+            baseColor: [0.05, 0.1, 0.16], // Dark Alpine Blue
+            markerColor: [1, 1, 1], // Pure White for clean technical look
+            glowColor: [1, 1, 1], // White Glow
             markers: allMarkers,
             onRender: (state) => {
-                if (!focusLocation) {
-                    phi += 0.003;
-                    state.phi = phi + r.get();
-                } else {
-                    // Logic to rotate to specific lat/lng
-                    // cobe phi is longitude in radians, but it rotates.
-                    // We need to map lng to phi.
-                    const targetPhi = -(focusLocation.lng * Math.PI) / 180;
-                    const targetTheta = (focusLocation.lat * Math.PI) / 180;
-
-                    // We use r and focusR to smoothly transition
-                    state.phi = targetPhi + r.get();
-                    state.theta = 0.3 + (targetTheta * 0.5); // Subtle tilt adjustment
-                }
                 state.width = width * 2;
                 state.height = width * 2;
+
+                const targetLocation = activeLocationRef.current;
+
+                if (!targetLocation) {
+                    // IDLE DRIFT
+                    currentPhiRef.current += 0.003;
+                    state.phi = currentPhiRef.current;
+                    state.theta = currentThetaRef.current;
+                    isLockedRef.current = false;
+                } else {
+                    // TARGET LOCK ROTATION
+                    const [focusPhi, focusTheta] = focusAnglesRef.current;
+                    const distPositive = (focusPhi - currentPhiRef.current + doublePi) % doublePi;
+                    const distNegative = (currentPhiRef.current - focusPhi + doublePi) % doublePi;
+
+                    // Shortest path rotation
+                    if (distPositive < distNegative) {
+                        currentPhiRef.current += distPositive * 0.08;
+                    } else {
+                        currentPhiRef.current -= distNegative * 0.08;
+                    }
+
+                    // Theta interpolation
+                    currentThetaRef.current = currentThetaRef.current * 0.92 + focusTheta * 0.08;
+
+                    state.phi = currentPhiRef.current;
+                    state.theta = currentThetaRef.current;
+
+                    // Check for lock completion (very close to target)
+                    const totalDist = Math.abs(distPositive < distNegative ? distPositive : distNegative);
+                    if (totalDist < 0.01 && !isLockedRef.current) {
+                        isLockedRef.current = true;
+                        if (onLockComplete) onLockComplete();
+                    }
+                }
             },
         });
 
@@ -93,15 +133,7 @@ export const Globe = ({ delay = 1.2, focusLocation }: GlobeProps) => {
             globe.destroy();
             window.removeEventListener("resize", onResize);
         };
-    }, []);
-
-    // Effect to handle slow rotation reset or specific focus
-    useEffect(() => {
-        if (focusLocation) {
-            // When focusing, we might want to reset the manual rotation
-            r.set(0);
-        }
-    }, [focusLocation, r]);
+    }, [allMarkers, onLockComplete]);
 
     return (
         <motion.div
