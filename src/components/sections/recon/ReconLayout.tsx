@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { Adventure } from "@/lib/data/adventures";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { AdventureBriefingModal } from "@/components/blocks/recon/AdventureBriefingModal";
+import Link from "next/link";
 
 interface ReconLayoutProps {
     showTopography?: boolean;
@@ -72,8 +73,17 @@ export const ReconLayout = ({ showTopography = false }: ReconLayoutProps) => {
                     >
                         [ ARCHIVE ]
                     </button>
-                    <span className="hidden md:inline">[ ADVENTURES ]</span>
-                    <span className="md:hidden">[ P.Z ]</span>
+                    <span className="hidden md:inline text-white opacity-80">[ ADVENTURES ]</span>
+                    <span className="md:hidden text-white opacity-80">[ P.Z ]</span>
+
+                    <div className="h-4 w-[1px] bg-white/10 mx-2 hidden md:block" />
+                    <Link
+                        href="/"
+                        className="font-oxanium text-[10px] tracking-[0.3em] text-glacier-steel hover:text-white transition-all flex items-center gap-2 group"
+                    >
+                        <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all font-bold group-hover:text-alpine-blue">&gt;</span>
+                        HOME_BASE
+                    </Link>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}

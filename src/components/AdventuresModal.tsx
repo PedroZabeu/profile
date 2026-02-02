@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
+import Link from "next/link";
+
 
 interface AdventuresModalProps {
     onClose: () => void;
@@ -161,13 +163,13 @@ export default function AdventuresModal({ onClose, origin = { x: 72, y: 40 } }: 
                 </div>
 
                 {/* CTA */}
-                <button
+                <Link
+                    href="/adventures"
                     className="text-xl text-[#F1F5F9] hover:opacity-70 transition-opacity duration-300 self-start group flex items-center"
                     style={{
                         fontWeight: 600,
                         opacity: typedCTA ? 1 : 0
                     }}
-                    onClick={onClose}
                 >
                     <span className="border-b border-transparent group-hover:border-[#F1F5F9] transition-colors">
                         {typedCTA}
@@ -175,7 +177,8 @@ export default function AdventuresModal({ onClose, origin = { x: 72, y: 40 } }: 
                     {typedCTA.length > 0 && typedCTA.length < cta.length && (
                         <span className="inline-block w-1 h-5 bg-[#F1F5F9] ml-1 animate-pulse align-middle" />
                     )}
-                </button>
+                </Link>
+
             </motion.div>
         </motion.div>
     );
