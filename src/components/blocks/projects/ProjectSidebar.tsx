@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const PROJECTS_NAV = [
-    { id: 'betting-mgmt', label: 'BETTING_MGMT', index: '01' },
-    { id: 'stakely', label: 'STAKELY', index: '02' },
-    { id: 'school-bets', label: 'SCHOOL_BETS', index: '03' },
-    { id: 'home', label: 'HOME', index: '04' }
+    { id: 'betting-mgmt', label: 'BETTING_MGMT', index: '01', type: 'project' },
+    { id: 'stakely', label: 'STAKELY', index: '02', type: 'project' },
+    { id: 'school-bets', label: 'SCHOOL_BETS', index: '03', type: 'project' },
+    { id: 'home', label: 'HOME', index: '04', type: 'redirect', target: '/' }
 ];
 
 const ANIMATION_TIMINGS = {
@@ -18,28 +18,29 @@ interface TerminalButtonProps {
     id: string;
     label: string;
     index: string;
+    type: string;
     delay: number;
     isActive: boolean;
     onClick: (id: string) => void;
 }
 
-const TerminalButton = ({ id, label, index, delay, isActive, onClick }: TerminalButtonProps) => {
+const TerminalButton = ({ id, label, index, type, delay, isActive, onClick }: TerminalButtonProps) => {
     const [isHovered, setIsHovered] = useState(false);
     const [typedLabel, setTypedLabel] = useState("");
     const [isTyping, setIsTyping] = useState(true);
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
-        const type = (idx: number) => {
+        const typeEffect = (idx: number) => {
             if (idx <= label.length) {
                 setTypedLabel(label.slice(0, idx));
-                timeout = setTimeout(() => type(idx + 1), (ANIMATION_TIMINGS.TYPE_SPEED * 1000) / label.length);
+                timeout = setTimeout(() => typeEffect(idx + 1), (ANIMATION_TIMINGS.TYPE_SPEED * 1000) / label.length);
             } else {
                 setIsTyping(false);
             }
         };
 
-        const initialDelay = setTimeout(() => type(0), delay * 1000);
+        const initialDelay = setTimeout(() => typeEffect(0), delay * 1000);
         return () => {
             clearTimeout(initialDelay);
             clearTimeout(timeout);
@@ -70,7 +71,7 @@ const TerminalButton = ({ id, label, index, delay, isActive, onClick }: Terminal
         >
             <motion.div
                 className={`font-oxanium text-2xl md:text-3xl py-2 group flex items-center gap-4 transition-colors ${isActive ? "text-white" : "text-glacier-steel"
-                    }`}
+                    } ${type === 'redirect' ? 'opacity-80 hover:opacity-100' : ''}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 animate={isHovered ? "glitch" : "initial"}
@@ -82,8 +83,13 @@ const TerminalButton = ({ id, label, index, delay, isActive, onClick }: Terminal
                 <span className={`transition-opacity ${isActive ? "opacity-100" : "opacity-50 text-alpine-mist"}`}>
                     {"> "}
                 </span>
-                <span className="relative">
+                <span className="relative flex items-center gap-3">
                     {typedLabel}
+                    {type === 'redirect' && !isTyping && (
+                        <span className="text-sm text-alpine-blue group-hover:translate-x-1 transition-transform">
+                            (→)
+                        </span>
+                    )}
                     {isTyping && (
                         <motion.span
                             animate={{ opacity: [1, 0] }}
@@ -149,6 +155,7 @@ export const ProjectSidebar = ({ selectedProject, onProjectSelect }: ProjectSide
                         id={item.id}
                         label={item.label}
                         index={item.index}
+                        type={item.type}
                         delay={0.5 + index * 0.2}
                         isActive={selectedProject === item.id}
                         onClick={onProjectSelect}
