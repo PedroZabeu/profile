@@ -26,7 +26,7 @@ export default function CareerModal({ onClose, origin = { x: 25, y: 75 } }: Care
     const [typedCTA, setTypedCTA] = useState("");
     const [currentHighlightIndex, setCurrentHighlightIndex] = useState(-1);
 
-    const typingSpeed = 25; // 4x faster than 100ms
+    const typingSpeed = 6; // Twice as fast as 12ms
 
     useEffect(() => {
         let isCancelled = false;
@@ -47,11 +47,11 @@ export default function CareerModal({ onClose, origin = { x: 25, y: 75 } }: Care
         const startSequence = async () => {
             // 1. Type Title
             await typeString(title, setTypedTitle);
-            await new Promise((resolve) => setTimeout(resolve, 100));
+            await new Promise((resolve) => setTimeout(resolve, 30));
 
             // 2. Type Description
             await typeString(description, setTypedDescription);
-            await new Promise((resolve) => setTimeout(resolve, 100));
+            await new Promise((resolve) => setTimeout(resolve, 30));
 
             // 3. Type Highlights
             for (let i = 0; i < highlights.length; i++) {
@@ -64,7 +64,7 @@ export default function CareerModal({ onClose, origin = { x: 25, y: 75 } }: Care
                         return next;
                     });
                 });
-                await new Promise((resolve) => setTimeout(resolve, 50));
+                await new Promise((resolve) => setTimeout(resolve, 10));
             }
 
             // 4. Type CTA
